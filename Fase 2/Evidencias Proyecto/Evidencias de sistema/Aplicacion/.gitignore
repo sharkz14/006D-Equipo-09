@@ -1,0 +1,32 @@
+# Dependencias
+node_modules/
+
+# Archivos generados por Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Archivos nativos y certificados
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+/ios
+/android
+
+# Archivos temporales y registros
+.metro-health-check*
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+*.tsbuildinfo
+
+# Configuración local y ejemplos
+.env*.local
+example
