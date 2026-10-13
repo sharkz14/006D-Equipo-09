@@ -1,0 +1,62 @@
+{
+  "fecha_utc": "2026-10-11T01:26:52.158616+00:00",
+  "estado": "ajuste_v0_2_fijado_sin_evaluacion_independiente",
+  "reserva_utilizada": false,
+  "python": "3.12.14",
+  "plataforma": "Linux",
+  "versiones": {
+    "scikit-learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0",
+    "openpyxl": "3.1.5",
+    "et-xmlfile": "2.0.0"
+  },
+  "parametros": {
+    "criterion": "gini",
+    "splitter": "best",
+    "max_depth": 3,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42,
+    "class_weight": null,
+    "ccp_alpha": 0.0
+  },
+  "orden_casos_fit": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08",
+    "DB09",
+    "DB10"
+  ],
+  "controles_sin_fit": [
+    "DB11"
+  ],
+  "sha256_modelo_v0_1": "f55737d4794c1f1f7b08ea1ef8ce49dd5834787c7d885805b9b50c314d99b14f",
+  "sha256_archivos": {
+    "base.py": "b0c71e9ddfbd520be1e457fc709e5206d7c3426c17472fa0cfc1c8a5392eb7d8",
+    "selector.py": "f1593e8708d5a57eda3f6d7a42d377c1e5a0d2933de551e9e2b0e626bd588b7e",
+    "preparar_datos.py": "eb0d187db068d10829c46db5dcdbfe454cf113df36291e26571c82127b33fea6",
+    "entrenar.py": "c1233c0c69ce033365e9d279fbc374eca9938b3f4fff7b9c7624b718d7edd542",
+    "requirements.txt": "0a0d0402467acf323d4fe589d67553d9cca2d9cf845040d2c01634756dc52e0e",
+    "datos/desarrollo_k11_k12.json": "ddcadcbea702abaac5c69ae10baeffbcf972b8a2441cef9978e6cdf7b255eadb",
+    "fuentes/revision_completada.xlsx": "0c6ca37b91ad283b1d7892bf5a0eee3aba924fd1c261e287b7ea0051fe73d491",
+    "fuentes/generador_referencia.cjs": "429dd2681df38d9121bd93724e495e2aac6bd6652fcb38e62cad130a13377e57",
+    "fuentes/referencia_motor.json": "c8db14f43e597fa67c0472f738bcc1d13e2152b1a764f80caff5265546234deb",
+    "fuentes/fichas_k11_k12_v0_1.md": "6f4dc5182064f33fbb986d0ef75093ca6c31cc19851f841793be780ae12be58f",
+    "protocolo.json": "993b8ecd63fdca0d6cc90b80207530abd87935c10d95257392234cdf66ba3c92",
+    "pruebas/test_contrato.py": "5d8854d1d4d7dd9b56f20f3a3b18d72afe09f3226a00026d113248a806840937",
+    "fuentes/respuestas_DB09_DB11.json": "b6140eb8e4eddbf47aa8f60fff4fa3d6893884208790c6bfd494676666ca9753",
+    "fuentes/respuestas_DB09_DB11.txt": "d1d7be1e4707e08f07a401e3709ce301d850bc07bee34d5ca2578bd32e90d1ec",
+    "fuentes/arbol_k11_k12_v0_1.json": "f55737d4794c1f1f7b08ea1ef8ce49dd5834787c7d885805b9b50c314d99b14f",
+    "fuentes/congelacion_k11_k12_v0_1.json": "9301ff98477bdb1a4e1f66a45330e74f21ee00e770f18fd1fc128bf8afac73fb"
+  },
+  "sha256_arbol": "f63f57cfb09b8aed0dfb335072be1678fc983c6cddeb95d3b32f2d7cd0f27498",
+  "siguiente_paso": "Revisar generalizacion con nuevos grupos; no reutilizar G03 como evaluacion."
+}

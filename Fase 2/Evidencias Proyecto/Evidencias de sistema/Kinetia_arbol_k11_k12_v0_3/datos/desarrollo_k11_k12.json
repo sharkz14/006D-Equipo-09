@@ -1,0 +1,389 @@
+{
+  "version": "0.2",
+  "uso": "desarrollo",
+  "contexto": {
+    "familia": "dead_bug",
+    "cupo": "control_anterior",
+    "nivel": "I",
+    "equipo": "PC",
+    "duracion_referencial_min": 20,
+    "filtro_superado": true,
+    "exclusiones": [],
+    "candidatos_compatibles": [
+      "K11",
+      "K12"
+    ],
+    "fichas_version": "0.1",
+    "modo": "experimento_borrador",
+    "dosis": {
+      "K11": {
+        "series": 2,
+        "repeticiones_por_lado": 6,
+        "descanso_series_s": 60
+      },
+      "K12": {
+        "series": 2,
+        "repeticiones_por_lado": 5,
+        "descanso_series_s": 60
+      }
+    }
+  },
+  "fuente": {
+    "archivo": "revision_completada.xlsx",
+    "sha256": "0c6ca37b91ad283b1d7892bf5a0eee3aba924fd1c261e287b7ea0051fe73d491",
+    "fecha_recepcion_chile": "2026-10-10",
+    "fecha_revision_declarada": "2026-10-09"
+  },
+  "revisor": {
+    "identificacion_declarada": "Preparador físico",
+    "rol_declarado": "Preparador físico",
+    "identidad_estable_verificada": false,
+    "credenciales_verificadas": false
+  },
+  "notas": [
+    "Los textos de pendiente G13/G16 y B29 no anulan las respuestas completas C:F.",
+    "B40 conserva una nota anterior. Identificacion generica; no se atribuye nombre.",
+    "Ocho derivados de G03, no ocho observaciones independientes.",
+    "DB01 representa C04: no agregar C04 nuevamente.",
+    "La dosis pasada no se conoce y no se exige que coincida con la actual.",
+    "Meses exactos conocidos es procedencia, no un quinto predictor.",
+    "Las once filas combinadas siguen en G03; conservar tambien los parientes de K06/K08 en ese grupo.",
+    "DB09-DB11 amplian desarrollo tras examinar discrepancias de v0.1; no son reserva.",
+    "DB11 EMPATE se conserva como control descriptivo; no entra en fit ni en coincidencia de preferencia unica.",
+    "DB01-DB10 aportan una fila por caso, sin duplicacion ni pesos de empate."
+  ],
+  "casos": [
+    {
+      "caso_id": "DB01",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "No sabemos si practicó K12, cuándo, cómo le resultó ni si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "desconocida",
+        "control_k12": "desconocido",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "desconocida"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "Preferencia original conservada; la experiencia desconocida no equivale a nunca.",
+        "procedencia_texto_original": "C04: respuesta previa",
+        "rango_excel": "Revisar!A11:G11"
+      }
+    },
+    {
+      "caso_id": "DB02",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Nunca hizo la variante exacta K12. Practica otros ejercicios de core en el suelo habitualmente; no se precisó cuáles.",
+      "entradas": {
+        "experiencia_k12": "nunca",
+        "control_k12": "no_aplica",
+        "historia_core": "habitual_actual",
+        "antiguedad_k12": "no_aplica"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "El core habitual apoya la elección, pero no garantiza la coordinación específica.",
+        "procedencia_texto_original": "Respuesta 1: previa",
+        "rango_excel": "Revisar!A12:G12"
+      }
+    },
+    {
+      "caso_id": "DB03",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Nunca hizo K12 ni algo parecido. Tampoco practica core en el suelo habitualmente.",
+      "entradas": {
+        "experiencia_k12": "nunca",
+        "control_k12": "no_aplica",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "no_aplica"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "Nunca hizo K12 ni algo parecido y no hace core en el suelo: sin familiaridad con el patrón. K11 es la entrada natural. K12 sigue aceptable porque su ficha permite acortar el recorrido. Suave: pocos datos.",
+        "procedencia_texto_original": "Revisión completa pendiente",
+        "rango_excel": "Revisar!A13:G13"
+      }
+    },
+    {
+      "caso_id": "DB04",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo K12 hace más de un año y recuerda terminarlo controlado. Siguió entrenando fuerza regularmente. No sabemos si mantuvo el core.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "La antigüedad sola no cambia la preferencia; falta conocer la continuidad del core.",
+        "procedencia_texto_original": "Respuesta 2: previa",
+        "rango_excel": "Revisar!A14:G14"
+      }
+    },
+    {
+      "caso_id": "DB05",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo K12 hace un mes y recuerda terminarlo controlado. Siguió entrenando fuerza regularmente. No sabemos si mantuvo el core.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "un_mes"
+      },
+      "meses_exactos_conocidos": 1,
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "FIRME",
+        "motivo": "Lo hizo hace un mes, lo recuerda controlado y sigue entrenando fuerza: tres datos en la misma dirección. K11 quedaría por debajo de lo ya hecho, pero no lo descarto: el recuerdo es limitado y el core es desconocido.",
+        "procedencia_texto_original": "Nueva variante de desarrollo",
+        "rango_excel": "Revisar!A15:G15"
+      }
+    },
+    {
+      "caso_id": "DB06",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo K12 hace más de un año y lo recuerda controlado. Siguió entrenando fuerza, pero dejó el core en el suelo hace más de un año.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "interrumpida_mas_de_12_meses",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "Recuerda buen control, pero de una época en que practicaba core; lo dejó hace más de un año. K11 sirve de reentrada. K12 sigue aceptable: ya lo hizo controlado y su ficha permite acortar. Suave: recuerdo limitado y antiguo.",
+        "procedencia_texto_original": "Revisión completa pendiente",
+        "rango_excel": "Revisar!A16:G16"
+      }
+    },
+    {
+      "caso_id": "DB07",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo K12 hace un mes. Recuerda que le costó mantener la espalda estable, sin dolor ni molestias. Su práctica de core es desconocida.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "un_mes"
+      },
+      "meses_exactos_conocidos": 1,
+      "revision": {
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "FIRME",
+        "motivo": "Hace un mes le costó mantener la espalda estable en K12: es la señal más directa del caso. K11 baja la exigencia de control. K12 sigue aceptable porque su ficha permite acortar el recorrido. No uso sensación lumbar.",
+        "procedencia_texto_original": "Nueva variante de desarrollo",
+        "rango_excel": "Revisar!A17:G17"
+      }
+    },
+    {
+      "caso_id": "DB08",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Sabe que hizo la variante exacta K12, pero no recuerda cuándo ni cómo controló el movimiento. Su práctica de core es desconocida.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "desconocido",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "desconocida"
+      },
+      "meses_exactos_conocidos": null,
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "Sabe que hizo K12 exacta, así que no es «nunca», y no hay señal en contra: igual que DB01, K12 suave. Faltan cuándo y cómo controló; podrían cambiar la elección a K11 si hubiera costado.",
+        "procedencia_texto_original": "Nueva variante de desarrollo",
+        "rango_excel": "Revisar!A18:G18"
+      }
+    },
+    {
+      "caso_id": "DB09",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo la variante exacta K12 hace un mes y recuerda terminar controlado. Practica core en el suelo ocasionalmente, sin hábito regular; aquella práctica de K12 fue una ocasión aislada. No recuerda la dosis pasada.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "un_mes"
+      },
+      "meses_exactos_conocidos": 1,
+      "detalle_no_predictor": {
+        "frecuencia_k12": "ocasion_aislada",
+        "practica_core": "ocasional_sin_habito_regular",
+        "dosis_pasada": "desconocida"
+      },
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "El dato que decide es que lo hizo hace un mes y lo recuerda controlado. Lo que impide que sea firme es que fue una ocasión aislada y que el core es solo ocasional: un control recordado de una sola vez es una pista débil. Frente a un caso con los mismos datos pero sin saber si fue aislada, bajo un escalón. K11 sigue siendo aceptable. Lo que más podría cambiar mi elección es saber si K12 le costó en otra ocasión, o si ha hecho pausas largas de core desde entonces.",
+        "procedencia_texto_original": "Respuesta transmitida por la usuaria en el chat, preferencia explícita; sección DB09.",
+        "fecha_revision_declarada": null,
+        "fecha_recepcion_chile": "2026-10-10",
+        "revisor_atribuido": "Preparador físico, según la usuaria"
+      }
+    },
+    {
+      "caso_id": "DB10",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Hizo la variante exacta K12 hace un mes, pero no recuerda cómo controló el movimiento. Practica core en el suelo ocasionalmente, sin hábito regular; aquella práctica de K12 fue una ocasión aislada. No recuerda la dosis pasada.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "desconocido",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "un_mes"
+      },
+      "meses_exactos_conocidos": 1,
+      "detalle_no_predictor": {
+        "frecuencia_k12": "ocasion_aislada",
+        "practica_core": "ocasional_sin_habito_regular",
+        "dosis_pasada": "desconocida"
+      },
+      "revision": {
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "motivo": "Queda en el mismo punto que DB09, pero sin el dato que lo apoyaba. Solo sé que hizo la variante exacta hace un mes, sin señal en contra, y eso me basta para no pasar a K11. No me da para más firmeza. El dato que falta es cómo terminó: si recordara «controlado», sigo en K12, y si recordara «me costó», paso a K11. Aquí las dos respuestas con la misma etiqueta no dicen lo mismo: DB10 tiene menos base que DB09, y mi escala no tiene un escalón más bajo que suave.",
+        "procedencia_texto_original": "Respuesta transmitida por la usuaria en el chat, preferencia explícita; sección DB10.",
+        "fecha_revision_declarada": null,
+        "fecha_recepcion_chile": "2026-10-10",
+        "revisor_atribuido": "Preparador físico, según la usuaria"
+      }
+    },
+    {
+      "caso_id": "DB11",
+      "grupo_id": "G03",
+      "caso_origen": "C04",
+      "escenario_origen": "E03",
+      "origen": "HIPOTETICO_DERIVADO",
+      "historia": "Desconoce si ha practicado K12, cuándo y cómo le resultó. Sabe que no practica core en el suelo habitualmente. Desconocido no significa nunca ni haber interrumpido el core.",
+      "entradas": {
+        "experiencia_k12": "desconocida",
+        "control_k12": "desconocido",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "desconocida"
+      },
+      "meses_exactos_conocidos": null,
+      "detalle_no_predictor": {
+        "frecuencia_k12": "desconocida",
+        "practica_core": "no_habitual_sin_mayor_detalle",
+        "dosis_pasada": "desconocida"
+      },
+      "revision": {
+        "preferencia": "EMPATE",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "NO_APLICA",
+        "motivo": "Aquí dos datos tiran en direcciones opuestas. Por un lado, K11 se queda corto para un intermedio y K12 tiene un recorrido ajustable. Por otro, sin core habitual no hay una base que apoye el control del tronco. No lo leo como «nunca» ni como «dejó el core»; «no habitual» es otra cosa, y no sé qué hace en realidad. No es indecisión: queda en el punto medio entre los casos donde elegí K12 suave (todo desconocido) y K11 suave (nunca y sin core). Lo que lo movería es saber si hizo K12 y cómo le fue: si lo hizo controlado voy a K12, y si nunca lo hizo voy a K11.",
+        "procedencia_texto_original": "Respuesta transmitida por la usuaria en el chat, empate explícito; sección DB11.",
+        "fecha_revision_declarada": null,
+        "fecha_recepcion_chile": "2026-10-10",
+        "revisor_atribuido": "Preparador físico, según la usuaria"
+      }
+    }
+  ],
+  "fuente_chat": {
+    "version": "0.1",
+    "uso": "desarrollo",
+    "grupo_id": "G03",
+    "fecha_recepcion_chile": "2026-10-10",
+    "fecha_revision_declarada": null,
+    "procedencia": "Respuesta del preparador físico transmitida por la usuaria en el chat.",
+    "revisor": {
+      "identificacion_declarada": null,
+      "rol_atribuido": "Preparador físico",
+      "identidad_estable_verificada": false,
+      "credenciales_verificadas": false
+    },
+    "seleccion_casos": "Desarrollo adaptativo: seleccionados tras examinar discrepancias del árbol v0.1 con la regla post hoc. No son evaluación independiente.",
+    "contexto_comun_descrito": "Adulto intermedio en fuerza, entrenamiento actual regular de fuerza, peso corporal, sesión referencial 20 minutos, filtro superado, sin exclusiones. No se presupone primera sesión. K11 2×6 por lado y K12 2×5 por lado; 60 segundos entre series. K12 con brazos al techo, caderas y rodillas aproximadamente a 90°, alejando brazo y pierna contrarios.",
+    "notas_codificacion": [
+      "Core ocasional y no habitual se codifican sin_practica_habitual, no ausencia absoluta ni interrupción.",
+      "La ocasión aislada se conserva como detalle; no se añade predictor de firmeza.",
+      "DB09 y DB10 tienen igual etiqueta suave, pero el motivo distingue la fuerza del fundamento. No convertir a probabilidades.",
+      "DB11 es EMPATE explícito, distinto de FALTA_INFORMACION; no inventar preferencia ni dividirlo en dos filas.",
+      "Los motivos son opiniones atribuidas al revisor, no afirmaciones de eficacia o seguridad verificadas.",
+      "No se cambian las revisiones DB01–DB08 ni se generalizan los contrafactuales del motivo a etiquetas nuevas."
+    ],
+    "observaciones_comunes": "Dolor o molestias corresponden al filtro, no a la elección. Pendientes K11 de posición de brazos y recorrido no impiden esta comparación según el revisor; no se presume comodidad de hombros."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "version": "0.3",
+  "version_datos": "0.2",
+  "fecha_fijacion_utc": "2026-10-12T22:55:08.845Z",
+  "fecha_chile": "2026-10-12",
+  "tarea": "Revisión dirigida de la rama que reúne DB02 y DB03; selección limitada de capacidad sobre desarrollo.",
+  "hipotesis": "El antecedente de core que distingue ambos casos ya está disponible, pero la rama del árbol v0.2 alcanzó max_depth=3 sin utilizarlo. Permitir un nivel adicional podría separarlos.",
+  "candidatos": [
+    {
+      "modelo_id": "K11_K12_v0.2",
+      "max_depth": 3,
+      "origen": "Modelo congelado, sin volver a ajustar."
+    },
+    {
+      "modelo_id": "K11_K12_v0.3",
+      "max_depth": 4,
+      "origen": "Único ajuste nuevo con las mismas diez filas y el resto de configuración idéntico."
+    }
+  ],
+  "parametros": {
+    "criterion": "gini",
+    "splitter": "best",
+    "max_depth": 4,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42,
+    "class_weight": null,
+    "ccp_alpha": 0
+  },
+  "tipo_seleccion": "Comparación dirigida de dos profundidades elegida tras un error observado en desarrollo; no selección independiente.",
+  "numero_fits_nuevos_previstos": 1,
+  "otras_configuraciones_prohibidas_en_este_experimento": true,
+  "conjunto_sin_cambios": "datos/desarrollo_k11_k12.json",
+  "datos_registrados": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08",
+    "DB09",
+    "DB10",
+    "DB11"
+  ],
+  "desarrollo_ajuste": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08",
+    "DB09",
+    "DB10"
+  ],
+  "desarrollo_empate": [
+    "DB11"
+  ],
+  "grupos_desarrollo": [
+    "G03"
+  ],
+  "particion_interna": false,
+  "ponderacion_firmeza": false,
+  "predictores_nuevos": false,
+  "criterio_candidato_para_evaluacion": {
+    "coincidencia_DB02": "K12",
+    "coincidencia_DB03": "K11",
+    "regresiones_preferencias_antes_acertadas_permitidas": 0,
+    "aceptabilidad_debe_mantenerse": true,
+    "contrato_y_exportacion_deben_pasar": true,
+    "en_caso_de_no_cumplir": "Conservar v0.2 como referencia y documentar el resultado; no probar otras configuraciones en este experimento."
+  },
+  "comparadores": [
+    "motor_actual",
+    "regla_post_hoc_v0_1_sin_cambios",
+    "arbol_v0_2_congelado"
+  ],
+  "metricas": {
+    "preferencia": "Coincidencias sobre diez preferencias únicas de desarrollo, DB11 excluido.",
+    "aceptabilidad": "Selección dentro del conjunto aceptado en los once casos.",
+    "empate": "DB11 mantiene preferencia EMPATE y coincidencia null. No entra al ajuste y el modelo no aprende a emitir EMPATE."
+  },
+  "auditoria_sin_etiquetas": "Recorrer las 41 combinaciones válidas; documentar diferencias v0.2/v0.3/regla y equivalencia del JSON. No son 41 ejemplos revisados ni evaluación de calidad.",
+  "evaluacion_independiente": "No realizada ni utilizada. Los once casos siguen G03. Preparar posteriormente historias nuevas originales con procedencia y familias documentadas; no renombrar derivados G03 como nuevos grupos.",
+  "referencia_documental": "https://scikit-learn.org/1.7/modules/generated/sklearn.tree.DecisionTreeClassifier.html",
+  "sha256_fuentes": {
+    "fuentes/revision_completada.xlsx": "0c6ca37b91ad283b1d7892bf5a0eee3aba924fd1c261e287b7ea0051fe73d491",
+    "fuentes/respuestas_DB09_DB11.json": "b6140eb8e4eddbf47aa8f60fff4fa3d6893884208790c6bfd494676666ca9753",
+    "fuentes/respuestas_DB09_DB11.txt": "d1d7be1e4707e08f07a401e3709ce301d850bc07bee34d5ca2578bd32e90d1ec",
+    "fuentes/arbol_k11_k12_v0_1.json": "f55737d4794c1f1f7b08ea1ef8ce49dd5834787c7d885805b9b50c314d99b14f",
+    "fuentes/arbol_k11_k12_v0_2.json": "f63f57cfb09b8aed0dfb335072be1678fc983c6cddeb95d3b32f2d7cd0f27498",
+    "fuentes/congelacion_k11_k12_v0_2.json": "39f09fd4efb1eed3d236fffdccc6d2c9e7e6e68e8244b82367676ced3501a0e2",
+    "fuentes/protocolo_v0_2.json": "993b8ecd63fdca0d6cc90b80207530abd87935c10d95257392234cdf66ba3c92",
+    "datos/desarrollo_k11_k12.json": "ddcadcbea702abaac5c69ae10baeffbcf972b8a2441cef9978e6cdf7b255eadb"
+  }
+}

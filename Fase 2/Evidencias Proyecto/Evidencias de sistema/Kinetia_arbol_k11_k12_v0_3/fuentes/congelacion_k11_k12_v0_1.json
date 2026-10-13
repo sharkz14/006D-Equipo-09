@@ -1,0 +1,51 @@
+{
+  "fecha_utc": "2026-10-11T01:07:23.532968+00:00",
+  "estado": "primer_ajuste_fijado_sin_evaluacion_independiente",
+  "reserva_utilizada": false,
+  "python": "3.12.14",
+  "plataforma": "Linux",
+  "versiones": {
+    "scikit-learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0",
+    "openpyxl": "3.1.5",
+    "et-xmlfile": "2.0.0"
+  },
+  "parametros": {
+    "criterion": "gini",
+    "splitter": "best",
+    "max_depth": 3,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42,
+    "class_weight": null,
+    "ccp_alpha": 0.0
+  },
+  "orden_casos": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08"
+  ],
+  "sha256_archivos": {
+    "base.py": "0790c08141b95963edb10c784398fad688cd19367c6c88d92c0a1aa20cee0697",
+    "selector.py": "86430746d61b7a82f10fbeb7bb5db85369cc4adedc8fc1849561a49c87cf0f1d",
+    "preparar_datos.py": "631ff9c127f8920c6cf811768279f8a7c42ad0f05769b16659ee8990071008c9",
+    "entrenar.py": "1000830c62cc6b47dfd5f8afed4577f1b3ca48ca024ae3554808c2294186add0",
+    "requirements.txt": "0a0d0402467acf323d4fe589d67553d9cca2d9cf845040d2c01634756dc52e0e",
+    "datos/desarrollo_k11_k12.json": "fabb774bb49c9e7b181c3d5f99683e578b3c88a71875563a3637c2a126f90181",
+    "fuentes/revision_completada.xlsx": "0c6ca37b91ad283b1d7892bf5a0eee3aba924fd1c261e287b7ea0051fe73d491",
+    "fuentes/generador_referencia.cjs": "429dd2681df38d9121bd93724e495e2aac6bd6652fcb38e62cad130a13377e57",
+    "fuentes/referencia_motor.json": "c8db14f43e597fa67c0472f738bcc1d13e2152b1a764f80caff5265546234deb",
+    "fuentes/fichas_k11_k12_v0_1.md": "6f4dc5182064f33fbb986d0ef75093ca6c31cc19851f841793be780ae12be58f",
+    "protocolo.json": "9c296f37d154c1693ef613fcd450f43f06e0dc65ecafe9092ef8ea1f1b687cd4"
+  },
+  "sha256_arbol": "f55737d4794c1f1f7b08ea1ef8ce49dd5834787c7d885805b9b50c314d99b14f",
+  "siguiente_paso": "Revisar generalizacion con nuevos grupos; no reutilizar G03 como evaluacion."
+}

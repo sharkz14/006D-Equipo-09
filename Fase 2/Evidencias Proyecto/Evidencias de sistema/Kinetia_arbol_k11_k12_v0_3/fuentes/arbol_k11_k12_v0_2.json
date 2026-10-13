@@ -1,0 +1,135 @@
+{
+  "formato": "kinetia_arbol_categorico_0.1",
+  "modelo_id": "K11_K12_v0.2",
+  "contexto": {
+    "familia": "dead_bug",
+    "cupo": "control_anterior",
+    "nivel": "I",
+    "equipo": "PC",
+    "duracion_referencial_min": 20,
+    "filtro_superado": true,
+    "exclusiones": [],
+    "candidatos_compatibles": [
+      "K11",
+      "K12"
+    ],
+    "fichas_version": "0.1",
+    "modo": "experimento_borrador",
+    "dosis": {
+      "K11": {
+        "series": 2,
+        "repeticiones_por_lado": 6,
+        "descanso_series_s": 60
+      },
+      "K12": {
+        "series": 2,
+        "repeticiones_por_lado": 5,
+        "descanso_series_s": 60
+      }
+    }
+  },
+  "campos": [
+    "experiencia_k12",
+    "control_k12",
+    "historia_core",
+    "antiguedad_k12"
+  ],
+  "categorias": [
+    [
+      "nunca",
+      "practico",
+      "desconocida"
+    ],
+    [
+      "controlado",
+      "dificultad_control",
+      "desconocido",
+      "no_aplica"
+    ],
+    [
+      "habitual_actual",
+      "sin_practica_habitual",
+      "interrumpida_mas_de_12_meses",
+      "desconocida"
+    ],
+    [
+      "un_mes",
+      "mas_de_12_meses",
+      "desconocida",
+      "no_aplica"
+    ]
+  ],
+  "columnas_codificadas": [
+    "experiencia_k12_nunca",
+    "experiencia_k12_practico",
+    "experiencia_k12_desconocida",
+    "control_k12_controlado",
+    "control_k12_dificultad_control",
+    "control_k12_desconocido",
+    "control_k12_no_aplica",
+    "historia_core_habitual_actual",
+    "historia_core_sin_practica_habitual",
+    "historia_core_interrumpida_mas_de_12_meses",
+    "historia_core_desconocida",
+    "antiguedad_k12_un_mes",
+    "antiguedad_k12_mas_de_12_meses",
+    "antiguedad_k12_desconocida",
+    "antiguedad_k12_no_aplica"
+  ],
+  "clases": [
+    "K11",
+    "K12"
+  ],
+  "parametros": {
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 3,
+    "max_features": null,
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "random_state": 42,
+    "splitter": "best"
+  },
+  "profundidad_aprendida": 3,
+  "nodos": [
+    {
+      "variable": 9,
+      "umbral": 0.5,
+      "izquierda": 1,
+      "derecha": 6
+    },
+    {
+      "variable": 4,
+      "umbral": 0.5,
+      "izquierda": 2,
+      "derecha": 5
+    },
+    {
+      "variable": 6,
+      "umbral": 0.5,
+      "izquierda": 3,
+      "derecha": 4
+    },
+    {
+      "clase": "K12",
+      "filas_entrenamiento": 6
+    },
+    {
+      "clase": "K11",
+      "filas_entrenamiento": 2
+    },
+    {
+      "clase": "K11",
+      "filas_entrenamiento": 1
+    },
+    {
+      "clase": "K11",
+      "filas_entrenamiento": 1
+    }
+  ]
+}

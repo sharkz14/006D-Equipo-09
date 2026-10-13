@@ -1,0 +1,1064 @@
+{
+  "fecha_utc": "2026-10-12T22:59:26.470362+00:00",
+  "tipo": "revision_dirigida_de_capacidad_sobre_desarrollo",
+  "version_modelo": "0.3",
+  "version_datos": "0.2",
+  "numero_fits_nuevos": 1,
+  "baseline_reentrenado": false,
+  "cambios_parametros": {
+    "max_depth": {
+      "antes": 3,
+      "despues": 4
+    }
+  },
+  "evaluacion_independiente_realizada": false,
+  "filas": 11,
+  "filas_usadas_para_fit": 10,
+  "controles_empate": [
+    "DB11"
+  ],
+  "filas_excluidas_de_fit": [
+    {
+      "caso_id": "DB11",
+      "motivo": "EMPATE: sin objetivo binario unico"
+    }
+  ],
+  "grupos": {
+    "G03": 11
+  },
+  "clases_fit": {
+    "K12": 7,
+    "K11": 3
+  },
+  "firmeza": {
+    "SUAVE": 8,
+    "FIRME": 2,
+    "NO_APLICA": 1
+  },
+  "variables_en_ramas": [
+    "control_k12_dificultad_control",
+    "control_k12_no_aplica",
+    "historia_core_habitual_actual",
+    "historia_core_interrumpida_mas_de_12_meses"
+  ],
+  "resumen": {
+    "motor_actual": {
+      "preferencia_aciertos": 7,
+      "preferencia_total": 10,
+      "aceptabilidad_aciertos": 11,
+      "aceptabilidad_total": 11
+    },
+    "regla_post_hoc_v0_1": {
+      "preferencia_aciertos": 10,
+      "preferencia_total": 10,
+      "aceptabilidad_aciertos": 11,
+      "aceptabilidad_total": 11
+    },
+    "arbol_v0_2": {
+      "preferencia_aciertos": 9,
+      "preferencia_total": 10,
+      "aceptabilidad_aciertos": 11,
+      "aceptabilidad_total": 11
+    },
+    "arbol_v0_3": {
+      "preferencia_aciertos": 10,
+      "preferencia_total": 10,
+      "aceptabilidad_aciertos": 11,
+      "aceptabilidad_total": 11
+    }
+  },
+  "por_caso": [
+    {
+      "caso_id": "DB01",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB02",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K11",
+          "coincide_preferencia": false,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB03",
+      "grupo_id": "G03",
+      "preferencia": "K11",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": false,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB04",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB05",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "FIRME",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB06",
+      "grupo_id": "G03",
+      "preferencia": "K11",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": false,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB07",
+      "grupo_id": "G03",
+      "preferencia": "K11",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "FIRME",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": false,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K11",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB08",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB09",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB10",
+      "grupo_id": "G03",
+      "preferencia": "K12",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "SUAVE",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": true,
+          "opcion_aceptada": true
+        }
+      }
+    },
+    {
+      "caso_id": "DB11",
+      "grupo_id": "G03",
+      "preferencia": "EMPATE",
+      "aceptables": [
+        "K11",
+        "K12"
+      ],
+      "firmeza": "NO_APLICA",
+      "sistemas": {
+        "motor_actual": {
+          "seleccion": "K12",
+          "coincide_preferencia": null,
+          "opcion_aceptada": true
+        },
+        "regla_post_hoc_v0_1": {
+          "seleccion": "K12",
+          "coincide_preferencia": null,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_2": {
+          "seleccion": "K12",
+          "coincide_preferencia": null,
+          "opcion_aceptada": true
+        },
+        "arbol_v0_3": {
+          "seleccion": "K12",
+          "coincide_preferencia": null,
+          "opcion_aceptada": true
+        }
+      }
+    }
+  ],
+  "pruebas_software": {
+    "combinaciones_validas": 41,
+    "equivalencia_exportacion": true,
+    "combinaciones_presentes_en_registros": 11,
+    "combinaciones_fuera_de_registros": 30,
+    "etiquetas_nuevas": 0,
+    "diferencias_arbol_regla": [
+      {
+        "entradas": {
+          "experiencia_k12": "nunca",
+          "control_k12": "no_aplica",
+          "historia_core": "desconocida",
+          "antiguedad_k12": "no_aplica"
+        },
+        "arbol": "K11",
+        "regla": "K12"
+      }
+    ],
+    "cambios_frente_baseline_v0_2": [
+      {
+        "entradas": {
+          "experiencia_k12": "nunca",
+          "control_k12": "no_aplica",
+          "historia_core": "habitual_actual",
+          "antiguedad_k12": "no_aplica"
+        },
+        "arbol_v0_2": "K11",
+        "arbol_v0_3": "K12"
+      }
+    ],
+    "significado": "Prueba informatica del dominio: incluye entradas ya registradas y otras sin revision. No crea etiquetas ni observaciones, no es evaluacion de generalizacion."
+  },
+  "contraste_previo": {
+    "fecha_utc": "2026-10-12T22:59:26.468266+00:00",
+    "tipo": "diagnostico_previo_rama_v0_2_sin_ajuste",
+    "evaluacion_independiente": false,
+    "modelo_v0_2_sha256": "f63f57cfb09b8aed0dfb335072be1678fc983c6cddeb95d3b32f2d7cd0f27498",
+    "nota": "Se revisa una rama usando el mismo desarrollo adaptativo G03; no es reserva.",
+    "diagnostico_rama": {
+      "modelo_id": "K11_K12_v0.2",
+      "trazas_DB02_DB03": {
+        "DB02": {
+          "seleccion": "K11",
+          "hoja": 4,
+          "profundidad": 3,
+          "ruta": [
+            {
+              "nodo": 0,
+              "variable": "historia_core_interrumpida_mas_de_12_meses",
+              "valor": 0.0,
+              "umbral": 0.5,
+              "rama": "izquierda"
+            },
+            {
+              "nodo": 1,
+              "variable": "control_k12_dificultad_control",
+              "valor": 0.0,
+              "umbral": 0.5,
+              "rama": "izquierda"
+            },
+            {
+              "nodo": 2,
+              "variable": "control_k12_no_aplica",
+              "valor": 1.0,
+              "umbral": 0.5,
+              "rama": "derecha"
+            }
+          ]
+        },
+        "DB03": {
+          "seleccion": "K11",
+          "hoja": 4,
+          "profundidad": 3,
+          "ruta": [
+            {
+              "nodo": 0,
+              "variable": "historia_core_interrumpida_mas_de_12_meses",
+              "valor": 0.0,
+              "umbral": 0.5,
+              "rama": "izquierda"
+            },
+            {
+              "nodo": 1,
+              "variable": "control_k12_dificultad_control",
+              "valor": 0.0,
+              "umbral": 0.5,
+              "rama": "izquierda"
+            },
+            {
+              "nodo": 2,
+              "variable": "control_k12_no_aplica",
+              "valor": 1.0,
+              "umbral": 0.5,
+              "rama": "derecha"
+            }
+          ]
+        }
+      },
+      "misma_hoja": true,
+      "antecedentes_que_ya_difieren": {
+        "historia_core": {
+          "DB02": "habitual_actual",
+          "DB03": "sin_practica_habitual"
+        }
+      },
+      "hojas_con_datos_de_fit": {
+        "3": {
+          "casos": [
+            "DB01",
+            "DB04",
+            "DB05",
+            "DB08",
+            "DB09",
+            "DB10"
+          ],
+          "conteos_clase": {
+            "K11": 0,
+            "K12": 6
+          }
+        },
+        "4": {
+          "casos": [
+            "DB02",
+            "DB03"
+          ],
+          "conteos_clase": {
+            "K11": 1,
+            "K12": 1
+          }
+        },
+        "6": {
+          "casos": [
+            "DB06"
+          ],
+          "conteos_clase": {
+            "K11": 1,
+            "K12": 0
+          }
+        },
+        "5": {
+          "casos": [
+            "DB07"
+          ],
+          "conteos_clase": {
+            "K11": 1,
+            "K12": 0
+          }
+        }
+      },
+      "significado": "Conteos del desarrollo que alcanza cada hoja. No son probabilidades calibradas ni evaluacion independiente."
+    },
+    "resumen": {
+      "motor_actual": {
+        "preferencia_aciertos": 7,
+        "preferencia_total": 10,
+        "aceptabilidad_aciertos": 11,
+        "aceptabilidad_total": 11
+      },
+      "regla_post_hoc_v0_1": {
+        "preferencia_aciertos": 10,
+        "preferencia_total": 10,
+        "aceptabilidad_aciertos": 11,
+        "aceptabilidad_total": 11
+      },
+      "arbol_v0_2": {
+        "preferencia_aciertos": 9,
+        "preferencia_total": 10,
+        "aceptabilidad_aciertos": 11,
+        "aceptabilidad_total": 11
+      }
+    },
+    "por_caso": [
+      {
+        "caso_id": "DB01",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB02",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K11",
+            "coincide_preferencia": false,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB03",
+        "grupo_id": "G03",
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": false,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB04",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB05",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "FIRME",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB06",
+        "grupo_id": "G03",
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": false,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB07",
+        "grupo_id": "G03",
+        "preferencia": "K11",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "FIRME",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": false,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K11",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB08",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB09",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB10",
+        "grupo_id": "G03",
+        "preferencia": "K12",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "SUAVE",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": true,
+            "opcion_aceptada": true
+          }
+        }
+      },
+      {
+        "caso_id": "DB11",
+        "grupo_id": "G03",
+        "preferencia": "EMPATE",
+        "aceptables": [
+          "K11",
+          "K12"
+        ],
+        "firmeza": "NO_APLICA",
+        "sistemas": {
+          "motor_actual": {
+            "seleccion": "K12",
+            "coincide_preferencia": null,
+            "opcion_aceptada": true
+          },
+          "regla_post_hoc_v0_1": {
+            "seleccion": "K12",
+            "coincide_preferencia": null,
+            "opcion_aceptada": true
+          },
+          "arbol_v0_2": {
+            "seleccion": "K12",
+            "coincide_preferencia": null,
+            "opcion_aceptada": true
+          }
+        }
+      }
+    ]
+  },
+  "diagnostico_rama_nueva": {
+    "modelo_id": "K11_K12_v0.3",
+    "trazas_DB02_DB03": {
+      "DB02": {
+        "seleccion": "K12",
+        "hoja": 6,
+        "profundidad": 4,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          },
+          {
+            "nodo": 4,
+            "variable": "historia_core_habitual_actual",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          }
+        ]
+      },
+      "DB03": {
+        "seleccion": "K11",
+        "hoja": 5,
+        "profundidad": 4,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          },
+          {
+            "nodo": 4,
+            "variable": "historia_core_habitual_actual",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          }
+        ]
+      }
+    },
+    "misma_hoja": false,
+    "antecedentes_que_ya_difieren": {
+      "historia_core": {
+        "DB02": "habitual_actual",
+        "DB03": "sin_practica_habitual"
+      }
+    },
+    "hojas_con_datos_de_fit": {
+      "3": {
+        "casos": [
+          "DB01",
+          "DB04",
+          "DB05",
+          "DB08",
+          "DB09",
+          "DB10"
+        ],
+        "conteos_clase": {
+          "K11": 0,
+          "K12": 6
+        }
+      },
+      "6": {
+        "casos": [
+          "DB02"
+        ],
+        "conteos_clase": {
+          "K11": 0,
+          "K12": 1
+        }
+      },
+      "5": {
+        "casos": [
+          "DB03"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      },
+      "8": {
+        "casos": [
+          "DB06"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      },
+      "7": {
+        "casos": [
+          "DB07"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      }
+    },
+    "significado": "Conteos del desarrollo que alcanza cada hoja. No son probabilidades calibradas ni evaluacion independiente."
+  },
+  "seleccion_segun_protocolo": {
+    "condiciones": {
+      "DB02_coincide": true,
+      "DB03_coincide": true,
+      "ninguna_preferencia_antes_correcta_empeora": true,
+      "aceptabilidad_no_desciende": true,
+      "contrato_y_exportacion_correctos": true
+    },
+    "regresiones": [],
+    "perdidas_aceptabilidad": [],
+    "v0_3_candidato_para_evaluacion": true,
+    "referencia_seleccionada": "K11_K12_v0.3",
+    "alcance": "Decision sobre desarrollo con criterio prefijado; no demuestra generalizacion. No se prueban otras configuraciones."
+  },
+  "limites": [
+    "Once casos hipoteticos del grupo G03. No son observaciones independientes.",
+    "Diez preferencias unicas entran en fit. DB11 EMPATE permanece como control descriptivo.",
+    "DB11 no entra en el denominador de coincidencia con preferencia unica; si en aceptabilidad.",
+    "Este clasificador binario no aprende ni emite empates. No se duplicaron filas ni usaron pesos 0.5.",
+    "DB09-DB11 fueron elegidos tras revisar discrepancias v0.1: son desarrollo adaptativo, no holdout.",
+    "La profundidad 4 se eligio tras observar un desacuerdo de v0.2 en este desarrollo; no es seleccion independiente.",
+    "Solo se comparo el baseline congelado de profundidad 3 con un ajuste nuevo de profundidad 4.",
+    "Se preservan byte por byte los datos y las fuentes de v0.2. No hay nuevas etiquetas ni predictores.",
+    "Las trazas y conteos de hojas describen los datos de fit; no son confianza calibrada.",
+    "No se hizo split ni validacion cruzada dentro de G03. Ninguna reserva utilizada.",
+    "Resultados sobre entrenamiento: no estiman rendimiento en usuarios o escenarios nuevos.",
+    "La regla fue deducida de las mismas revisiones; es una referencia post hoc.",
+    "Todos admiten ambas opciones: aceptabilidad no discrimina los metodos en este lote.",
+    "Firmeza no se usa como peso, predictor ni probabilidad.",
+    "Antiguedad es candidata; su uso o ausencia en ramas no demuestra importancia general.",
+    "Un mes es un caso concreto, no un umbral universal de reciente.",
+    "Revisor identificado genericamente. Identidad y credenciales no verificadas.",
+    "No valida dosis, tecnica, seguridad ni mejora fisica; fichas siguen en borrador."
+  ]
+}

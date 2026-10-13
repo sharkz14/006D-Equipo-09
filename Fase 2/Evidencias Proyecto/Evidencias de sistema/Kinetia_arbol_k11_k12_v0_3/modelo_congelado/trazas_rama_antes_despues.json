@@ -1,0 +1,251 @@
+{
+  "antes": {
+    "modelo_id": "K11_K12_v0.2",
+    "trazas_DB02_DB03": {
+      "DB02": {
+        "seleccion": "K11",
+        "hoja": 4,
+        "profundidad": 3,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          }
+        ]
+      },
+      "DB03": {
+        "seleccion": "K11",
+        "hoja": 4,
+        "profundidad": 3,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          }
+        ]
+      }
+    },
+    "misma_hoja": true,
+    "antecedentes_que_ya_difieren": {
+      "historia_core": {
+        "DB02": "habitual_actual",
+        "DB03": "sin_practica_habitual"
+      }
+    },
+    "hojas_con_datos_de_fit": {
+      "3": {
+        "casos": [
+          "DB01",
+          "DB04",
+          "DB05",
+          "DB08",
+          "DB09",
+          "DB10"
+        ],
+        "conteos_clase": {
+          "K11": 0,
+          "K12": 6
+        }
+      },
+      "4": {
+        "casos": [
+          "DB02",
+          "DB03"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 1
+        }
+      },
+      "6": {
+        "casos": [
+          "DB06"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      },
+      "5": {
+        "casos": [
+          "DB07"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      }
+    },
+    "significado": "Conteos del desarrollo que alcanza cada hoja. No son probabilidades calibradas ni evaluacion independiente."
+  },
+  "despues": {
+    "modelo_id": "K11_K12_v0.3",
+    "trazas_DB02_DB03": {
+      "DB02": {
+        "seleccion": "K12",
+        "hoja": 6,
+        "profundidad": 4,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          },
+          {
+            "nodo": 4,
+            "variable": "historia_core_habitual_actual",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          }
+        ]
+      },
+      "DB03": {
+        "seleccion": "K11",
+        "hoja": 5,
+        "profundidad": 4,
+        "ruta": [
+          {
+            "nodo": 0,
+            "variable": "historia_core_interrumpida_mas_de_12_meses",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 1,
+            "variable": "control_k12_dificultad_control",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          },
+          {
+            "nodo": 2,
+            "variable": "control_k12_no_aplica",
+            "valor": 1.0,
+            "umbral": 0.5,
+            "rama": "derecha"
+          },
+          {
+            "nodo": 4,
+            "variable": "historia_core_habitual_actual",
+            "valor": 0.0,
+            "umbral": 0.5,
+            "rama": "izquierda"
+          }
+        ]
+      }
+    },
+    "misma_hoja": false,
+    "antecedentes_que_ya_difieren": {
+      "historia_core": {
+        "DB02": "habitual_actual",
+        "DB03": "sin_practica_habitual"
+      }
+    },
+    "hojas_con_datos_de_fit": {
+      "3": {
+        "casos": [
+          "DB01",
+          "DB04",
+          "DB05",
+          "DB08",
+          "DB09",
+          "DB10"
+        ],
+        "conteos_clase": {
+          "K11": 0,
+          "K12": 6
+        }
+      },
+      "6": {
+        "casos": [
+          "DB02"
+        ],
+        "conteos_clase": {
+          "K11": 0,
+          "K12": 1
+        }
+      },
+      "5": {
+        "casos": [
+          "DB03"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      },
+      "8": {
+        "casos": [
+          "DB06"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      },
+      "7": {
+        "casos": [
+          "DB07"
+        ],
+        "conteos_clase": {
+          "K11": 1,
+          "K12": 0
+        }
+      }
+    },
+    "significado": "Conteos del desarrollo que alcanza cada hoja. No son probabilidades calibradas ni evaluacion independiente."
+  },
+  "nota": "Sin nuevas observaciones, sin entrenamiento adicional, sin probabilidades calibradas."
+}

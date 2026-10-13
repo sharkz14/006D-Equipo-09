@@ -1,0 +1,71 @@
+{
+  "version": "0.2",
+  "familia": "K11/K12",
+  "fecha_fijacion_utc": "2026-10-11T01:23:48.064Z",
+  "datos_registrados": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08",
+    "DB09",
+    "DB10",
+    "DB11"
+  ],
+  "desarrollo_ajuste": [
+    "DB01",
+    "DB02",
+    "DB03",
+    "DB04",
+    "DB05",
+    "DB06",
+    "DB07",
+    "DB08",
+    "DB09",
+    "DB10"
+  ],
+  "desarrollo_empate": [
+    "DB11"
+  ],
+  "grupos_desarrollo": [
+    "G03"
+  ],
+  "particion_interna": false,
+  "tratamiento_empate": {
+    "ajuste": "Excluir solo del objetivo binario. Mantener registro y motivo.",
+    "coincidencia_preferencia": "No incluir en numerador ni denominador. Reportar null en DB11.",
+    "aceptabilidad": "Incluir en denominador: cualquier opción aceptable es válida.",
+    "capacidad_no_demostrada": "El clasificador no aprende a identificar ni emitir empates."
+  },
+  "parametros": {
+    "criterion": "gini",
+    "splitter": "best",
+    "max_depth": 3,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42,
+    "class_weight": null,
+    "ccp_alpha": 0
+  },
+  "busqueda_hiperparametros": false,
+  "ponderacion_firmeza": false,
+  "predictores_nuevos": false,
+  "comparadores": [
+    "motor_actual",
+    "regla_post_hoc_v0_1_sin_cambios",
+    "arbol_v0_1_congelado"
+  ],
+  "contraste_previo": "Registrar predicciones v0.1 en DB09–DB11 antes del nuevo ajuste. Casos elegidos tras ver discrepancias: desarrollo adaptativo, no evaluación independiente.",
+  "objetivo": "Actualizar aprendizaje de preferencias revisadas; no forzar 10/10 ni cambiar parámetros tras observar el resultado.",
+  "evaluacion_independiente": "Pendiente con nuevas historias sin derivación de G03. Mantener juntos también sus parientes de K06/K08.",
+  "estados_no_representados": "No convertir otras fechas en un_mes ni inventar categorías. Ocasional se incluye en sin_practica_habitual, preservando el detalle textual.",
+  "sha256_fuentes": {
+    "fuentes/revision_completada.xlsx": "0c6ca37b91ad283b1d7892bf5a0eee3aba924fd1c261e287b7ea0051fe73d491",
+    "fuentes/respuestas_DB09_DB11.json": "b6140eb8e4eddbf47aa8f60fff4fa3d6893884208790c6bfd494676666ca9753",
+    "fuentes/respuestas_DB09_DB11.txt": "d1d7be1e4707e08f07a401e3709ce301d850bc07bee34d5ca2578bd32e90d1ec",
+    "fuentes/arbol_k11_k12_v0_1.json": "f55737d4794c1f1f7b08ea1ef8ce49dd5834787c7d885805b9b50c314d99b14f"
+  }
+}

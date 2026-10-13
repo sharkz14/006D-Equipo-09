@@ -1,0 +1,23 @@
+{
+  "version_motor": "simulacion-0.1-reglas-0.6",
+  "entrada": {
+    "nivel": "I",
+    "equipo": "PC",
+    "duracion": 20,
+    "filtroSuperado": true,
+    "modo": "borrador",
+    "excluir": {
+      "ids": [],
+      "familias": [],
+      "tags": []
+    }
+  },
+  "principal": [
+    "K01",
+    "K08",
+    "K12"
+  ],
+  "seleccion_dead_bug": "K12",
+  "ejecutable": false,
+  "uso": "referencia deterministica en borrador; no etiqueta validada"
+}

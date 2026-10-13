@@ -1,0 +1,187 @@
+KINETIA — REVISIÓN DE LA RAMA DB02/DB03 Y ÁRBOL K11/K12 v0.3
+12 de octubre de 2026, hora de Chile.
+Estado: candidato experimental fijado para preparar evaluación independiente.
+
+QUÉ ENCONTRAMOS
+
+Los datos ya distinguen dos historias:
+- DB02: nunca hizo K12 y practica otros ejercicios de core habitualmente.
+  El preparador prefiere K12, suavemente; ambas opciones son aceptables.
+- DB03: nunca hizo K12 ni algo parecido y no practica core habitualmente.
+  El preparador prefiere K11, suavemente; ambas opciones son aceptables.
+
+En v0.2 ambos recorrían las mismas tres decisiones y terminaban en la hoja 4.
+La hoja contenía una etiqueta K11 y una K12. El modelo elegía K11 por el
+desempate de clases. Eso describe el funcionamiento informático; no demuestra
+que el preparador prefiera K11 en ambas historias.
+
+La rama había alcanzado max_depth=3. El antecedente historia_core estaba
+disponible, pero esa rama no tenía permitido seguir dividiéndose. No faltaba
+transcribir una respuesta ni era necesario pedir una nueva etiqueta.
+
+QUÉ PROBAMOS
+
+Antes del ajuste se fijó protocolo.json:
+1. Usar v0.2 congelada como referencia de profundidad 3, sin reentrenarla.
+2. Hacer un único ajuste nuevo con profundidad máxima 4.
+3. Mantener datos, etiquetas, categorías, orden de filas, demás parámetros,
+   pesos y cuatro predictores exactamente iguales.
+4. Considerar útil el candidato si distingue DB02/DB03 como fueron revisados,
+   conserva las preferencias antes acertadas y pasa las comprobaciones
+   informáticas y de aceptabilidad.
+
+Cambiar de profundidad 3 a 4 permite una decisión adicional en una ruta del
+árbol. El entrenamiento eligió por sí mismo usar historia_core_habitual_actual
+en la rama afectada. No se insertaron manualmente las respuestas en el árbol.
+
+No se exploraron otras profundidades, semillas, técnicas ni ponderaciones.
+Esto es selección de capacidad dirigida por los resultados de desarrollo,
+no una selección independiente. Los límites de profundidad pueden restringir
+la complejidad; permitir más profundidad también puede ajustar demasiado
+los pocos datos disponibles. Aquí la mejora sigue pendiente de evaluación.
+
+RESULTADO
+
+Caso     Preferencia revisada    Árbol v0.2    Árbol v0.3
+DB02            K12                 K11           K12
+DB03            K11                 K11           K11
+
+La nueva división separa ambos casos en hojas diferentes a profundidad 4.
+Cada una de esas dos hojas se apoya en un solo caso de entrenamiento.
+Eso permite describir el ajuste, pero no medir una confianza general.
+
+Método                     Coincide con preferencia    Opción aceptada
+Generador actual                     7/10                   11/11
+Regla sencilla original             10/10                   11/11
+Árbol v0.2                           9/10                   11/11
+Árbol v0.3                          10/10                   11/11
+
+Se cumplieron los criterios prefijados. v0.3 queda como candidato experimental
+para la siguiente evaluación. El modelo tiene profundidad 4 y nueve nodos.
+
+Las cifras describen el mismo desarrollo utilizado para entrenar y seleccionar
+la configuración. No demuestran generalización ni superioridad frente a la
+regla sencilla. Todas las revisiones admiten ambas opciones, de modo que
+aceptabilidad no discrimina métodos en este lote.
+
+DB11 se conserva como EMPATE, con ambas opciones aceptadas. Se excluye del
+ajuste binario y del denominador de preferencia. v0.3 selecciona K12 para esa
+entrada, que es aceptable; no cuenta como preferencia acertada. El modelo
+todavía no aprende a reconocer ni emitir empates.
+
+QUÉ CAMBIÓ EN EL RESTO DEL DOMINIO
+
+Se verificaron las 41 combinaciones válidas del contrato: once corresponden
+a registros revisados y treinta no están en ese conjunto.
+La revisión no produjo etiquetas nuevas.
+
+Entre v0.2 y v0.3 solo cambia la salida de la combinación de DB02.
+La exportación JSON reproduce las salidas de scikit-learn en las 41.
+
+Queda una diferencia entre v0.3 y la regla:
+- Nunca hizo K12; control y fecha no aplican.
+- Su práctica habitual de core es desconocida.
+- Árbol: K11. Regla: K12.
+- No existe una preferencia profesional revisada para esa combinación.
+
+No se asignó una respuesta esperada usando el modelo o la regla.
+La categoría desconocida permanece distinta de nunca, ausencia de hábito
+o interrupción. La salida del árbol para esta combinación es una extrapolación
+del ajuste, no un criterio profesional confirmado.
+
+Si se consulta expresamente esta discrepancia para ajustar el modelo,
+esa consulta se registra como desarrollo dirigido. No convertirla después
+en una prueba independiente cambiando su identificador.
+
+DATOS Y ALCANCE CONSERVADOS
+
+El conjunto sigue teniendo once historias hipotéticas del grupo G03, derivadas
+de C04/E03. Diez aportan una preferencia única para entrenar: siete K12 y tres
+K11. DB11 conserva el empate. El archivo de datos conserva la versión 0.2 y
+es idéntico byte por byte; 0.3 es la versión nueva del modelo.
+
+No hubo división aleatoria, validación cruzada dentro del grupo ni uso de
+reserva. Los modelos y documentos anteriores permanecen intactos.
+
+El contexto de inferencia sigue siendo el del experimento:
+intermedio en fuerza, peso corporal, referencia 20 minutos, filtro superado,
+sin exclusiones, ambas alternativas compatibles y fichas 0.1 en borrador.
+K11: 2×6 por lado; K12: 2×5 por lado; 60 segundos entre series.
+
+Se mantienen experiencia con K12, control recordado, historia de core y
+antigüedad como predictores candidatos. Edad, peso, estatura, síntomas,
+identificadores, motivos y firmeza no entran en el entrenamiento.
+Que una variable no aparezca en las ramas no prueba irrelevancia general.
+un_mes continúa representando un mes concreto, sin ampliar otras fechas.
+
+Las preferencias son juicios profesionales transmitidos por la usuaria, no
+observaciones de eficacia física. Identidad y credenciales del revisor no
+están verificadas. Este experimento no valida dosis, técnica ni seguridad.
+La integración móvil K06/K08 queda fuera de estos cambios.
+
+VERIFICACIÓN Y REPRODUCCIÓN
+
+Se comprobaron procedencia, integridad de datos/modelos, diferencia única
+max_depth, tratamiento del empate, contrato de entradas, trazas de la rama
+y equivalencia entre scikit-learn y el JSON.
+
+El ajuste se ejecutó en Linux con Python 3.12.14 y scikit-learn 1.7.2.
+Las dependencias exactas constan en requirements.txt.
+La reproducción de esta versión en Windows queda por comprobar.
+
+Para observar el modelo ya entrenado:
+1. Extrae este ZIP en una carpeta nueva.
+2. Abre PowerShell en esa carpeta.
+3. Ejecuta:
+
+   py -3.10 selector.py --caso DB02
+   py -3.10 selector.py --caso DB03
+
+Esperados: DB02 K12 y DB03 K11. Esto lee el modelo; no vuelve a entrenarlo
+ni genera una sesión de ejercicio.
+
+Para repetir el mismo ajuste:
+
+   py -3.10 -m venv .venv
+   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+   .\.venv\Scripts\python.exe entrenar.py
+
+Los resultados se guardan en resultados_locales y se comparan con
+modelo_congelado. La comparación de JSON tolera los saltos de línea de Windows.
+Repetir este comando reproduce el ajuste, no realiza evaluación independiente.
+
+ARCHIVOS PARA REVISAR
+
+- protocolo.json: hipótesis y criterio fijados antes del ajuste.
+- modelo_congelado/trazas_rama_antes_despues.json: recorrido de DB02 y DB03.
+- modelo_congelado/reporte_desarrollo.json: resultados completos y limitaciones.
+- modelo_congelado/arbol.json: candidato v0.3 exportado.
+- modelo_congelado/congelacion.json: versiones y huellas del experimento.
+- datos/desarrollo_k11_k12.json: conjunto 0.2 conservado.
+- fuentes/: respuestas, fichas, Excel y modelos anteriores de referencia.
+- entrenar.py y selector.py: entrenamiento reproducible e inferencia.
+
+SIGUIENTE PASO
+
+Preparar una reserva después de fijar este candidato y el procedimiento:
+pedir al preparador historias hipotéticas base originales, sin mostrarle
+predicciones, y registrar preferencia, alternativas aceptables, firmeza,
+motivo y procedencia. Documentar si cada historia deriva de otra.
+
+Una variante de G03 continúa en G03. Los casos derivados se mantienen juntos,
+también entre familias K06/K08 y K11/K12. Un nombre o ID diferente no crea
+independencia. Si una nueva historia repite las entradas de una conocida,
+se informa esa coincidencia y no se cuenta como combinación novedosa.
+
+La evaluación posterior comparará los mismos casos con generador, regla y
+árbol, sin ajustar el candidato con sus respuestas reservadas. Una pequeña
+reserva hipotética de un único revisor permite un contraste exploratorio,
+no una conclusión sobre eficacia física o toda la población.
+
+REFERENCIA TÉCNICA
+
+Documentación oficial de scikit-learn 1.7.2, DecisionTreeClassifier:
+https://scikit-learn.org/1.7/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+Consultada el 12-10-2026. Describe max_depth y el desempate de predict por
+el menor índice de clase. El diagnóstico específico de DB02/DB03 proviene
+de nuestros archivos y de la ejecución del experimento.

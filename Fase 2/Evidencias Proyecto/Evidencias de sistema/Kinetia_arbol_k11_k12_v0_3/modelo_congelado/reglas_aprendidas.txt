@@ -1,0 +1,5 @@
+Si historia_core_interrumpida_mas_de_12_meses = NO y control_k12_dificultad_control = NO y control_k12_no_aplica = NO: K12.
+Si historia_core_interrumpida_mas_de_12_meses = NO y control_k12_dificultad_control = NO y control_k12_no_aplica = SI y historia_core_habitual_actual = NO: K11.
+Si historia_core_interrumpida_mas_de_12_meses = NO y control_k12_dificultad_control = NO y control_k12_no_aplica = SI y historia_core_habitual_actual = SI: K12.
+Si historia_core_interrumpida_mas_de_12_meses = NO y control_k12_dificultad_control = SI: K11.
+Si historia_core_interrumpida_mas_de_12_meses = SI: K11.
