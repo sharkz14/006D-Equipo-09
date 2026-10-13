@@ -1,0 +1,122 @@
+{
+  "formato": "kinetia_arbol_categorico_0.1",
+  "contexto": {
+    "poblacion": "mayores_de_18",
+    "nivel": "intermedio",
+    "duracion_referencial_min": 20,
+    "equipamiento": "peso_corporal",
+    "cupo": "principal_general_de_cadera",
+    "exige_unilateralidad": false,
+    "filtro_previo_superado_en_escenario": true,
+    "exclusiones_ids": [],
+    "exclusiones_familias": [],
+    "exclusiones_tags": [],
+    "modo": "borrador",
+    "dosis_k06": {
+      "series": 2,
+      "repeticiones_totales_por_serie": 12,
+      "descanso_entre_series_s": 90
+    },
+    "dosis_k08": {
+      "series": 2,
+      "repeticiones_por_lado": 6,
+      "descanso_entre_lados_s": 30,
+      "descanso_entre_series_s": 90
+    },
+    "dosis_previa_planificada_k08_si_hay_historia": {
+      "series": 2,
+      "repeticiones_por_lado": 6,
+      "descanso_entre_lados_s": 30,
+      "descanso_entre_series_s": 90
+    }
+  },
+  "campos": [
+    "experiencia_k08",
+    "recencia_k08",
+    "fin_ultima_k08"
+  ],
+  "categorias": [
+    [
+      "nunca",
+      "alguna_vez",
+      "habitual",
+      "desconocida"
+    ],
+    [
+      "menos_3_meses",
+      "entre_3_y_12_meses",
+      "mas_12_meses",
+      "desconocida",
+      "no_aplica"
+    ],
+    [
+      "con_margen",
+      "justo",
+      "paro_antes_por_esfuerzo",
+      "desconocido",
+      "no_aplica"
+    ]
+  ],
+  "columnas_codificadas": [
+    "experiencia_k08_nunca",
+    "experiencia_k08_alguna_vez",
+    "experiencia_k08_habitual",
+    "experiencia_k08_desconocida",
+    "recencia_k08_menos_3_meses",
+    "recencia_k08_entre_3_y_12_meses",
+    "recencia_k08_mas_12_meses",
+    "recencia_k08_desconocida",
+    "recencia_k08_no_aplica",
+    "fin_ultima_k08_con_margen",
+    "fin_ultima_k08_justo",
+    "fin_ultima_k08_paro_antes_por_esfuerzo",
+    "fin_ultima_k08_desconocido",
+    "fin_ultima_k08_no_aplica"
+  ],
+  "clases": [
+    "K06",
+    "K08"
+  ],
+  "parametros": {
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 2,
+    "max_features": null,
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "random_state": 42,
+    "splitter": "best"
+  },
+  "profundidad_aprendida": 2,
+  "nodos": [
+    {
+      "variable": 11,
+      "umbral": 0.5,
+      "izquierda": 1,
+      "derecha": 4
+    },
+    {
+      "variable": 0,
+      "umbral": 0.5,
+      "izquierda": 2,
+      "derecha": 3
+    },
+    {
+      "clase": "K08",
+      "filas_entrenamiento": 8
+    },
+    {
+      "clase": "K06",
+      "filas_entrenamiento": 1
+    },
+    {
+      "clase": "K06",
+      "filas_entrenamiento": 2
+    }
+  ]
+}
