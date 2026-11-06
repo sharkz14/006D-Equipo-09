@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { router } from 'expo-router';
 import {
-  ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform,
-  Pressable, ScrollView, StyleSheet, TextInput, useColorScheme, View,
+  ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform,
+  Pressable, ScrollView, StyleSheet, TextInput, View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { alerta } from '@/components/alerta';
 import { usePerfil } from '@/components/perfil-provider';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { validarFormularioPerfil, type FormularioPerfil } from '@/lib/perfil';
+import { SOMBRA, T, TIPO } from '@/constants/tema';
 
 const formularioVacio: FormularioPerfil = {
   nombre: '', edad: '', pesoKg: '', estaturaCm: '', nivel: 'P',
@@ -21,7 +23,6 @@ export default function PerfilScreen() {
   const [formulario, setFormulario] = useState<FormularioPerfil>(formularioVacio);
   const [editando, setEditando] = useState(false);
   const [errorFormulario, setErrorFormulario] = useState<string | null>(null);
-  const oscuro = useColorScheme() === 'dark';
 
   useEffect(() => {
     setFormulario(perfil ? {
@@ -55,7 +56,7 @@ export default function PerfilScreen() {
       else await crear(datos);
       Keyboard.dismiss();
       setEditando(false);
-      Alert.alert('Perfil guardado', 'Tus datos quedaron guardados en este dispositivo.');
+      alerta('Perfil guardado', 'Tus datos quedaron guardados en este dispositivo.');
     } catch (fallo) {
       const mensaje = fallo instanceof Error ? fallo.message : 'No pudimos guardar el perfil. Inténtalo nuevamente.';
       setErrorFormulario(`${mensaje} Tus cambios siguen en el formulario.`);
@@ -75,9 +76,9 @@ export default function PerfilScreen() {
   }
 
   function confirmarEliminacion() {
-    Alert.alert(
+    alerta(
       '¿Eliminar tu perfil?',
-      'Se borrarán tus datos de perfil de este dispositivo. Para generar otra rutina tendrás que crear un perfil nuevo.',
+      'Se borrarán de este dispositivo tu perfil, tus respuestas y tu historial de sesiones. Para generar otra rutina tendrás que crear un perfil nuevo.',
       [
         { text: 'Cancelar', style: 'cancel' },
         { text: 'Eliminar', style: 'destructive', onPress: () => {
@@ -89,8 +90,8 @@ export default function PerfilScreen() {
     );
   }
 
-  const estiloInput = [styles.input, oscuro && styles.inputOscuro];
-  const colorPlaceholder = oscuro ? '#ABA4B5' : '#6F687A';
+  const estiloInput = styles.input;
+  const colorPlaceholder = T.textoDeshabilitado;
   const mostrarFormulario = !perfil || editando;
 
   return (
@@ -99,13 +100,13 @@ export default function PerfilScreen() {
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
             <ThemedView style={styles.hero}>
-              <ThemedText type="title">Mi perfil</ThemedText>
-              <ThemedText>Tu punto de partida en Kinetia.</ThemedText>
+              <ThemedText type="title" style={styles.titulo} accessibilityRole="header">Mi perfil</ThemedText>
+              <ThemedText style={styles.suave}>Tu punto de partida en Kinetia.</ThemedText>
             </ThemedView>
 
             {cargando ? (
               <ThemedView style={styles.card}>
-                <ActivityIndicator color="#7046B5" accessibilityLabel="Cargando perfil" />
+                <ActivityIndicator color={T.acentoTexto} accessibilityLabel="Cargando perfil" />
                 <ThemedText>Cargando tu perfil…</ThemedText>
               </ThemedView>
             ) : error ? (
@@ -117,7 +118,7 @@ export default function PerfilScreen() {
               </ThemedView>
             ) : (
               <ThemedView type="backgroundElement" style={styles.card}>
-                <ThemedText type="subtitle">
+                <ThemedText type="subtitle" style={styles.tituloTarjeta}>
                   {mostrarFormulario ? (perfil ? 'Editar perfil' : 'Crear perfil') : perfil.nombre}
                 </ThemedText>
 
@@ -145,7 +146,7 @@ export default function PerfilScreen() {
                       placeholder="Ejemplo: 165" placeholderTextColor={colorPlaceholder}
                       accessibilityLabel="Estatura en centímetros" keyboardType="decimal-pad" editable={!guardando} maxLength={10} />
 
-                    <ThemedText type="subtitle">Experiencia entrenando fuerza</ThemedText>
+                    <ThemedText type="subtitle" style={styles.seccion}>Experiencia entrenando fuerza</ThemedText>
                     <ThemedText type="small">Este nivel será el valor inicial al configurar tu rutina.</ThemedText>
                     {(['P', 'I'] as const).map((nivel) => (
                       <Pressable key={nivel} onPress={() => cambiar('nivel', nivel)} disabled={guardando}
@@ -198,9 +199,9 @@ export default function PerfilScreen() {
                 )}
               </ThemedView>
             )}
-            <ThemedText type="small">
-              El perfil se guarda en este dispositivo. Por ahora, peso y estatura quedan registrados
-              como datos de tu perfil; no ajustan los ejercicios ni su intensidad.
+            <ThemedText type="small" style={styles.suave}>
+              El perfil se guarda en este dispositivo. Tu edad, peso y estatura fijan límites de carga
+              (series, intensidad y descanso) en cada rutina. Tu nombre nunca se envía a la IA.
             </ThemedText>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -213,16 +214,19 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1, width: '100%', maxWidth: MaxContentWidth, alignSelf: 'center' },
   content: { paddingHorizontal: Spacing.four, paddingTop: Spacing.three, paddingBottom: BottomTabInset + Spacing.three, gap: Spacing.three },
-  hero: { alignItems: 'center', paddingVertical: Spacing.three, gap: Spacing.three },
-  card: { gap: 16, padding: 20, borderRadius: 20 },
-  input: { minHeight: 48, paddingHorizontal: 14, paddingVertical: 12, borderWidth: 1, borderColor: '#8D8398', borderRadius: 12, color: '#251E2E', backgroundColor: '#FFFFFF', fontSize: 16 },
-  inputOscuro: { color: '#FAF7FF', backgroundColor: '#221C2B', borderColor: '#ADA3B7' },
-  opcion: { minHeight: 48, padding: 14, borderRadius: 12, borderWidth: 2, borderColor: '#B9B2C2', justifyContent: 'center' },
-  opcionSeleccionada: { borderColor: '#7046B5' },
-  botonPrincipal: { minHeight: 48, padding: 16, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#7046B5' },
-  textoBoton: { color: '#FFFFFF', fontWeight: '700', textAlign: 'center' },
+  hero: { paddingVertical: Spacing.two, gap: 2 },
+  titulo: { ...TIPO.tituloPantalla },
+  tituloTarjeta: { fontSize: 20, lineHeight: 26, fontWeight: '700' },
+  seccion: { ...TIPO.tituloTarjeta },
+  suave: { color: T.suave },
+  card: { gap: 14, padding: 20, borderRadius: 22, ...SOMBRA },
+  input: { minHeight: 48, paddingHorizontal: 16, paddingVertical: 12, borderWidth: 1.5, borderColor: 'transparent', borderRadius: 999, color: T.texto, backgroundColor: T.superficieAlta, fontSize: 16 },
+  opcion: { minHeight: 48, padding: 14, borderRadius: 999, borderWidth: 1.5, borderColor: 'transparent', backgroundColor: T.superficieAlta, justifyContent: 'center' },
+  opcionSeleccionada: { borderColor: T.acento, backgroundColor: T.acentoSuave },
+  botonPrincipal: { minHeight: 50, padding: 14, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: T.acento },
+  textoBoton: { color: T.sobreAcento, fontWeight: '700', textAlign: 'center' },
   centrado: { textAlign: 'center' },
   datos: { gap: 12 },
-  eliminar: { borderColor: '#C46170' },
+  eliminar: { backgroundColor: T.alertaFondo },
   deshabilitado: { opacity: 0.55 },
 });

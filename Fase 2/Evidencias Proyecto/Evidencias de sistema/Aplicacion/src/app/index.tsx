@@ -1,488 +1,544 @@
 import { useEffect, useState } from 'react';
-import { router } from 'expo-router';
-import { Alert, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
+import { alerta } from '@/components/alerta';
+import CuestionarioInicial from '@/components/cuestionario-inicial';
 import { usePerfil } from '@/components/perfil-provider';
-import PreguntasPuente from '@/components/preguntas-puente';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import SesionGuiada from '@/components/sesion-guiada';
+import Marca from '@/components/marca';
 import VistaRutina from '@/components/vista-rutina';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { generateRoutine, type RoutineResult } from '@/lib/generador';
-import { formularioPuenteVacio, solicitudDesdeFormulario } from '@/lib/ia/formulario-puente';
+import { Aparecer } from '@/components/movimiento';
+import { SOMBRA, T, TIPO } from '@/constants/tema';
+import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import {
+  TEXTO_EVITAR, antecedentesParaIA, equipoInicial, etiquetasEvitar, type Evitar,
+} from '@/lib/cuestionario';
+import { generateRoutine, type GeneratorInput, type RoutineResult } from '@/lib/generador';
+import { avancesAplicables, generarRutinaConIA } from '@/lib/ia/rutina-ia';
+import {
+  SESIONES_PARA_AVANZAR, antecedentesUltimaSesion, progresionesListas, progresionesProximas,
+  textoUltimaSesion, type Progresion, type RegistroSesion,
+} from '@/lib/sesion';
 
-// Los IDs coinciden con las familias que reconoce el generador.
-const familiasDisponibles = [
-  { id: 'sentadilla', nombre: 'Sentadillas' },
-  { id: 'split_squat', nombre: 'Split squat' },
-  { id: 'bisagra', nombre: 'Bisagra de cadera' },
-  { id: 'puente', nombre: 'Puentes de cadera' },
-  { id: 'pantorrilla', nombre: 'Elevación de talones' },
-  { id: 'dead_bug', nombre: 'Dead bug' },
-  { id: 'bird_dog', nombre: 'Bird dog' },
-  { id: 'plancha_lateral', nombre: 'Plancha lateral' },
-];
+// Servicio de IA: se configura en .env.local (ver .env.example). Sin URL, la app usa la rutina por reglas.
+// Expo reemplaza estas referencias al compilar; deben escribirse así, sin desestructurar.
+const IA_URL = process.env.EXPO_PUBLIC_KINETIA_IA_URL;
+const IA_TOKEN = process.env.EXPO_PUBLIC_KINETIA_IA_TOKEN;
+// Versión de demostración (web publicada): muestra las fichas en borrador, igual que en Expo Go.
+const DEMO = process.env.EXPO_PUBLIC_KINETIA_DEMO === '1';
+
+const NIVEL = { P: 'Principiante', I: 'Intermedio' } as const;
+const EQUIPO = { PC: 'Peso corporal', M1: 'Con una mancuerna' } as const;
+const FECHA = new Intl.DateTimeFormat('es-CL', { weekday: 'short', day: 'numeric', month: 'short' });
+const FAMILIA: Record<string, string> = { puente: 'del puente', dead_bug: 'del dead bug' };
+
+function lunesDeEstaSemana(ahora = new Date()): Date {
+  const lunes = new Date(ahora);
+  lunes.setHours(0, 0, 0, 0);
+  lunes.setDate(lunes.getDate() - ((lunes.getDay() + 6) % 7));
+  return lunes;
+}
+
+function Segmentos<T extends string | number>({ valor, opciones, onChange, etiqueta }: {
+  valor: T; opciones: readonly { valor: T; texto: string }[]; onChange: (v: T) => void; etiqueta: string;
+}) {
+  return (
+    <View style={styles.grupo} accessibilityRole="radiogroup" accessibilityLabel={etiqueta}>
+      {opciones.map((o) => {
+        const elegida = valor === o.valor;
+        return (
+          <Pressable
+            key={String(o.valor)}
+            onPress={() => onChange(o.valor)}
+            accessibilityRole="radio"
+            accessibilityState={{ selected: elegida }}
+            style={[styles.segmento, elegida && styles.segmentoElegido]}
+          >
+            <Text style={[styles.textoSegmento, elegida && styles.textoSegmentoElegido]}>{o.texto}</Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+function Casilla({ marcada, onPress, texto, etiqueta }: {
+  marcada: boolean; onPress: () => void; texto: string; etiqueta: string;
+}) {
+  return (
+    <Pressable onPress={onPress} accessibilityRole="checkbox" accessibilityLabel={etiqueta}
+      accessibilityState={{ checked: marcada }} style={[styles.casilla, marcada && styles.casillaMarcada]}>
+      <View style={[styles.cuadro, marcada && styles.cuadroMarcado]}>
+        {marcada ? <Text style={styles.visto}>✓</Text> : null}
+      </View>
+      <Text style={styles.textoCasilla}>{texto}</Text>
+    </Pressable>
+  );
+}
+
+/** Semana de lunes a domingo: los días con sesión llevan ✓ y hoy, un borde. */
+function Semana({ recientes }: { recientes: readonly RegistroSesion[] }) {
+  const lunes = lunesDeEstaSemana();
+  const entrenados = new Set(recientes.map((r) => new Date(r.fecha)).filter((f) => f >= lunes)
+    .map((f) => (f.getDay() + 6) % 7));
+  const hoy = (new Date().getDay() + 6) % 7;
+  return (
+    <View style={styles.semana} accessible
+      accessibilityLabel={`Esta semana entrenaste ${entrenados.size} ${entrenados.size === 1 ? 'día' : 'días'}`}>
+      {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((letra, i) => (
+        <View key={i} style={styles.dia}>
+          <Text style={styles.letraDia}>{letra}</Text>
+          <View style={[styles.puntoDia, i === hoy && styles.diaHoy, entrenados.has(i) && styles.diaEntrenado]}>
+            {entrenados.has(i) ? <Text style={styles.vistoDia}>✓</Text> : null}
+          </View>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+/** Curvas inclinadas de la portada: un guiño al movimiento del baile. */
+function Curvas() {
+  return (
+    <View pointerEvents="none" style={styles.curvas}>
+      {['#9F86F2', '#7A5BE3', '#5A3DB8'].map((color, i) => (
+        <View key={color} style={[styles.curva, { borderColor: color, right: -112 + i * 26, top: -70 + i * 20 }]} />
+      ))}
+    </View>
+  );
+}
 
 export default function HomeScreen() {
-  const { perfil, cargando, guardando, error: errorPerfil, recargar } = usePerfil();
+  const {
+    perfil, cuestionario, cargando, guardando, error: errorPerfil, recargar,
+    ultimaSesion, sesionesRecientes, registrarSesion, ejerciciosHechos,
+  } = usePerfil();
+
+  // Sesión de hoy: parte desde el cuestionario y se puede cambiar sin tocar el perfil.
   const [nivel, setNivel] = useState<'P' | 'I'>('P');
   const [duracion, setDuracion] = useState<20 | 30 | 40>(20);
   const [equipo, setEquipo] = useState<'PC' | 'M1'>('PC');
-  const [respuestasPuente, setRespuestasPuente] = useState(formularioPuenteVacio);
+  const [evitar, setEvitar] = useState<Evitar[]>([]);
+  const [mostrarEvitar, setMostrarEvitar] = useState(false);
 
   // null muestra Configurar; un resultado abre la vista previa.
   const [rutina, setRutina] = useState<RoutineResult | null>(null);
+  const [resumenIA, setResumenIA] = useState<string | null>(null);
+  const [modeloIA, setModeloIA] = useState<string | null>(null);
+  // «Preparar mi rutina»: ajustes de hoy y las dos confirmaciones, antes de generar.
+  const [preparando, setPreparando] = useState(false);
+  const [mostrarProgresion, setMostrarProgresion] = useState(true);
+  const [generando, setGenerando] = useState(false);
+  const [sesionActiva, setSesionActiva] = useState(false);
+  const [avances, setAvances] = useState<Progresion[]>([]);
+  const [editandoCuestionario, setEditandoCuestionario] = useState(false);
 
-  // Se pueden marcar varias familias o dejar la lista vacía.
-  const [familiasExcluidas, setFamiliasExcluidas] = useState<string[]>([]);
-  const [mostrarExclusiones, setMostrarExclusiones] = useState(false);
-
-  // Las confirmaciones comienzan sin marcar.
-  const [mayorEdad, setMayorEdad] = useState(false);
+  // Las confirmaciones comienzan sin marcar en cada sesión: el estado puede cambiar de un día a otro.
+  // La edad no se pregunta aquí: el perfil ya exige 18 años o más.
   const [sinLimitaciones, setSinLimitaciones] = useState(false);
   const [aceptaAlcance, setAceptaAlcance] = useState(false);
 
+  const listo = !cargando && !errorPerfil;
+  const cuestionarioPendiente = listo && (!perfil || !cuestionario);
   // Solo un perfil leído correctamente permite continuar.
-  const perfilDisponible = !cargando && !guardando && !errorPerfil && perfil !== null && perfil.edad >= 18;
-  const filtroSuperado = perfilDisponible && mayorEdad && sinLimitaciones && aceptaAlcance;
-  const pilotoDisponible = __DEV__ && nivel === 'I' && duracion === 20 &&
-    equipo === 'PC' && familiasExcluidas.length === 0;
+  const perfilDisponible = listo && !guardando && perfil !== null && cuestionario !== null && perfil.edad >= 18;
+  const filtroSuperado = perfilDisponible && sinLimitaciones && aceptaAlcance;
 
-  // El perfil aporta el nivel inicial. Volver de otra pestaña no sobrescribe
-  // una elección temporal; guardar/eliminar el perfil sí reinicia la sesión.
+  // Guardar el perfil o el cuestionario reinicia la sesión con los valores guardados.
   useEffect(() => {
     setNivel(perfil?.nivel ?? 'P');
+    setDuracion(cuestionario?.duracion ?? 20);
+    setEquipo(cuestionario ? equipoInicial(cuestionario) : 'PC');
+    setEvitar(cuestionario?.evitar ?? []);
     setRutina(null);
-    setMayorEdad(false);
+    setSesionActiva(false);
+    setPreparando(false);
     setSinLimitaciones(false);
     setAceptaAlcance(false);
-    setRespuestasPuente(formularioPuenteVacio());
-  }, [perfil]);
+  }, [perfil, cuestionario]);
 
-  const resumenFamilias = familiasDisponibles
-    .filter((familia) => familiasExcluidas.includes(familia.id))
-    .map((familia) => familia.nombre)
-    .join(', ') || 'Ninguna';
+  const nombreCorto = perfil?.nombre.trim().split(/\s+/)[0] ?? '';
+  const hoy = FECHA.format(new Date());
+  const textoEvitar = evitar.length ? evitar.map((e) => TEXTO_EVITAR[e].toLowerCase()).join(', ') : 'nada en particular';
 
-  function alternarFamilia(id: string) {
-    setFamiliasExcluidas((actuales) =>
-      actuales.includes(id)
-        ? actuales.filter((familia) => familia !== id)
-        : [...actuales, id],
-    );
-  }
+  // Progresión: dos sesiones fáciles y completas seguidas. Solo con IA; se muestra si cabe en la sesión elegida.
+  const avancesListos = progresionesListas(sesionesRecientes);
+  const segunSesion = (lista: Progresion[]) => (IA_URL && perfil && lista.length
+    ? avancesAplicables({ nivel, duracion, equipo, filtroSuperado: true, modo: __DEV__ || DEMO ? 'borrador' : 'app',
+      excluir: { ids: [], familias: [], tags: etiquetasEvitar(evitar) } },
+    { edad: perfil.edad, pesoKg: perfil.pesoKg, estaturaCm: perfil.estaturaCm, nivel: perfil.nivel }, lista)
+    : []);
+  const avancesHoy = segunSesion(avancesListos);
+  // A una sesión fácil de avanzar: se avisa para que la persona sepa qué viene.
+  const avancesProximos = avancesHoy.length ? [] : segunSesion(progresionesProximas(sesionesRecientes));
+  const nombresAvance = (lista: Progresion[]) => lista.map((a) => `al ${a.nombre.replace(/^el /, '')}`).join(' y ');
 
-  function verRutina() {
-    if (!filtroSuperado) return;
+  async function verRutina() {
+    if (!filtroSuperado || !perfil || !cuestionario || generando) return;
 
-    const resultado = generateRoutine({
+    const entrada: GeneratorInput = {
       nivel,
       duracion,
       equipo,
       filtroSuperado,
-      excluir: {
-        ids: [],
-        familias: [...familiasExcluidas],
-        tags: [],
-      },
+      excluir: { ids: [], familias: [], tags: etiquetasEvitar(evitar) },
+      // Edad, peso y estatura fijan topes de carga, con o sin IA.
+      perfilCarga: { edad: perfil.edad, pesoKg: perfil.pesoKg, estaturaCm: perfil.estaturaCm },
       // Expo Go permite revisar borradores. Una app publicada exige
       // contenido habilitado; este modo no es una opción del formulario.
-      modo: __DEV__ ? 'borrador' : 'app',
-      puenteIA: pilotoDisponible ? solicitudDesdeFormulario(respuestasPuente) : undefined,
-    });
+      modo: __DEV__ || DEMO ? 'borrador' : 'app',
+    };
 
-    if (resultado.principal.length === 0) {
-      setRutina(null);
-      const mensaje = resultado.estado === 'sin_principal'
-        ? (__DEV__
-          ? 'Con estas opciones no quedan ejercicios principales compatibles. Revisa la configuración y las exclusiones.'
-          : 'El contenido sigue en revisión y todavía no hay ejercicios habilitados.')
-        : resultado.mensajes.join('\n');
-
-      Alert.alert('No se pudo generar una rutina', mensaje);
+    // Con el servicio configurado, la IA genera la rutina y el motor la valida.
+    // Ante cualquier problema se muestra la rutina por reglas con el motivo.
+    if (IA_URL) {
+      setGenerando(true);
+      try {
+        const generada = await generarRutinaConIA(entrada,
+          { edad: perfil.edad, pesoKg: perfil.pesoKg, estaturaCm: perfil.estaturaCm, nivel: perfil.nivel },
+          { url: IA_URL, token: IA_TOKEN }, {
+            ...antecedentesParaIA(cuestionario),
+            // Cómo le fue en la última sesión: la IA ajusta la próxima.
+            ...(ultimaSesion ? { ultima_sesion: antecedentesUltimaSesion(ultimaSesion) } : {}),
+          }, avancesListos);
+        if (generada.rutina.principal.length === 0) {
+          setRutina(null);
+          alerta('No se pudo generar una rutina', generada.rutina.mensajes.join('\n') ||
+            'Con estas opciones no quedan ejercicios principales compatibles.');
+        } else if (generada.origen === 'ia') {
+          setResumenIA(generada.resumen);
+          setModeloIA(generada.modelo);
+          setAvances(generada.avances);
+          setRutina(generada.rutina);
+        } else {
+          setResumenIA(null);
+          setModeloIA(null);
+          setAvances([]);
+          alerta('Se usó la rutina habitual', generada.aviso, [
+            { text: 'Volver', style: 'cancel' },
+            { text: 'Ver rutina', onPress: () => setRutina(generada.rutina) },
+          ]);
+        }
+      } finally {
+        setGenerando(false);
+      }
       return;
     }
 
-    const puente = resultado.principal.find((ejercicio) => ejercicio.familia === 'puente');
-    if (pilotoDisponible && puente) {
-      Alert.alert(
-        'Selección inicial del puente',
-        `${puente.nombre} (${puente.id})\n\n` +
-          `${puente.seleccion.origen === 'modelo' ? 'Modelo experimental K06/K08' : 'Selección habitual'}\n` +
-          puente.seleccion.motivo,
-        [
-          { text: 'Volver', style: 'cancel' },
-          { text: 'Ver rutina', onPress: () => setRutina(resultado) },
-        ],
-      );
+    setResumenIA(null);
+    setModeloIA(null);
+    setAvances([]);
+    const resultado = generateRoutine(entrada);
+    if (resultado.principal.length === 0) {
+      setRutina(null);
+      const mensaje = resultado.estado === 'sin_principal'
+        ? (__DEV__ || DEMO
+          ? 'Con estas opciones no quedan ejercicios principales compatibles. Revisa lo que prefieres evitar.'
+          : 'El contenido sigue en revisión y todavía no hay ejercicios habilitados.')
+        : resultado.mensajes.join('\n');
+      alerta('No se pudo generar una rutina', mensaje);
       return;
     }
     setRutina(resultado);
   }
 
+  const lunes = lunesDeEstaSemana();
+  const completasSemana = sesionesRecientes.filter((r) => r.completada && new Date(r.fecha) >= lunes).length;
+  const listaAvance = avancesHoy.length ? avancesHoy : avancesProximos;
+  const tituloAvance = `Progresión ${[...new Set(listaAvance.map((a) => FAMILIA[a.familia] ?? 'del ejercicio'))].join(' y ')}`;
+
+  function salirDeLaSesion() {
+    setSesionActiva(false);
+    setRutina(null);
+    setPreparando(false);
+    // Las confirmaciones vuelven a empezar sin marcar en la próxima sesión.
+    setSinLimitaciones(false);
+    setAceptaAlcance(false);
+  }
+
   return (
-    <ThemedView style={styles.container}>
+    <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.content}
-        >
-          <ThemedView style={styles.heroSection}>
-            <ThemedText type="title">Kinetia</ThemedText>
-            <ThemedText type="code">Configurar rutina</ThemedText>
-          </ThemedView>
+        <ScrollView style={styles.scrollView} contentContainerStyle={styles.content}>
+          <View style={styles.encabezado}>
+            <Marca />
+            <Text style={styles.fecha}>{hoy.charAt(0).toUpperCase() + hoy.slice(1).replace(/\./g, '')}</Text>
+          </View>
+          <Aparecer>
+            <Text style={styles.titulo} accessibilityRole="header">
+              {nombreCorto ? `Hola, ${nombreCorto}` : 'Hola'}
+            </Text>
+          </Aparecer>
 
-          <ThemedView type="backgroundElement" style={styles.stepContainer}>
-            <ThemedText type="subtitle">Tu perfil</ThemedText>
-            {cargando ? (
-              <ThemedText>Cargando perfil…</ThemedText>
-            ) : errorPerfil ? (
-              <>
-                <ThemedText accessibilityRole="alert">{errorPerfil}</ThemedText>
-                <Pressable style={styles.opcion} accessibilityRole="button" onPress={() => { void recargar(); }}>
-                  <ThemedText>Reintentar</ThemedText>
-                </Pressable>
-              </>
-            ) : (
-              <>
-                <ThemedText>
-                  {perfil
-                    ? `${perfil.nombre} · ${perfil.edad} años · ${perfil.nivel === 'P' ? 'Principiante' : 'Intermedio'}`
-                    : 'Crea tu perfil para configurar y generar tu primera rutina.'}
-                </ThemedText>
-                <Pressable style={styles.opcion} accessibilityRole="button" onPress={() => router.navigate('/perfil')}>
-                  <ThemedText>{perfil ? 'Ver o editar mi perfil' : 'Crear mi perfil'}</ThemedText>
-                </Pressable>
-              </>
-            )}
-          </ThemedView>
-
-          <ThemedView type="backgroundElement" style={styles.stepContainer}>
-            <ThemedText type="subtitle">Nivel de fuerza</ThemedText>
-
-            <ThemedText type="small">
-              El perfil aporta tu nivel inicial. Puedes cambiarlo para esta rutina sin modificar el perfil.
-            </ThemedText>
-
-            <Pressable
-              onPress={() => setNivel('P')}
-              accessibilityRole="button"
-              accessibilityState={{ selected: nivel === 'P' }}
-              style={[
-                styles.opcion,
-                nivel === 'P' && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>Principiante</ThemedText>
-            </Pressable>
-
-            <Pressable
-              onPress={() => setNivel('I')}
-              accessibilityRole="button"
-              accessibilityState={{ selected: nivel === 'I' }}
-              style={[
-                styles.opcion,
-                nivel === 'I' && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>Intermedio</ThemedText>
-            </Pressable>
-
-            <ThemedText type="small">
-              Nivel seleccionado: {nivel === 'P' ? 'Principiante' : 'Intermedio'}
-            </ThemedText>
-
-            <ThemedText type="subtitle">Duración referencial</ThemedText>
-
-            <ThemedView type="backgroundElement" style={styles.fila}>
-              <Pressable
-                onPress={() => setDuracion(20)}
-                accessibilityRole="button"
-                accessibilityState={{ selected: duracion === 20 }}
-                style={[
-                  styles.opcion,
-                  styles.opcionDuracion,
-                  duracion === 20 && styles.opcionSeleccionada,
-                ]}
-              >
-                <ThemedText>20 min</ThemedText>
+          {cargando ? (
+            <ActivityIndicator color={T.acento} />
+          ) : errorPerfil ? (
+            <View style={styles.tarjeta}>
+              <Text style={styles.texto} accessibilityRole="alert">{errorPerfil}</Text>
+              <Pressable style={styles.opcion} accessibilityRole="button" onPress={() => { void recargar(); }}>
+                <Text style={styles.textoOpcion}>Reintentar</Text>
               </Pressable>
-
-              <Pressable
-                onPress={() => setDuracion(30)}
-                accessibilityRole="button"
-                accessibilityState={{ selected: duracion === 30 }}
-                style={[
-                  styles.opcion,
-                  styles.opcionDuracion,
-                  duracion === 30 && styles.opcionSeleccionada,
-                ]}
-              >
-                <ThemedText>30 min</ThemedText>
+            </View>
+          ) : cuestionarioPendiente ? (
+            <View style={styles.tarjeta}>
+              <Text style={styles.subtitulo}>Empecemos por conocerte</Text>
+              <Text style={styles.texto}>Responde unas preguntas rápidas para armar rutinas a tu medida.</Text>
+              <Pressable style={[styles.botonPrincipal, styles.botonEntrenar]} accessibilityRole="button"
+                onPress={() => setEditandoCuestionario(true)}>
+                <Text style={[styles.textoBoton, styles.textoEntrenar]}>Comenzar</Text>
               </Pressable>
+            </View>
+          ) : (
+            <>
+              <Aparecer orden={1}>
+                <View style={styles.portada}>
+                  <Curvas />
+                  <Text style={styles.portadaEtiqueta}>Tu sesión de hoy</Text>
+                  <View style={styles.filaNumero}>
+                    <Text style={styles.numeroGrande}>{duracion}</Text>
+                    <Text style={styles.unidad}>min</Text>
+                  </View>
+                  <Text style={styles.portadaTexto}>{NIVEL[nivel]} · {EQUIPO[equipo]}</Text>
+                  {avancesHoy.length ? (
+                    <View style={styles.pastilla}>
+                      <Text style={styles.textoPastilla}>Hoy avanzas {nombresAvance(avancesHoy)}</Text>
+                    </View>
+                  ) : null}
+                  <Pressable style={styles.botonPortada} accessibilityRole="button" onPress={() => setPreparando(true)}>
+                    <Text style={styles.textoBotonPortada}>Preparar mi rutina</Text>
+                    <Text style={styles.flecha}>→</Text>
+                  </Pressable>
+                </View>
+              </Aparecer>
 
-              <Pressable
-                onPress={() => setDuracion(40)}
-                accessibilityRole="button"
-                accessibilityState={{ selected: duracion === 40 }}
-                style={[
-                  styles.opcion,
-                  styles.opcionDuracion,
-                  duracion === 40 && styles.opcionSeleccionada,
-                ]}
-              >
-                <ThemedText>40 min</ThemedText>
+              <Aparecer orden={2} style={styles.seccion}>
+                <Text style={styles.subtitulo} accessibilityRole="header">Tu semana</Text>
+                <Text style={styles.ayuda}>
+                  {completasSemana
+                    ? `${completasSemana} ${completasSemana === 1 ? 'sesión completada' : 'sesiones completadas'}`
+                    : 'Todavía no entrenas esta semana'}
+                </Text>
+                <Semana recientes={sesionesRecientes} />
+              </Aparecer>
+
+              {listaAvance.length ? (
+                <Aparecer orden={3}>
+                  <View style={styles.separador} />
+                  <Pressable style={styles.filaProgresion} accessibilityRole="button"
+                    accessibilityState={{ expanded: mostrarProgresion }} onPress={() => setMostrarProgresion((v) => !v)}>
+                    <Text style={styles.tituloProgresion}>{tituloAvance}</Text>
+                    <Text style={styles.cuentaProgresion}>
+                      {avancesHoy.length ? SESIONES_PARA_AVANZAR : SESIONES_PARA_AVANZAR - 1} de {SESIONES_PARA_AVANZAR}
+                      {'  '}{mostrarProgresion ? '⌃' : '⌄'}
+                    </Text>
+                  </Pressable>
+                  {mostrarProgresion ? (
+                    <Text style={styles.texto}>
+                      {avancesHoy.length
+                        ? `Dos sesiones seguidas completas, sin molestias y fáciles: hoy avanzas ${nombresAvance(avancesHoy)}.`
+                        : `Si la próxima sesión también es completa, sin molestias y te resulta fácil, avanzas ${nombresAvance(avancesProximos)}.`}
+                    </Text>
+                  ) : null}
+                </Aparecer>
+              ) : null}
+
+              {ultimaSesion ? (
+                <Text style={styles.ayudaPie}>Última sesión: {textoUltimaSesion(ultimaSesion).toLowerCase()}.</Text>
+              ) : null}
+
+              <Pressable style={styles.enlace} accessibilityRole="button" onPress={() => setEditandoCuestionario(true)}>
+                <Text style={styles.enlaceTexto}>Actualizar mis respuestas</Text>
               </Pressable>
-            </ThemedView>
-
-            <ThemedText type="small">
-              Duración seleccionada: {duracion} min
-            </ThemedText>
-
-            <ThemedText type="subtitle">Equipamiento</ThemedText>
-
-            <Pressable
-              onPress={() => setEquipo('PC')}
-              accessibilityRole="button"
-              accessibilityState={{ selected: equipo === 'PC' }}
-              style={[
-                styles.opcion,
-                equipo === 'PC' && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>Solo peso corporal</ThemedText>
-            </Pressable>
-
-            <Pressable
-              onPress={() => setEquipo('M1')}
-              accessibilityRole="button"
-              accessibilityState={{ selected: equipo === 'M1' }}
-              style={[
-                styles.opcion,
-                equipo === 'M1' && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>Peso corporal + una mancuerna</ThemedText>
-            </Pressable>
-
-            <ThemedText type="small">
-              Equipo seleccionado:{' '}
-              {equipo === 'PC'
-                ? 'Solo peso corporal'
-                : 'Peso corporal + una mancuerna'}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView type="backgroundElement" style={styles.stepContainer}>
-            <ThemedText type="subtitle">Familias a evitar</ThemedText>
-
-            <ThemedText type="small">
-              Las familias agrupan variantes del mismo tipo de ejercicio.
-              Puedes dejar esta selección vacía.
-            </ThemedText>
-
-            <Pressable
-              onPress={() => setMostrarExclusiones((valor) => !valor)}
-              accessibilityRole="button"
-              accessibilityState={{ expanded: mostrarExclusiones }}
-              style={styles.opcion}
-            >
-              <ThemedText>
-                {mostrarExclusiones ? 'Ocultar opciones' : 'Elegir familias a evitar'}
-              </ThemedText>
-            </Pressable>
-
-            {mostrarExclusiones && (
-              <>
-                <ThemedText type="small">
-                  Marca las familias que prefieres evitar. Se excluirán todas
-                  sus variantes. Si el motivo es dolor, lesión limitante o
-                  recuperación clínica, no continúes.
-                </ThemedText>
-
-                {familiasDisponibles.map((familia) => {
-                  const seleccionada = familiasExcluidas.includes(familia.id);
-
-                  return (
-                    <Pressable
-                      key={familia.id}
-                      onPress={() => alternarFamilia(familia.id)}
-                      accessibilityRole="checkbox"
-                      accessibilityLabel={`Evitar ${familia.nombre}`}
-                      accessibilityState={{ checked: seleccionada }}
-                      style={[
-                        styles.opcion,
-                        seleccionada && styles.opcionSeleccionada,
-                      ]}
-                    >
-                      <ThemedText>
-                        {seleccionada ? '☑' : '☐'} {familia.nombre}
-                      </ThemedText>
-                    </Pressable>
-                  );
-                })}
-              </>
-            )}
-
-            <ThemedText type="small" accessibilityLiveRegion="polite">
-              Familias a evitar: {resumenFamilias}
-            </ThemedText>
-          </ThemedView>
-
-          {pilotoDisponible && (
-            <PreguntasPuente respuestas={respuestasPuente} onChange={setRespuestasPuente} />
+            </>
           )}
-
-          <ThemedView type="backgroundElement" style={styles.stepContainer}>
-            <ThemedText type="subtitle">Comprobación inicial</ThemedText>
-
-            <ThemedText type="small">
-              Marca únicamente las afirmaciones que sean ciertas.
-            </ThemedText>
-
-            <Pressable
-              onPress={() => setMayorEdad((valor) => !valor)}
-              accessibilityRole="checkbox"
-              accessibilityLabel="Tengo 18 años o más"
-              accessibilityState={{ checked: mayorEdad }}
-              style={[
-                styles.opcion,
-                mayorEdad && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>
-                {mayorEdad ? '☑' : '☐'} Tengo 18 años o más.
-              </ThemedText>
-            </Pressable>
-
-            <Pressable
-              onPress={() => setSinLimitaciones((valor) => !valor)}
-              accessibilityRole="checkbox"
-              accessibilityLabel="Confirmo que no tengo dolor ni una lesión que limite el movimiento y que no estoy en recuperación clínica. Si aparece dolor durante la sesión, me comprometo a detenerla."
-              accessibilityState={{ checked: sinLimitaciones }}
-              style={[
-                styles.opcion,
-                sinLimitaciones && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>
-                {sinLimitaciones ? '☑' : '☐'} Confirmo que no tengo dolor ni una
-                lesión que limite el movimiento y que no estoy en recuperación
-                clínica. Si aparece dolor durante la sesión, me comprometo a
-                detenerla.
-              </ThemedText>
-            </Pressable>
-
-            <Pressable
-              onPress={() => setAceptaAlcance((valor) => !valor)}
-              accessibilityRole="checkbox"
-              accessibilityLabel="Entiendo que Kinetia no enseña pasos ni evalúa mi técnica, y no ofrece diagnóstico ni rehabilitación"
-              accessibilityState={{ checked: aceptaAlcance }}
-              style={[
-                styles.opcion,
-                aceptaAlcance && styles.opcionSeleccionada,
-              ]}
-            >
-              <ThemedText>
-                {aceptaAlcance ? '☑' : '☐'} Entiendo que Kinetia no enseña pasos
-                ni evalúa mi técnica, y no ofrece diagnóstico ni rehabilitación.
-              </ThemedText>
-            </Pressable>
-
-            <ThemedText type="small" accessibilityLiveRegion="polite">
-              {!perfilDisponible
-                ? 'Para continuar necesitas un perfil guardado y cargado correctamente.'
-                : filtroSuperado
-                  ? 'Las tres confirmaciones están marcadas.'
-                  : 'Para continuar deben cumplirse las tres afirmaciones. Si alguna no se cumple, no puedes continuar.'}
-            </ThemedText>
-
-            <Pressable
-              onPress={verRutina}
-              disabled={!filtroSuperado}
-              accessibilityRole="button"
-              accessibilityState={{ disabled: !filtroSuperado }}
-              style={[
-                styles.botonPrincipal,
-                !filtroSuperado && styles.botonDeshabilitado,
-              ]}
-            >
-              <ThemedText style={styles.textoBoton}>
-                Ver rutina
-              </ThemedText>
-            </Pressable>
-          </ThemedView>
         </ScrollView>
       </SafeAreaView>
-      {rutina !== null && perfilDisponible && (
-        <VistaRutina rutina={rutina} onVolver={() => setRutina(null)} />
+
+      {/* Preparar: ajustes de hoy y confirmaciones. La rutina no se genera hasta marcar las dos. */}
+      <Modal visible={preparando && perfilDisponible} animationType="slide" presentationStyle="fullScreen"
+        onRequestClose={() => setPreparando(false)}>
+        <SafeAreaProvider style={styles.container}>
+          <SafeAreaView style={styles.safeArea}>
+            <View style={styles.barraPreparar}>
+              <Pressable onPress={() => setPreparando(false)} accessibilityRole="button" hitSlop={12} style={styles.botonAtras}>
+                <Text style={styles.enlaceTexto}>‹ Volver</Text>
+              </Pressable>
+            </View>
+            <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentPreparar}>
+              <Text style={styles.titulo} accessibilityRole="header">Prepara tu sesión</Text>
+              <View style={styles.tarjeta}>
+                <Text style={styles.subtitulo} accessibilityRole="header">Ajusta tu sesión</Text>
+                <Text style={styles.ayuda}>Viene de tus respuestas. Cámbiala si hoy es distinto.</Text>
+                <Segmentos etiqueta="Nivel" valor={nivel} onChange={setNivel}
+                  opciones={[{ valor: 'P', texto: 'Principiante' }, { valor: 'I', texto: 'Intermedio' }]} />
+                <Segmentos etiqueta="Duración" valor={duracion} onChange={setDuracion}
+                  opciones={[{ valor: 20, texto: '20 min' }, { valor: 30, texto: '30 min' }, { valor: 40, texto: '40 min' }]} />
+                <Segmentos etiqueta="Equipo" valor={equipo} onChange={setEquipo}
+                  opciones={[{ valor: 'PC', texto: 'Peso corporal' }, { valor: 'M1', texto: '+ Mancuerna' }]} />
+                <Pressable onPress={() => setMostrarEvitar((v) => !v)} accessibilityRole="button"
+                  accessibilityState={{ expanded: mostrarEvitar }} style={styles.filaEvitar}>
+                  <Text style={styles.texto}>Evitas: {textoEvitar}</Text>
+                  <Text style={styles.enlaceTexto}>{mostrarEvitar ? 'Listo' : 'Cambiar'}</Text>
+                </Pressable>
+                {mostrarEvitar ? (Object.keys(TEXTO_EVITAR) as Evitar[]).map((e) => {
+                  const marcada = evitar.includes(e);
+                  return (
+                    <Casilla key={e} marcada={marcada} texto={TEXTO_EVITAR[e]} etiqueta={`Evitar ${TEXTO_EVITAR[e]}`}
+                      onPress={() => setEvitar((a) => (marcada ? a.filter((x) => x !== e) : [...a, e]))} />
+                  );
+                }) : null}
+              </View>
+
+              <View style={styles.tarjeta}>
+                <Text style={styles.subtitulo} accessibilityRole="header">Antes de empezar</Text>
+                <Text style={styles.ayuda}>Marca únicamente lo que sea cierto hoy.</Text>
+                {ultimaSesion?.dolor ? (
+                  <Text style={styles.alerta} accessibilityRole="alert">
+                    En tu última sesión sentiste dolor o molestias. Si todavía lo sientes, hoy no entrenes y consulta
+                    a un profesional de la salud.
+                  </Text>
+                ) : null}
+                <Casilla
+                  marcada={sinLimitaciones}
+                  onPress={() => setSinLimitaciones((valor) => !valor)}
+                  etiqueta="Confirmo que no tengo dolor ni una lesión que limite el movimiento y que no estoy en recuperación clínica. Si aparece dolor durante la sesión, me comprometo a detenerla."
+                  texto="No tengo dolor ni una lesión que limite el movimiento, y no estoy en recuperación clínica. Si aparece dolor durante la sesión, me comprometo a detenerla."
+                />
+                <Casilla
+                  marcada={aceptaAlcance}
+                  onPress={() => setAceptaAlcance((valor) => !valor)}
+                  etiqueta="Entiendo que Kinetia no enseña pasos ni evalúa mi técnica, y no ofrece diagnóstico ni rehabilitación"
+                  texto="Entiendo que Kinetia no enseña pasos ni evalúa mi técnica, y no ofrece diagnóstico ni rehabilitación."
+                />
+              </View>
+            </ScrollView>
+            <View style={styles.piePreparar}>
+              <Pressable
+                onPress={() => { void verRutina(); }}
+                disabled={!filtroSuperado || generando}
+                accessibilityRole="button"
+                accessibilityState={{ disabled: !filtroSuperado || generando, busy: generando }}
+                style={[styles.botonPrincipal, styles.botonEntrenar, (!filtroSuperado || generando) && styles.botonDeshabilitado]}
+              >
+                {generando ? (
+                  <View style={styles.fila}>
+                    <ActivityIndicator color={T.sobreCeleste} />
+                    <Text style={[styles.textoBoton, styles.textoEntrenar]}>Generando tu rutina con IA…</Text>
+                  </View>
+                ) : (
+                  <Text style={[styles.textoBoton, styles.textoEntrenar]}>{IA_URL ? 'Generar rutina con IA' : 'Ver rutina'}</Text>
+                )}
+              </Pressable>
+              {!filtroSuperado ? (
+                <Text style={styles.ayudaCentrada} accessibilityLiveRegion="polite">
+                  Para continuar, ambas afirmaciones deben ser ciertas.
+                </Text>
+              ) : null}
+            </View>
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </Modal>
+
+      <CuestionarioInicial
+        visible={cuestionarioPendiente || editandoCuestionario}
+        cerrable={!cuestionarioPendiente}
+        onCerrar={() => setEditandoCuestionario(false)}
+      />
+      {rutina !== null && perfilDisponible && !sesionActiva && (
+        <VistaRutina rutina={rutina} resumenIA={resumenIA} modoPrueba={modeloIA === 'simulado'} avances={avances}
+          onVolver={() => setRutina(null)} onEmpezar={() => setSesionActiva(true)} />
       )}
-    </ThemedView>
+      {rutina !== null && perfilDisponible && sesionActiva && (
+        <SesionGuiada
+          rutina={rutina}
+          origen={resumenIA ? 'ia' : 'reglas'}
+          ejerciciosHechos={ejerciciosHechos}
+          onGuardar={registrarSesion}
+          onSalir={salirDeLaSesion}
+        />
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-    width: '100%',
-    maxWidth: MaxContentWidth,
-    alignSelf: 'center',
-  },
-  scrollView: {
-    flex: 1,
-  },
-  content: {
-    paddingHorizontal: Spacing.four,
-    paddingTop: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    gap: Spacing.three,
-  },
-  heroSection: {
-    alignItems: 'center',
-    paddingVertical: Spacing.three,
-    gap: Spacing.three,
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-  opcion: {
-    minHeight: 48,
-    padding: 14,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#B9B2C2',
-  },
-  opcionSeleccionada: {
-    borderColor: '#7046B5',
-  },
-  fila: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  opcionDuracion: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  botonPrincipal: {
-    minHeight: 48,
-    padding: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#7046B5',
-  },
-  botonDeshabilitado: {
-    backgroundColor: '#76717E',
-  },
-  textoBoton: {
-    color: '#FFFFFF',
-    fontWeight: '700',
-    textAlign: 'center',
-  },
+  container: { flex: 1, backgroundColor: T.fondo },
+  safeArea: { flex: 1, width: '100%', maxWidth: MaxContentWidth, alignSelf: 'center' },
+  scrollView: { flex: 1 },
+  content: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: BottomTabInset + 20, gap: 18 },
+  contentPreparar: { paddingHorizontal: 20, paddingTop: 4, paddingBottom: 24, gap: 16 },
+  encabezado: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  fecha: { ...TIPO.apoyo, fontWeight: '600', color: T.suave },
+  titulo: { ...TIPO.tituloPantalla, fontSize: 30, lineHeight: 36, color: T.texto },
+  subtitulo: { ...TIPO.tituloTarjeta, fontSize: 19, lineHeight: 25, fontWeight: '700', color: T.texto },
+  texto: { ...TIPO.cuerpo, color: T.texto, flexShrink: 1 },
+  ayuda: { ...TIPO.apoyo, color: T.suave },
+  ayudaPie: { ...TIPO.apoyo, color: T.suave, textAlign: 'center' },
+  ayudaCentrada: { ...TIPO.apoyo, color: T.suave, textAlign: 'center' },
+  tarjeta: { backgroundColor: T.superficie, borderRadius: 22, padding: 18, gap: 14, ...SOMBRA },
+  portada: { backgroundColor: T.banda, borderRadius: 24, padding: 22, gap: 2, overflow: 'hidden',
+    boxShadow: '0 14px 30px rgba(43, 26, 71, 0.28)' },
+  curvas: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
+  curva: { position: 'absolute', width: 190, height: 270, borderRadius: 95, borderWidth: 14,
+    transform: [{ rotate: '-28deg' }] },
+  portadaEtiqueta: { ...TIPO.cuerpo, fontWeight: '600', color: T.sobreBandaSuave },
+  filaNumero: { flexDirection: 'row', alignItems: 'flex-end', gap: 4, marginTop: 6 },
+  numeroGrande: { fontSize: 64, lineHeight: 70, fontWeight: '800', letterSpacing: -2, color: T.sobreBanda,
+    fontVariant: ['tabular-nums'] },
+  unidad: { fontSize: 22, lineHeight: 36, fontWeight: '600', color: T.sobreBanda },
+  portadaTexto: { ...TIPO.cuerpo, color: T.sobreBandaSuave, marginBottom: 14 },
+  pastilla: { alignSelf: 'flex-start', marginBottom: 12, backgroundColor: 'rgba(255,255,255,0.12)', borderRadius: 999,
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)', paddingHorizontal: 12, paddingVertical: 6 },
+  textoPastilla: { ...TIPO.apoyo, fontWeight: '600', color: T.sobreBanda },
+  botonPortada: { minHeight: 52, borderRadius: 16, backgroundColor: T.celeste, flexDirection: 'row',
+    alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18 },
+  textoBotonPortada: { ...TIPO.boton, fontWeight: '700', color: T.sobreCeleste },
+  flecha: { fontSize: 18, fontWeight: '600', color: T.sobreCeleste },
+  seccion: { gap: 6 },
+  semana: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 },
+  dia: { alignItems: 'center', gap: 10, flex: 1 },
+  letraDia: { fontSize: 13, fontWeight: '600', color: T.suave },
+  puntoDia: { width: 26, height: 26, borderRadius: 13, backgroundColor: T.superficieAlta, alignItems: 'center',
+    justifyContent: 'center' },
+  diaHoy: { borderWidth: 1.5, borderColor: T.acento },
+  diaEntrenado: { backgroundColor: T.acento, borderWidth: 0 },
+  vistoDia: { fontSize: 14, lineHeight: 17, fontWeight: '700', color: T.sobreAcento },
+  separador: { height: 1, backgroundColor: T.borde, marginBottom: 14 },
+  filaProgresion: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', minHeight: 36,
+    marginBottom: 6 },
+  tituloProgresion: { ...TIPO.cuerpo, fontWeight: '700', color: T.texto },
+  cuentaProgresion: { ...TIPO.cuerpo, fontWeight: '600', color: T.texto },
+  fila: { flexDirection: 'row', gap: 8, alignItems: 'center' },
+  grupo: { flexDirection: 'row', backgroundColor: T.superficieAlta, borderRadius: 999, padding: 4 },
+  segmento: { flex: 1, minHeight: 40, borderRadius: 999, alignItems: 'center', justifyContent: 'center',
+    paddingHorizontal: 6 },
+  segmentoElegido: { backgroundColor: T.acento, boxShadow: '0 2px 8px rgba(101, 69, 216, 0.3)' },
+  textoSegmento: { fontSize: 14.5, fontWeight: '500', color: T.suave },
+  textoSegmentoElegido: { fontWeight: '600', color: T.sobreAcento },
+  opcion: { minHeight: 48, borderRadius: 999, backgroundColor: T.superficieAlta, paddingHorizontal: 16,
+    justifyContent: 'center' },
+  textoOpcion: { ...TIPO.cuerpo, color: T.texto },
+  casilla: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', padding: 14, borderRadius: 16,
+    backgroundColor: T.superficieAlta },
+  casillaMarcada: { backgroundColor: T.acentoSuave },
+  cuadro: { width: 22, height: 22, borderRadius: 7, borderWidth: 1.5, borderColor: T.textoDeshabilitado,
+    alignItems: 'center', justifyContent: 'center', marginTop: 1, backgroundColor: T.superficie },
+  cuadroMarcado: { backgroundColor: T.acento, borderColor: T.acento },
+  visto: { fontSize: 13, lineHeight: 16, fontWeight: '700', color: T.sobreAcento },
+  textoCasilla: { ...TIPO.apoyo, fontSize: 14.5, lineHeight: 21, color: T.texto, flex: 1 },
+  filaEvitar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, minHeight: 44 },
+  barraPreparar: { paddingHorizontal: 20, paddingTop: 8, minHeight: 44, justifyContent: 'center' },
+  botonAtras: { alignSelf: 'flex-start', minHeight: 40, justifyContent: 'center' },
+  piePreparar: { paddingHorizontal: 20, paddingTop: 10, paddingBottom: 14, gap: 8 },
+  botonPrincipal: { minHeight: 52, paddingHorizontal: 20, borderRadius: 16, alignItems: 'center',
+    justifyContent: 'center', backgroundColor: T.acento },
+  botonDeshabilitado: { backgroundColor: T.deshabilitado, boxShadow: 'none' },
+  textoBoton: { ...TIPO.boton, color: T.sobreAcento, textAlign: 'center' },
+  // Acción principal en turquesa, con texto oscuro (10:1); el blanco sobre turquesa no se leería bien.
+  botonEntrenar: { backgroundColor: T.celeste },
+  textoEntrenar: { color: T.sobreCeleste, fontWeight: '700' },
+  enlace: { alignSelf: 'center', minHeight: 44, justifyContent: 'center', paddingHorizontal: 12 },
+  enlaceTexto: { ...TIPO.apoyo, fontSize: 14.5, fontWeight: '600', color: T.acentoTexto },
+  alerta: { ...TIPO.apoyo, color: T.alerta, backgroundColor: T.alertaFondo, padding: 12, borderRadius: 14 },
 });

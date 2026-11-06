@@ -1,180 +1,102 @@
-import { Image } from 'expo-image';
-import { SymbolView } from 'expo-symbols';
-import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ExternalLink } from '@/components/external-link';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Collapsible } from '@/components/ui/collapsible';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
+import { BottomTabInset, MaxContentWidth } from '@/constants/theme';
+import { SOMBRA, T, TIPO } from '@/constants/tema';
 
-export default function TabTwoScreen() {
-  const safeAreaInsets = useSafeAreaInsets();
-  const insets = {
-    ...safeAreaInsets,
-    bottom: safeAreaInsets.bottom + BottomTabInset + Spacing.three,
-  };
-  const theme = useTheme();
+const C = { fondo: T.fondo, texto: T.texto, suave: T.suave, borde: T.borde, morado: T.acentoTexto, lila: T.acentoSuave };
 
-  const contentPlatformStyle = Platform.select({
-    android: {
-      paddingTop: insets.top,
-      paddingLeft: insets.left,
-      paddingRight: insets.right,
-      paddingBottom: insets.bottom,
-    },
-    web: {
-      paddingTop: Spacing.six,
-      paddingBottom: Spacing.four,
-    },
-  });
+const PASOS = [
+  { titulo: 'Tus respuestas', texto: 'Nivel, experiencia, tiempo, equipo, estilos de baile y lo que prefieres evitar.' },
+  { titulo: 'Kinetia filtra', texto: 'Elige la estructura según tu tiempo, deja solo los ejercicios compatibles contigo y fija límites de carga según tu edad, peso y estatura.' },
+  { titulo: 'La IA decide', texto: 'Elige un ejercicio por bloque, ajusta series e intensidad y te explica por qué. Puede mantener o bajar la dosis, nunca superar la ficha ni tus límites.' },
+  { titulo: 'Kinetia comprueba', texto: 'Revisa cada ejercicio y dosis antes de mostrarlos. Si algo no cumple o no hay conexión, usa la rutina habitual y te avisa.' },
+  { titulo: 'Entrenas y cuentas cómo te fue', texto: 'Sigue la sesión paso a paso. Al final respondes dos preguntas y tu próxima rutina lo tiene en cuenta. Con dos sesiones fáciles y completas seguidas, avanzas a una variante más exigente.' },
+];
 
+export default function ComoFuncionaScreen() {
   return (
-    <ScrollView
-      style={[styles.scrollView, { backgroundColor: theme.background }]}
-      contentInset={insets}
-      contentContainerStyle={[styles.contentContainer, contentPlatformStyle]}>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.titleContainer}>
-          <ThemedText type="subtitle">Explore</ThemedText>
-          <ThemedText style={styles.centerText} themeColor="textSecondary">
-            This starter app includes example{'\n'}code to help you get started.
-          </ThemedText>
+    <View style={styles.contenedor}>
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.contenido}>
+          <Text style={styles.titulo} accessibilityRole="header">Cómo funciona</Text>
+          <Text style={styles.texto}>
+            Kinetia arma rutinas de fuerza y control corporal para complementar tu baile urbano, adaptadas a ti con
+            inteligencia artificial.
+          </Text>
 
-          <ExternalLink href="https://docs.expo.dev" asChild>
-            <Pressable style={({ pressed }) => pressed && styles.pressed}>
-              <ThemedView type="backgroundElement" style={styles.linkButton}>
-                <ThemedText type="link">Expo documentation</ThemedText>
-                <SymbolView
-                  tintColor={theme.text}
-                  name={{ ios: 'arrow.up.right.square', android: 'link', web: 'link' }}
-                  size={12}
-                />
-              </ThemedView>
-            </Pressable>
-          </ExternalLink>
-        </ThemedView>
+          <View style={styles.tarjeta}>
+            <Text style={styles.subtitulo} accessibilityRole="header">Cómo se arma tu rutina</Text>
+            {PASOS.map((p, i) => (
+              <View key={p.titulo} style={styles.paso}>
+                <View style={styles.numero}><Text style={styles.textoNumero}>{i + 1}</Text></View>
+                <View style={styles.flex}>
+                  <Text style={styles.etiqueta}>{p.titulo}</Text>
+                  <Text style={styles.ayuda}>{p.texto}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
 
-        <ThemedView style={styles.sectionsWrapper}>
-          <Collapsible title="File-based routing">
-            <ThemedText type="small">
-              This app has two screens: <ThemedText type="code">src/app/index.tsx</ThemedText> and{' '}
-              <ThemedText type="code">src/app/explore.tsx</ThemedText>
-            </ThemedText>
-            <ThemedText type="small">
-              The layout file in <ThemedText type="code">src/app/_layout.tsx</ThemedText> sets up
-              the tab navigator.
-            </ThemedText>
-            <ExternalLink href="https://docs.expo.dev/router/introduction">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
+          <View style={styles.tarjeta}>
+            <Text style={styles.subtitulo} accessibilityRole="header">Cómo influyen tu edad y tu peso</Text>
+            <Text style={styles.texto}>
+              • Desde los 65 años: más descanso entre series y hasta 2 series por ejercicio. Si además estás
+              empezando, menos repeticiones.
+            </Text>
+            <Text style={styles.texto}>• Entre los 50 y los 64 años, si estás empezando: más descanso entre series.</Text>
+            <Text style={styles.texto}>
+              • Con un índice de masa corporal de 30 o más: menos repeticiones en los ejercicios que cargan el cuerpo
+              sobre una pierna o la punta de los pies. Desde 35, también más descanso en ellos.
+            </Text>
+            <Text style={styles.ayuda}>
+              Kinetia no incluye saltos: todos sus ejercicios son de bajo impacto. Estos límites solo bajan la carga,
+              nunca la suben ni quitan ejercicios. Son criterios conservadores del proyecto, basados en guías de
+              ejercicio (ACSM, NSCA y OMS), y no reemplazan la evaluación de un profesional.
+            </Text>
+          </View>
 
-          <Collapsible title="Android, iOS, and web support">
-            <ThemedView type="backgroundElement" style={styles.collapsibleContent}>
-              <ThemedText type="small">
-                You can open this project on Android, iOS, and the web. To open the web version,
-                press <ThemedText type="smallBold">w</ThemedText> in the terminal running this
-                project.
-              </ThemedText>
-              <Image
-                source={require('@/assets/images/tutorial-web.png')}
-                style={styles.imageTutorial}
-              />
-            </ThemedView>
-          </Collapsible>
+          <View style={styles.tarjeta}>
+            <Text style={styles.subtitulo} accessibilityRole="header">Lo que Kinetia no hace</Text>
+            <Text style={styles.texto}>• No enseña pasos de baile ni evalúa tu técnica.</Text>
+            <Text style={styles.texto}>• No diagnostica ni reemplaza a un profesional de la salud.</Text>
+            <Text style={styles.texto}>
+              • Si tienes dolor, una lesión o estás en recuperación, no la uses: consulta a un profesional.
+            </Text>
+          </View>
 
-          <Collapsible title="Images">
-            <ThemedText type="small">
-              For static images, you can use the <ThemedText type="code">@2x</ThemedText> and{' '}
-              <ThemedText type="code">@3x</ThemedText> suffixes to provide files for different
-              screen densities.
-            </ThemedText>
-            <Image source={require('@/assets/images/react-logo.png')} style={styles.imageReact} />
-            <ExternalLink href="https://reactnative.dev/docs/images">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
+          <View style={styles.tarjeta}>
+            <Text style={styles.subtitulo} accessibilityRole="header">Tus datos</Text>
+            <Text style={styles.texto}>Tu perfil, tus respuestas y tus sesiones se guardan en este teléfono.</Text>
+            <Text style={styles.texto}>
+              Para generar la rutina se envían al servicio de IA tu edad, peso, estatura, nivel, respuestas y un
+              resumen de tu última sesión. Tu nombre nunca se envía.
+            </Text>
+            <Text style={styles.texto}>
+              Puedes borrar tu perfil y tu historial cuando quieras desde la pestaña Perfil.
+            </Text>
+          </View>
 
-          <Collapsible title="Light and dark mode components">
-            <ThemedText type="small">
-              This template has light and dark mode support. The{' '}
-              <ThemedText type="code">useColorScheme()</ThemedText> hook lets you inspect what the
-              user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-            </ThemedText>
-            <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-              <ThemedText type="linkPrimary">Learn more</ThemedText>
-            </ExternalLink>
-          </Collapsible>
-
-          <Collapsible title="Animations">
-            <ThemedText type="small">
-              This template includes an example of an animated component. The{' '}
-              <ThemedText type="code">src/components/ui/collapsible.tsx</ThemedText> component uses
-              the powerful <ThemedText type="code">react-native-reanimated</ThemedText> library to
-              animate opening this hint.
-            </ThemedText>
-          </Collapsible>
-        </ThemedView>
-        {Platform.OS === 'web' && <WebBadge />}
-      </ThemedView>
-    </ScrollView>
+          <Text style={styles.pie}>Generación de rutinas con Claude, de Anthropic · Proyecto Capstone</Text>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  container: {
-    maxWidth: MaxContentWidth,
-    flexGrow: 1,
-  },
-  titleContainer: {
-    gap: Spacing.three,
-    alignItems: 'center',
-    paddingHorizontal: Spacing.four,
-    paddingVertical: Spacing.six,
-  },
-  centerText: {
-    textAlign: 'center',
-  },
-  pressed: {
-    opacity: 0.7,
-  },
-  linkButton: {
-    flexDirection: 'row',
-    paddingHorizontal: Spacing.four,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.five,
-    justifyContent: 'center',
-    gap: Spacing.one,
-    alignItems: 'center',
-  },
-  sectionsWrapper: {
-    gap: Spacing.five,
-    paddingHorizontal: Spacing.four,
-    paddingTop: Spacing.three,
-  },
-  collapsibleContent: {
-    alignItems: 'center',
-  },
-  imageTutorial: {
-    width: '100%',
-    aspectRatio: 296 / 171,
-    borderRadius: Spacing.three,
-    marginTop: Spacing.two,
-  },
-  imageReact: {
-    width: 100,
-    height: 100,
-    alignSelf: 'center',
-  },
+  contenedor: { flex: 1, backgroundColor: C.fondo },
+  safeArea: { flex: 1, width: '100%', maxWidth: MaxContentWidth, alignSelf: 'center' },
+  contenido: { paddingHorizontal: 20, paddingTop: 20, paddingBottom: BottomTabInset + 16, gap: 16 },
+  titulo: { ...TIPO.tituloPantalla, color: C.texto },
+  subtitulo: { ...TIPO.tituloTarjeta, color: C.texto },
+  texto: { fontSize: 16, lineHeight: 23, color: C.texto },
+  ayuda: { fontSize: 15, lineHeight: 21, color: C.suave },
+  etiqueta: { fontSize: 16, lineHeight: 22, fontWeight: '700', color: C.texto },
+  tarjeta: { backgroundColor: T.superficie, borderRadius: 22, padding: 18, gap: 12, ...SOMBRA },
+  paso: { flexDirection: 'row', gap: 12, alignItems: 'flex-start' },
+  numero: { width: 30, height: 30, borderRadius: 15, backgroundColor: C.lila, alignItems: 'center', justifyContent: 'center' },
+  textoNumero: { fontSize: 15, fontWeight: '700', color: C.morado },
+  flex: { flex: 1, gap: 2 },
+  pie: { fontSize: 13, lineHeight: 19, color: C.suave, textAlign: 'center' },
 });

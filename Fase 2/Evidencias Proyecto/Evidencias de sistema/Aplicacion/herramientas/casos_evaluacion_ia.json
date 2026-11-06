@@ -1,0 +1,4001 @@
+{
+  "version": "evaluacion-ia-preparador-0.1",
+  "creado": "2026-10-31T02:07:59.437Z",
+  "contexto": "Intermedio, 20 min, peso corporal, sin exclusiones (plantilla I20_PC); perfil neutro 30 años, 65 kg, 170 cm.",
+  "casos": [
+    {
+      "id": "K06_K08-21",
+      "origen": "Piloto P02 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Nunca ha hecho el puente unilateral con la pierna contraria sujeta detrás del muslo.",
+      "entradas": {
+        "experiencia_k08": "nunca",
+        "recencia_k08": "no_aplica",
+        "fin_ultima_k08": "no_aplica"
+      },
+      "preferencia": "K06",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "nunca lo ha hecho"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-22",
+      "origen": "Piloto P03 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace menos de 3 meses. Terminó la dosis con margen.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "menos_3_meses",
+        "fin_ultima_k08": "con_margen"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "hace menos de 3 meses",
+            "como_termino": "terminó la dosis con margen"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-23",
+      "origen": "Piloto N04 (reserva v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace entre 3 y 12 meses. Terminó la dosis, pero justo, al limite.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "entre_3_y_12_meses",
+        "fin_ultima_k08": "justo"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "hace entre 3 y 12 meses",
+            "como_termino": "terminó la dosis justo, al límite"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-24",
+      "origen": "Piloto N01 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace entre 3 y 12 meses. Paró antes de completar la dosis por esfuerzo.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "entre_3_y_12_meses",
+        "fin_ultima_k08": "paro_antes_por_esfuerzo"
+      },
+      "preferencia": "K06",
+      "aceptables": "SOLO LA PREFERIDA",
+      "firmeza": "FIRME",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "hace entre 3 y 12 meses",
+            "como_termino": "paró antes por esfuerzo"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-25",
+      "origen": "Piloto N05 (reserva v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace más de un año. Paró antes de completar la dosis por esfuerzo.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "mas_12_meses",
+        "fin_ultima_k08": "paro_antes_por_esfuerzo"
+      },
+      "preferencia": "K06",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "hace más de un año",
+            "como_termino": "paró antes por esfuerzo"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-26",
+      "origen": "Piloto N02 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace más de un año. No se sabe cómo terminó.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "mas_12_meses",
+        "fin_ultima_k08": "desconocido"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "hace más de un año",
+            "como_termino": "no se sabe"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-27",
+      "origen": "Piloto N03 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); no se sabe cuándo fue la última vez. Terminó la dosis, pero justo, al limite.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "desconocida",
+        "fin_ultima_k08": "justo"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "no se sabe",
+            "como_termino": "terminó la dosis justo, al límite"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-28",
+      "origen": "Piloto N06 (reserva v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho alguna vez (el puente unilateral con la pierna contraria sujeta detrás del muslo); no se sabe cuándo fue la última vez. No se sabe cómo terminó.",
+      "entradas": {
+        "experiencia_k08": "alguna_vez",
+        "recencia_k08": "desconocida",
+        "fin_ultima_k08": "desconocido"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho alguna vez",
+            "ultima_vez": "no se sabe",
+            "como_termino": "no se sabe"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-29",
+      "origen": "Piloto P04 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho de forma habitual (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace menos de 3 meses. Terminó la dosis con margen.",
+      "entradas": {
+        "experiencia_k08": "habitual",
+        "recencia_k08": "menos_3_meses",
+        "fin_ultima_k08": "con_margen"
+      },
+      "preferencia": "K08",
+      "aceptables": "SOLO LA PREFERIDA",
+      "firmeza": "FIRME",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho de forma habitual",
+            "ultima_vez": "hace menos de 3 meses",
+            "como_termino": "terminó la dosis con margen"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-30",
+      "origen": "Piloto P05 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho de forma habitual (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace menos de 3 meses. Terminó la dosis, pero justo, al limite.",
+      "entradas": {
+        "experiencia_k08": "habitual",
+        "recencia_k08": "menos_3_meses",
+        "fin_ultima_k08": "justo"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho de forma habitual",
+            "ultima_vez": "hace menos de 3 meses",
+            "como_termino": "terminó la dosis justo, al límite"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-31",
+      "origen": "Piloto P06 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho de forma habitual (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace menos de 3 meses. Paró antes de completar la dosis por esfuerzo.",
+      "entradas": {
+        "experiencia_k08": "habitual",
+        "recencia_k08": "menos_3_meses",
+        "fin_ultima_k08": "paro_antes_por_esfuerzo"
+      },
+      "preferencia": "K06",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho de forma habitual",
+            "ultima_vez": "hace menos de 3 meses",
+            "como_termino": "paró antes por esfuerzo"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-32",
+      "origen": "Piloto P08 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho de forma habitual (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace menos de 3 meses. No se sabe cómo terminó.",
+      "entradas": {
+        "experiencia_k08": "habitual",
+        "recencia_k08": "menos_3_meses",
+        "fin_ultima_k08": "desconocido"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho de forma habitual",
+            "ultima_vez": "hace menos de 3 meses",
+            "como_termino": "no se sabe"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-33",
+      "origen": "Piloto P07 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "Lo ha hecho de forma habitual (el puente unilateral con la pierna contraria sujeta detrás del muslo); la última vez fue hace más de un año. Terminó la dosis con margen.",
+      "entradas": {
+        "experiencia_k08": "habitual",
+        "recencia_k08": "mas_12_meses",
+        "fin_ultima_k08": "con_margen"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "lo ha hecho de forma habitual",
+            "ultima_vez": "hace más de un año",
+            "como_termino": "terminó la dosis con margen"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K06_K08-34",
+      "origen": "Piloto P01 (desarrollo v0.1)",
+      "decision": "K06_K08",
+      "cupo": "puente",
+      "historia": "No se sabe si alguna vez hizo el puente unilateral con la pierna contraria sujeta detrás del muslo, ni cuándo, ni cómo terminó.",
+      "entradas": {
+        "experiencia_k08": "desconocida",
+        "recencia_k08": "desconocida",
+        "fin_ultima_k08": "desconocido"
+      },
+      "preferencia": "K08",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más"
+          },
+          "puente_una_pierna_K08": {
+            "experiencia": "no se sabe si lo ha hecho",
+            "ultima_vez": "no se sabe",
+            "como_termino": "no se sabe"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-25",
+      "origen": "G03 DB02 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Nunca ha hecho el dead bug con brazos al techo y caderas y rodillas a unos 90°. Hoy practica ejercicios de core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "nunca",
+        "control_k12": "no_aplica",
+        "historia_core": "habitual_actual",
+        "antiguedad_k12": "no_aplica"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "nunca lo ha hecho"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-26",
+      "origen": "G03 DB03 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Nunca ha hecho el dead bug con brazos al techo y caderas y rodillas a unos 90°. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "nunca",
+        "control_k12": "no_aplica",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "no_aplica"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "nunca lo ha hecho"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-27",
+      "origen": "Reserva RDB02 (evaluación v0.3; no usada en v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Nunca ha hecho el dead bug con brazos al techo y caderas y rodillas a unos 90°. Dejó de practicar core en el suelo hace más de un año y no lo ha retomado.",
+      "entradas": {
+        "experiencia_k12": "nunca",
+        "control_k12": "no_aplica",
+        "historia_core": "interrumpida_mas_de_12_meses",
+        "antiguedad_k12": "no_aplica"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo dejó hace más de un año"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "nunca lo ha hecho"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-28",
+      "origen": "G03 DB09 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. Recuerda que lo pudo controlar bien. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "lo pudo controlar bien"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-29",
+      "origen": "G03 DB06 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace más de un año. Recuerda que lo pudo controlar bien. Dejó de practicar core en el suelo hace más de un año y no lo ha retomado.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "interrumpida_mas_de_12_meses",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo dejó hace más de un año"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace más de un año",
+            "como_le_resulto": "lo pudo controlar bien"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-30",
+      "origen": "G03 DB05 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. Recuerda que lo pudo controlar bien. No se sabe si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "FIRME",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no se sabe"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "lo pudo controlar bien"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-31",
+      "origen": "G03 DB04 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace más de un año. Recuerda que lo pudo controlar bien. No se sabe si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "controlado",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no se sabe"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace más de un año",
+            "como_le_resulto": "lo pudo controlar bien"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-32",
+      "origen": "RDB_G01 RDB01_A (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. Recuerda que le costó mantener la espalda baja estable. Hoy practica ejercicios de core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "habitual_actual",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "le costó mantener la espalda estable"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-33",
+      "origen": "RDB_G01 RDB01 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace más de un año. Recuerda que le costó mantener la espalda baja estable. Hoy practica ejercicios de core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "habitual_actual",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace más de un año",
+            "como_le_resulto": "le costó mantener la espalda estable"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-34",
+      "origen": "RDB_G01 RDB01_C (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. Recuerda que le costó mantener la espalda baja estable. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "FIRME",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "le costó mantener la espalda estable"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-35",
+      "origen": "RDB_G01 RDB01_B (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace más de un año. Recuerda que le costó mantener la espalda baja estable. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "mas_de_12_meses"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace más de un año",
+            "como_le_resulto": "le costó mantener la espalda estable"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-36",
+      "origen": "G03 DB07 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. Recuerda que le costó mantener la espalda baja estable. No se sabe si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "dificultad_control",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K11",
+      "aceptables": "AMBAS",
+      "firmeza": "FIRME",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no se sabe"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "le costó mantener la espalda estable"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-37",
+      "origen": "G03 DB10 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace aproximadamente un mes. No recuerda cómo le resultó. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "desconocido",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "un_mes"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "hace aproximadamente un mes",
+            "como_le_resulto": "no lo recuerda"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-38",
+      "origen": "G03 DB08 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "Probó el dead bug con brazos al techo y caderas y rodillas a unos 90° hace un tiempo que no se sabe precisar. No recuerda cómo le resultó. No se sabe si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "practico",
+        "control_k12": "desconocido",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "desconocida"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no se sabe"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "lo ha probado",
+            "cuando": "no se sabe",
+            "como_le_resulto": "no lo recuerda"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-39",
+      "origen": "Reserva RDB03 (evaluación v0.3; no usada en v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "No se sabe si alguna vez hizo el dead bug con brazos al techo y caderas y rodillas a unos 90°, ni cuando, ni cómo le resultó. Hoy practica ejercicios de core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "desconocida",
+        "control_k12": "desconocido",
+        "historia_core": "habitual_actual",
+        "antiguedad_k12": "desconocida"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "no se sabe si lo ha hecho",
+            "cuando": "no se sabe",
+            "como_le_resulto": "no lo recuerda"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-40",
+      "origen": "G03 DB11 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "No se sabe si alguna vez hizo el dead bug con brazos al techo y caderas y rodillas a unos 90°, ni cuando, ni cómo le resultó. No practica core en el suelo de forma habitual.",
+      "entradas": {
+        "experiencia_k12": "desconocida",
+        "control_k12": "desconocido",
+        "historia_core": "sin_practica_habitual",
+        "antiguedad_k12": "desconocida"
+      },
+      "preferencia": "EMPATE",
+      "aceptables": "AMBAS",
+      "firmeza": "NO_APLICA",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no lo practica de forma habitual"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "no se sabe si lo ha hecho",
+            "cuando": "no se sabe",
+            "como_le_resulto": "no lo recuerda"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "K11_K12-41",
+      "origen": "G03 DB01 (desarrollo v0.4)",
+      "decision": "K11_K12",
+      "cupo": "dead_bug",
+      "historia": "No se sabe si alguna vez hizo el dead bug con brazos al techo y caderas y rodillas a unos 90°, ni cuando, ni cómo le resultó. No se sabe si practica core en el suelo.",
+      "entradas": {
+        "experiencia_k12": "desconocida",
+        "control_k12": "desconocido",
+        "historia_core": "desconocida",
+        "antiguedad_k12": "desconocida"
+      },
+      "preferencia": "K12",
+      "aceptables": "AMBAS",
+      "firmeza": "SUAVE",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 65,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "no se sabe"
+          },
+          "dead_bug_extension_K12": {
+            "experiencia": "no se sabe si lo ha hecho",
+            "cuando": "no se sabe",
+            "como_le_resulto": "no lo recuerda"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -7,21 +7,18 @@ import '@/global.css';
 
 import { Platform } from 'react-native';
 
+// Kinetia usa un solo tema (05-11-2026): claro y oscuro del sistema muestran lo mismo. Ver constants/tema.ts.
+const KINETIA = {
+  text: '#2A2238',
+  background: '#F4F1FA',
+  backgroundElement: '#FFFFFF',
+  backgroundSelected: '#EDE5FF',
+  textSecondary: '#6B6080',
+} as const;
+
 export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
+  light: KINETIA,
+  dark: KINETIA,
 } as const;
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;

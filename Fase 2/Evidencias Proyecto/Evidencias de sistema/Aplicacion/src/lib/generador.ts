@@ -4,6 +4,13 @@
  */
 import { predecirPuente, validarEntradasPuente } from './ia/selector-puente';
 import type { PasoArbol, SolicitudPuente } from './ia/selector-puente';
+import { seleccionarK11K12 } from './ia/selectorK11K12';
+import type { PasoK11K12 } from './ia/selectorK11K12';
+import type { SolicitudDeadBug } from './ia/formulario-dead-bug';
+import {
+  ORDEN_REGLAS, REGLAS_CARGA, VERSION_CARGA, menorIntensidad, perfilCargaValido, topeCarga,
+  type IdReglaCarga, type PerfilCarga, type TopeCarga,
+} from './carga-perfil';
 
 export type Level = 'P' | 'I';
 export type Equipment = 'PC' | 'M1';
@@ -22,6 +29,9 @@ export interface GeneratorInput {
   excluir?: Exclusions;
   cierreOpcional?: string[];
   puenteIA?: SolicitudPuente;
+  deadBugIA?: SolicitudDeadBug;
+  /** Edad, peso y estatura: fijan topes de carga (ver carga-perfil.ts). Sin perfil, no hay topes. */
+  perfilCarga?: PerfilCarga;
 }
 export interface Dose {
   series: number;
@@ -53,13 +63,28 @@ export interface ExerciseCount {
   totalSostenes: number;
   totalDescansoSegundos: number;
 }
+/** Ajuste que puede pedir la IA generativa: solo reduce o mantiene la dosis de la ficha. */
+export type Intensidad = 'completa' | 'reducida' | 'minima';
+export interface AjusteDosis {
+  series: number;
+  intensidad: Intensidad;
+  descanso: 'estandar' | 'ampliado';
+}
+export const FACTOR_INTENSIDAD: Record<Intensidad, number> = { completa: 1, reducida: 0.75, minima: 0.5 };
+export const DESCANSO_AMPLIADO_S = 30;
 export interface DecisionMetadata {
-  origen: 'modelo' | 'regla' | 'opcion_unica' | 'manual';
+  origen: 'modelo' | 'regla' | 'opcion_unica' | 'manual' | 'ia';
   motivo: string;
   candidatos: string[];
   modeloId?: string;
   modeloSha256?: string;
   recorrido?: PasoArbol[];
+  ajusteDosis?: AjusteDosis;
+}
+/** Qué cambió el tope por perfil respecto de la dosis elegida, y por qué reglas. */
+export interface AjustePerfil {
+  reglas: IdReglaCarga[];
+  cambios: ('series' | 'intensidad' | 'descanso')[];
 }
 export interface PrincipalExercise {
   id: string;
@@ -74,6 +99,8 @@ export interface PrincipalExercise {
   dosis: Dose;
   conteo: ExerciseCount;
   seleccion: DecisionMetadata;
+  /** Solo si el tope por edad o peso bajó la dosis. */
+  ajustePerfil?: AjustePerfil;
 }
 export interface TransitionBlock {
   tipo: 'transicion';
@@ -131,6 +158,8 @@ export interface RoutineResult {
   secuencia: SequenceBlock[];
   mensajes: string[];
   duracion: DurationEstimate | null;
+  /** Solo con perfil: reglas de carga que alcanzan a algún ejercicio de esta rutina. */
+  cargaPerfil?: { version: string; reglas: IdReglaCarga[] };
 }
 
 // Copia explícita para Hermes; también conserva entradas inválidas para validarlas.
@@ -150,10 +179,17 @@ function copyInput(input: GeneratorInput): GeneratorInput {
       result.puenteIA.entradas = { ...input.puenteIA.entradas };
     }
   }
+  if (input.deadBugIA && typeof input.deadBugIA === 'object') {
+    result.deadBugIA = 'entradas' in input.deadBugIA && input.deadBugIA.entradas &&
+      typeof input.deadBugIA.entradas === 'object'
+      ? { entradas: { ...input.deadBugIA.entradas } }
+      : { ...input.deadBugIA };
+  }
+  if (input.perfilCarga && typeof input.perfilCarga === 'object') result.perfilCarga = { ...input.perfilCarga };
   return result;
 }
 
-export const VERSION = 'simulacion-0.2-reglas-0.6-ia-k06-k08-0.1';
+export const VERSION = `simulacion-0.2-reglas-0.6-ia-k06-k08-0.1-k11-k12-0.4-llm-0.2-${VERSION_CARGA}`;
 const FLOOR = new Set(['boca_arriba', 'cuadrupedia', 'lateral']);
 const dose = (value: number | null, rest: number, sideRest = 0, unit: DoseUnit = 'repeticiones'): Dose | null =>
   value === null ? null : { series: 2, cantidad: value, unidad: unit,
@@ -253,7 +289,52 @@ interface SelectionOverride { id: string; seleccion: DecisionMetadata }
 
 function copyDecision(selection: DecisionMetadata): DecisionMetadata {
   return { ...selection, candidatos: [...selection.candidatos],
-    ...(selection.recorrido ? { recorrido: selection.recorrido.map(step => ({ ...step })) } : {}) };
+    ...(selection.recorrido ? { recorrido: selection.recorrido.map(step => ({ ...step })) } : {}),
+    ...(selection.ajusteDosis ? { ajusteDosis: { ...selection.ajusteDosis } } : {}) };
+}
+
+/** Dosis de la ficha para el nivel, con la única variación por plantilla vigente (P40). */
+function templateDose(key: string, item: CatalogExercise, nivel: Level): Dose {
+  const d: Dose = { ...item.dosis[nivel]! };
+  if (key === 'P40' && ['K01', 'K06', 'K11'].includes(item.id)) d.series = 3;
+  return d;
+}
+
+/** Aplica el ajuste de la IA: nunca supera las series, la cantidad ni acorta el descanso de la ficha. */
+function applyAdjustment(d: Dose, ajuste: AjusteDosis | undefined): Dose {
+  if (!ajuste) return d;
+  return { ...d,
+    series: Math.max(1, Math.min(d.series, ajuste.series)),
+    cantidad: Math.max(1, Math.min(d.cantidad, Math.round(d.cantidad * FACTOR_INTENSIDAD[ajuste.intensidad]))),
+    descansoEntreSeries: d.descansoEntreSeries + (ajuste.descanso === 'ampliado' ? DESCANSO_AMPLIADO_S : 0),
+  };
+}
+
+/** Combina el ajuste elegido (IA, o ninguno) con el tope por perfil: gana siempre lo más conservador. */
+function withProfileLimit(d: Dose, ajuste: AjusteDosis | undefined, tope: TopeCarga | null): AjusteDosis | undefined {
+  if (!tope) return ajuste;
+  return {
+    series: Math.min(ajuste?.series ?? d.series, tope.seriesMax ?? d.series),
+    intensidad: menorIntensidad(ajuste?.intensidad ?? 'completa', tope.intensidadMax),
+    descanso: ajuste?.descanso === 'ampliado' || tope.descansoAmpliado ? 'ampliado' : 'estandar',
+  };
+}
+
+/** Registra qué bajó el tope y qué reglas lo explican; undefined si no cambió nada. */
+function describeProfileLimit(sinTope: Dose, final: Dose, tope: TopeCarga | null): AjustePerfil | undefined {
+  if (!tope) return undefined;
+  const cambios: AjustePerfil['cambios'] = [];
+  if (final.series < sinTope.series) cambios.push('series');
+  if (final.cantidad < sinTope.cantidad) cambios.push('intensidad');
+  if (final.descansoEntreSeries > sinTope.descansoEntreSeries) cambios.push('descanso');
+  if (!cambios.length) return undefined;
+  const reglas = tope.reglas.filter((id) => {
+    const efecto = REGLAS_CARGA[id].efecto;
+    return (!!efecto.seriesMax && cambios.includes('series')) ||
+      (!!efecto.intensidadMax && cambios.includes('intensidad')) ||
+      (!!efecto.descansoAmpliado && cambios.includes('descanso'));
+  });
+  return { reglas, cambios };
 }
 
 /** El piloto conserva exactamente las variantes y dosis del experimento. */
@@ -312,6 +393,84 @@ function selectBridge(input: GeneratorInput, candidates: CatalogExercise[], allo
   }
 }
 
+const MODELO_K11_K12_SHA256 = '8ac32b14710dd6baa46f3275e24bcbb3bd5bcffe237ba1be5f4fe381d626e58d';
+
+// Texto de cada condición del árbol K11/K12: [si se cumple, si no se cumple].
+const CONDICIONES_K11_K12: Record<string, [string, string]> = {
+  experiencia_k12_nunca: ['nunca hiciste esta variante', 'no indicaste que nunca la hiciste'],
+  experiencia_k12_practico: ['ya la practicaste', 'no indicaste que la practicaste'],
+  experiencia_k12_desconocida: ['no sabes si la hiciste', 'sabes si la hiciste'],
+  control_k12_controlado: ['recuerdas que la controlaste', 'no indicaste que la controlaste'],
+  control_k12_dificultad_control: ['te costó mantener la espalda estable', 'no indicaste dificultad para mantener la espalda estable'],
+  control_k12_desconocido: ['no recuerdas cómo te resultó', 'recuerdas cómo te resultó'],
+  control_k12_no_aplica: ['no hay un intento previo que recordar', 'hay un intento previo'],
+  historia_core_habitual_actual: ['hoy practicas core en el suelo', 'hoy no practicas core en el suelo de forma habitual'],
+  historia_core_sin_practica_habitual: ['no practicas core de forma habitual', 'no indicaste que no practicas core'],
+  historia_core_interrumpida_mas_de_12_meses: ['dejaste el core hace más de 12 meses', 'no dejaste el core hace más de 12 meses'],
+  historia_core_desconocida: ['no sabes si practicas core', 'sabes si practicas core'],
+  antiguedad_k12_un_mes: ['la última vez fue hace un mes', 'la última vez no fue hace un mes'],
+  antiguedad_k12_mas_de_12_meses: ['la última vez fue hace más de 12 meses', 'la última vez no fue hace más de 12 meses'],
+  antiguedad_k12_desconocida: ['no recuerdas cuándo fue', 'recuerdas cuándo fue'],
+  antiguedad_k12_no_aplica: ['no hay una última vez', 'hay una última vez'],
+};
+
+function explicarDeadBug(id: string, ruta: PasoK11K12[]): string {
+  const condiciones = ruta.map(paso => {
+    const textos = CONDICIONES_K11_K12[paso.variable];
+    return textos ? textos[paso.valor === 1 ? 0 : 1] : paso.variable;
+  });
+  return `El árbol K11/K12 eligió ${id} porque ${condiciones.join(', ')}.`;
+}
+
+/** El modelo solo interviene si el contexto REAL del cupo coincide con su contrato. */
+function selectDeadBug(input: GeneratorInput, candidates: CatalogExercise[], allowModel: boolean,
+  nivel: Level): { selected: CatalogExercise; selection: DecisionMetadata } {
+  const candidateIds = candidates.map(item => item.id);
+  const fallback = (motivo: string) => ({ selected: candidates[0],
+    selection: { origen: 'regla' as const, motivo, candidatos: candidateIds } });
+  if (!allowModel) return fallback('Se conserva la selección compatible sin volver a consultar el modelo.');
+  const request = input.deadBugIA;
+  if (!request) return fallback('Sin respuestas del piloto K11/K12; se aplica el orden de prioridad.');
+  if (!('entradas' in request)) {
+    return fallback('La fecha indicada no está entre las categorías del modelo K11/K12; se aplica el orden de prioridad.');
+  }
+  const ordenados = [...candidates].sort((a, b) => a.id.localeCompare(b.id));
+  const versiones = [...new Set(candidates.map(item => item.versionFicha))];
+  const dosis = Object.fromEntries(ordenados.map(item => {
+    const d = item.dosis[nivel];
+    return [item.id, d && d.unidad === 'repeticiones'
+      ? { series: d.series, repeticiones_por_lado: d.cantidad, descanso_series_s: d.descansoEntreSeries }
+      : null];
+  }));
+  const exclusiones = ['ids', 'familias', 'tags']
+    .flatMap(field => input.excluir?.[field as keyof Exclusions] ?? []);
+  const contexto = {
+    familia: 'dead_bug', cupo: FAMILIES.dead_bug, nivel: input.nivel, equipo: input.equipo,
+    duracion_referencial_min: input.duracion, filtro_superado: input.filtroSuperado,
+    exclusiones, candidatos_compatibles: ordenados.map(item => item.id),
+    fichas_version: versiones.length === 1 ? versiones[0] : versiones,
+    modo: input.modo === 'borrador' ? 'experimento_borrador' : (input.modo ?? 'app'),
+    dosis,
+  };
+  const decision = seleccionarK11K12(request.entradas, contexto);
+  if (decision.estado === 'no_aplica') {
+    const motivos = {
+      contexto_fuera_de_alcance: 'Esta configuración queda fuera del piloto K11/K12; se aplica el orden de prioridad.',
+      entradas_invalidas: 'Las respuestas del piloto K11/K12 no son coherentes; se aplica el orden de prioridad.',
+      modelo_invalido: 'No se pudo cargar el modelo K11/K12; se aplica el orden de prioridad.',
+    };
+    return fallback(motivos[decision.motivo]);
+  }
+  const selected = candidates.find(item => item.id === decision.ejercicioId);
+  if (!selected) return fallback('El modelo no devolvió una opción compatible; se aplica el orden de prioridad.');
+  return { selected, selection: {
+    origen: 'modelo', motivo: explicarDeadBug(selected.id, decision.traza.ruta), candidatos: candidateIds,
+    modeloId: decision.modeloId, modeloSha256: MODELO_K11_K12_SHA256,
+    recorrido: decision.traza.ruta.map(paso => ({ nodo: paso.nodo, columna: paso.variable,
+      valor: paso.valor, umbral: paso.umbral, rama: paso.rama })),
+  } };
+}
+
 function buildRoutine(input: GeneratorInput, catalog: Record<string, CatalogExercise> = CATALOG,
   overrides: Readonly<Record<string, SelectionOverride>> = {}, allowModel = true): RoutineResult {
   const { nivel, equipo, duracion } = input;
@@ -333,6 +492,8 @@ function buildRoutine(input: GeneratorInput, catalog: Record<string, CatalogExer
   }
   if (!Array.isArray(optional) || optional.some(x => !['C02', 'C03'].includes(x)))
     return stop('entrada_invalida', 'Revisar las opciones de cierre.');
+  if (input.perfilCarga !== undefined && !perfilCargaValido(input.perfilCarga))
+    return stop('entrada_invalida', 'Revisar edad, peso y estatura del perfil.');
   if (input.filtroSuperado !== true)
     return stop('filtro_no_superado', 'No iniciar sesión; el generador no interpreta diagnósticos.');
 
@@ -352,7 +513,7 @@ function buildRoutine(input: GeneratorInput, catalog: Record<string, CatalogExer
     !requirements(item).some(tag => exclusions.tags.includes(tag)) &&
     (modo === 'borrador' || item.habilitado === true);
 
-  // 2 y 3. Filtrar por cupo y seleccionar; la IA solo participa en el piloto de puente.
+  // 2 y 3. Filtrar por cupo y seleccionar; la IA participa en los pilotos de puente y dead bug.
   const used = new Set<string>();
   for (const family of order) {
     const override = overrides[family];
@@ -377,17 +538,29 @@ function buildRoutine(input: GeneratorInput, catalog: Record<string, CatalogExer
       const decision = selectBridge(input, candidates, allowModel);
       selected = decision.selected;
       selection = decision.selection;
+    } else if (family === 'dead_bug') {
+      const decision = selectDeadBug(input, candidates, allowModel, nivel);
+      selected = decision.selected;
+      selection = decision.selection;
     } else {
       selection = { origen: 'regla', motivo: 'Se aplica el orden de prioridad entre las variantes compatibles.',
         candidatos: candidates.map(item => item.id) };
     }
     used.add(selected.familia);
-    const d: Dose = { ...selected.dosis[nivel]! };
-    if (key === 'P40' && ['K01', 'K06', 'K11'].includes(selected.id)) d.series = 3;
+    // Ficha → ajuste elegido (IA o ninguno) → tope por edad y peso. Cada paso solo puede bajar la dosis.
+    const fichaDose = templateDose(key, selected, nivel);
+    const tope = topeCarga(input.perfilCarga, nivel, selected);
+    const d = applyAdjustment(fichaDose, withProfileLimit(fichaDose, selection.ajusteDosis, tope));
+    const ajustePerfil = describeProfileLimit(applyAdjustment(fichaDose, selection.ajusteDosis), d, tope);
     result.principal.push({ id: selected.id, nombre: selected.nombre, familia: selected.familia,
       funcion: selected.funcion, equipo: selected.equipo, posicion: selected.posicion,
       lateralidad: selected.lateralidad, tags: requirements(selected),
-      versionFicha: selected.versionFicha, dosis: d, conteo: totals(selected, d), seleccion: selection });
+      versionFicha: selected.versionFicha, dosis: d, conteo: totals(selected, d), seleccion: selection,
+      ...(ajustePerfil ? { ajustePerfil } : {}) });
+  }
+  if (input.perfilCarga) {
+    const reglas = new Set(result.principal.flatMap(item => topeCarga(input.perfilCarga, nivel, item)?.reglas ?? []));
+    result.cargaPerfil = { version: VERSION_CARGA, reglas: ORDEN_REGLAS.filter(id => reglas.has(id)) };
   }
   if (!result.principal.length)
     return stop('sin_principal', modo === 'app'
@@ -458,7 +631,7 @@ function buildRoutine(input: GeneratorInput, catalog: Record<string, CatalogExer
   return result;
 }
 
-/** Reglas de compatibilidad y montaje, con selector K06/K08 opcional en su contexto piloto. */
+/** Reglas de compatibilidad y montaje, con selectores K06/K08 y K11/K12 en sus contextos piloto. */
 export function generateRoutine(input: GeneratorInput,
   catalog: Record<string, CatalogExercise> = CATALOG): RoutineResult {
   return buildRoutine(input, catalog);
@@ -491,7 +664,9 @@ function sameConfiguration(input: GeneratorInput, saved: GeneratorInput): boolea
     sameValues(input.excluir?.familias, saved.excluir?.familias) &&
     sameValues(input.excluir?.tags, saved.excluir?.tags) &&
     sameValues(input.cierreOpcional, saved.cierreOpcional, ['C02', 'C03']) &&
-    samePilotRequest(input.puenteIA, saved.puenteIA);
+    samePilotRequest(input.puenteIA, saved.puenteIA) &&
+    samePilotRequest(input.deadBugIA, saved.deadBugIA) &&
+    samePilotRequest(input.perfilCarga, saved.perfilCarga);
 }
 
 function candidateAllowed(input: GeneratorInput, family: string, id: string): boolean {
@@ -562,4 +737,89 @@ export function replaceExercise(input: GeneratorInput, routine: RoutineResult,
   }
   return buildRoutine(input, CATALOG,
     { ...selectedOverrides(routine), [slotId]: manualOverride(input, slotId, newId) }, false);
+}
+
+// ---------------------------------------------------------------------------
+// Generación por IA (LLM). El motor define qué es compatible; la IA elige dentro
+// de eso y el motor vuelve a validar y monta la rutina.
+
+export interface CandidatoCupo {
+  id: string;
+  nombre: string;
+  nivelMinimo: Level;
+  lateralidad: Laterality;
+  equipo: Equipment;
+  dosisFicha: Dose;
+  /** Tope por edad y peso para esta variante (null si no hay). */
+  tope: TopeCarga | null;
+}
+export interface CupoPlanificado { familia: string; candidatos: CandidatoCupo[] }
+export type PlanCupos =
+  | { estado: 'ok'; plantilla: string; cupos: CupoPlanificado[]; respaldo: RoutineResult }
+  | { estado: 'no_generable'; respaldo: RoutineResult };
+
+/** Cupos de la plantilla y variantes compatibles con la configuración, según las reglas vigentes. */
+export function planCupos(input: GeneratorInput): PlanCupos {
+  const respaldo = buildRoutine(input);
+  if (!['borrador', 'configuracion_app'].includes(respaldo.estado) || !respaldo.plantilla) {
+    return { estado: 'no_generable', respaldo };
+  }
+  const key = respaldo.plantilla;
+  const profile = PRIORITIES[`${input.nivel}_${input.equipo}`];
+  const cupos = respaldo.principal.map(item => ({
+    familia: item.familia,
+    candidatos: profile[item.familia]
+      .filter(id => candidateAllowed(input, item.familia, id))
+      .map(id => {
+        const ex = CATALOG[id];
+        return { id, nombre: ex.nombre, nivelMinimo: ex.nivelMinimo, lateralidad: ex.lateralidad,
+          equipo: ex.equipo, dosisFicha: templateDose(key, ex, input.nivel),
+          tope: topeCarga(input.perfilCarga, input.nivel, ex) };
+      }),
+  }));
+  return { estado: 'ok', plantilla: key, cupos, respaldo };
+}
+
+export interface EleccionIA { familia: string; id: string; ajuste: AjusteDosis; motivo: string }
+
+/**
+ * Monta la rutina con las elecciones de la IA. Lanza un error si alguna elección no es
+ * válida: el llamador debe usar entonces la rutina por reglas (`planCupos(...).respaldo`).
+ */
+export function generateRoutineFromAI(input: GeneratorInput, elecciones: EleccionIA[],
+  modeloId: string): RoutineResult {
+  const plan = planCupos(input);
+  if (plan.estado !== 'ok') throw new Error('La configuración no permite generar una rutina.');
+  const familias = plan.cupos.map(c => c.familia);
+  if (elecciones.length !== familias.length ||
+      JSON.stringify([...elecciones.map(e => e.familia)].sort()) !== JSON.stringify([...familias].sort())) {
+    throw new Error('La IA no entregó exactamente un ejercicio por cupo.');
+  }
+  const overrides: Record<string, SelectionOverride> = {};
+  for (const eleccion of elecciones) {
+    const cupo = plan.cupos.find(c => c.familia === eleccion.familia)!;
+    const candidato = cupo.candidatos.find(c => c.id === eleccion.id);
+    if (!candidato || !candidateAllowed(input, eleccion.familia, eleccion.id)) {
+      throw new Error(`La IA eligió ${eleccion.id}, que no es compatible con el cupo ${eleccion.familia}.`);
+    }
+    const { series, intensidad, descanso } = eleccion.ajuste ?? {};
+    if (!Number.isInteger(series) || series < 1 || series > candidato.dosisFicha.series ||
+        !(['completa', 'reducida', 'minima'] as unknown[]).includes(intensidad) ||
+        !(['estandar', 'ampliado'] as unknown[]).includes(descanso)) {
+      throw new Error(`Ajuste de dosis no válido para ${eleccion.id}.`);
+    }
+    if (typeof eleccion.motivo !== 'string' || !eleccion.motivo.trim()) {
+      throw new Error(`Falta el motivo de la IA para ${eleccion.id}.`);
+    }
+    overrides[eleccion.familia] = { id: eleccion.id, seleccion: {
+      origen: 'ia', motivo: eleccion.motivo.trim().slice(0, 400),
+      candidatos: cupo.candidatos.map(c => c.id), modeloId,
+      ajusteDosis: { series, intensidad, descanso },
+    } };
+  }
+  const result = buildRoutine(input, CATALOG, overrides, false);
+  if (result.principal.length !== familias.length) {
+    throw new Error('La rutina de la IA no se pudo montar completa.');
+  }
+  return result;
 }
