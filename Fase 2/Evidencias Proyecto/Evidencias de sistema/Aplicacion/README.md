@@ -73,7 +73,7 @@ una clave sin abrir la app: `node servidor\probar-clave.mjs`. Más detalles en [
 5. Para probar el respaldo, detén el servicio de IA y genera otra rutina: aparece «Se usó la rutina habitual» con el
    motivo.
 
-El manual de usuario explica cada pantalla con capturas.
+El [manual de usuario](../../Evidencias%20de%20documentaci%C3%B3n/Kinetia_manual_usuario_v1.0.pdf) explica cada pantalla con capturas.
 
 ## Configuración
 
@@ -111,8 +111,9 @@ La clave se guarda una sola vez como secreto `ANTHROPIC_API_KEY` en el panel de 
 | `src/lib/cuestionario.ts`, `sesion.ts` | Reglas del cuestionario, pasos de la sesión, registro y progresión. |
 | `src/lib/fichas.ts`, `nombres.ts` | Fichas técnicas y nombres amigables de los ejercicios. |
 | `servidor/` | Servicio de IA (`kinetia-ia.mjs`), servidor local, sitio web de Cloudflare y prueba de la clave. |
-| `herramientas/` | Preparar la web, optimizar animaciones, evaluar la IA y medir sus tiempos. |
+| `herramientas/` | Preparar la web, optimizar animaciones, evaluar la IA, medir sus tiempos y guardar las respuestas usadas en las capturas del manual. |
 | `evidencias/` | Animaciones originales, ficha K05 y la evaluación de la IA con el preparador físico. |
+| `pruebas/` | Pruebas automáticas, sus resultados y cómo correrlas. |
 | `assets/images/ejercicios/` | Animaciones optimizadas que usa la app. |
 
 `src/lib/ia/` conserva además los árboles de decisión de la Fase 2 (K06/K08 y K11/K12). Sirvieron de comparación
@@ -123,8 +124,8 @@ para evaluar la IA; el flujo actual no los usa.
 71 pruebas automáticas (unitarias, de integración y de seguridad), todas correctas al 06-11-2026, más una prueba de
 rendimiento que mide tiempos.
 
-La revisión de tipos (`npx tsc --noEmit`) no da errores. Los scripts, sus resultados y cómo correrlos están en la
-documentación de la Fase 3 (ver el README principal del repositorio).
+La revisión de tipos (`npx tsc --noEmit`) no da errores. Los scripts, sus resultados y cómo correrlos están en
+[`pruebas/`](pruebas/LEEME.md).
 
 ## Límites de esta versión
 

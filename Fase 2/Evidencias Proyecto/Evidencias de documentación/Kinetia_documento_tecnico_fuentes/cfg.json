@@ -1,0 +1,1 @@
+{"theme": "base", "themeVariables": {"fontFamily": "Arial", "fontSize": "21px", "primaryColor": "#FFFFFF", "lineColor": "#6B6080", "clusterBkg": "#F7F5FC", "clusterBorder": "#CFC6E6"}, "flowchart": {"nodeSpacing": 28, "rankSpacing": 46, "padding": 10, "diagramPadding": 6, "wrappingWidth": 420}}

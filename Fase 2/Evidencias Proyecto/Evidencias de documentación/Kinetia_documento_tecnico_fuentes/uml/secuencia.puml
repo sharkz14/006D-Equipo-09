@@ -1,0 +1,39 @@
+@startuml
+!include estilo.iuml
+skinparam defaultFontSize 15
+skinparam ArrowFontSize 14
+skinparam sequenceMessageAlign left
+skinparam ParticipantPadding 4
+hide footbox
+autonumber "<b>0."
+actor "Persona" as P
+participant "Interfaz" as UI
+participant "Cliente\nde IA" as C
+participant "Motor\nde reglas" as M
+participant "Servidor\nde IA" as S
+participant "API de\nClaude" as A
+
+P -> UI : Prepara la sesión\n(ajustes y confirmaciones)
+P -> UI : Generar rutina con IA
+UI -> C : generarRutinaConIA()
+C -> M : planCupos()
+M --> C : bloques compatibles,\ntopes y respaldo
+alt respuesta válida en menos de 45 s
+  C -> S : POST /api/rutina\n(sin nombre)
+  activate S
+  S -> S : valida origen\ny formato
+  S -> A : Messages API\n(esquema JSON)
+  A --> S : elección y\nmotivos
+  S -> S : normaliza
+  S --> C : modelo, resumen\ny bloques
+  deactivate S
+  C -> C : valida\nformato
+  C -> M : generateRoutineFromAI()
+  M --> C : rutina validada
+  C --> UI : rutina IA\ny resumen
+  UI --> P : «Tu rutina»\ny el porqué
+else sin servicio, error, demora o propuesta inválida
+  C --> UI : rutina por reglas\ny motivo
+  UI --> P : «Se usó la rutina\nhabitual» y motivo
+end
+@enduml

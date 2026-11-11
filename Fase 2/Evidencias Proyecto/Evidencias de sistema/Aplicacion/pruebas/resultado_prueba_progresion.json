@@ -1,0 +1,42 @@
+{
+  "fecha": "2026-11-06T05:10:10.751Z",
+  "pruebas": 8,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "Dos fáciles y completas seguidas → avanzan puente y dead bug",
+      "ok": true
+    },
+    {
+      "nombre": "Aviso previo: con una sola fácil (tras otra que no lo fue) se anuncia el avance siguiente",
+      "ok": true,
+      "detalle": "adecuada → fácil → adecuada → fácil: «Si la próxima también te resulta fácil, avanzas…»"
+    },
+    {
+      "nombre": "No avanza: una sola fácil, adecuada, difícil, molestias, incompleta o antigua",
+      "ok": true,
+      "detalle": "una sola sesión · la última adecuada · la anterior difícil · con molestias · detenida · incompleta · de hace más de 30 días · sin historial"
+    },
+    {
+      "nombre": "Solo avanza la familia cuya variante básica se completó en ambas sesiones",
+      "ok": true
+    },
+    {
+      "nombre": "Solicitud a la IA: solo la variante exigente en el cupo, con el antecedente «progresion»",
+      "ok": true
+    },
+    {
+      "nombre": "Avance que no cabe: principiante, «evitar una pierna» o sin el cupo",
+      "ok": true
+    },
+    {
+      "nombre": "De punta a punta: la rutina trae K08 y K12, con los límites por peso aplicados",
+      "ok": true,
+      "detalle": "puente → K08 (5 por lado por el límite de peso) · dead bug → K12"
+    },
+    {
+      "nombre": "Si la IA falla, la rutina habitual no marca avances",
+      "ok": true
+    }
+  ]
+}

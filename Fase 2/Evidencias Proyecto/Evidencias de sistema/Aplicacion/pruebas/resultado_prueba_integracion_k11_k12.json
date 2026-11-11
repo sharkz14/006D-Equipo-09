@@ -1,0 +1,56 @@
+{
+  "fecha": "2026-11-06T05:10:11.604Z",
+  "pruebas": 7,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "192 combinaciones de referencia Python a través del generador",
+      "ok": true,
+      "detalle": "41 admitidas con igual selección y recorrido; 151 rechazadas con respaldo por reglas"
+    },
+    {
+      "nombre": "Casos demo DB03, DB05, RDB01 y RDB01_A",
+      "ok": true,
+      "detalle": [
+        "DB03 → K11: El árbol K11/K12 eligió K11 porque no indicaste dificultad para mantener la espalda estable, no dejaste el core hace más de 12 meses, nunca hiciste esta variante, hoy no practicas core en el suelo de forma habitual.",
+        "DB05 → K12: El árbol K11/K12 eligió K12 porque no indicaste dificultad para mantener la espalda estable, no dejaste el core hace más de 12 meses, no indicaste que nunca la hiciste.",
+        "RDB01 → K12: El árbol K11/K12 eligió K12 porque te costó mantener la espalda estable, hoy practicas core en el suelo, la última vez fue hace más de 12 meses.",
+        "RDB01_A → K11: El árbol K11/K12 eligió K11 porque te costó mantener la espalda estable, hoy practicas core en el suelo, la última vez no fue hace más de 12 meses."
+      ]
+    },
+    {
+      "nombre": "La rutina monta la dosis del ejercicio realmente elegido",
+      "ok": true
+    },
+    {
+      "nombre": "Fuera de contrato se usa el respaldo por reglas (o se bloquea como antes)",
+      "ok": true,
+      "detalle": [
+        "Principiante 20 min",
+        "Intermedio 30 min",
+        "Intermedio 40 min",
+        "Una mancuerna",
+        "Exclusión de otra familia",
+        "Exclusión que retira K12",
+        "Exclusión de la familia dead bug",
+        "Filtro no superado",
+        "Modo app (sin contenido habilitado)",
+        "Sin respuestas",
+        "Fecha no contemplada"
+      ]
+    },
+    {
+      "nombre": "Regresión: sin respuestas K11/K12 todo coincide con el generador original",
+      "ok": true,
+      "detalle": "6758 configuraciones idénticas (49 con selección del modelo K06/K08)"
+    },
+    {
+      "nombre": "Sustitución manual conserva respuestas; cambiarlas invalida la rutina",
+      "ok": true
+    },
+    {
+      "nombre": "Formulario: pendientes, «no sé», fecha fuera de esquema e incoherencias",
+      "ok": true
+    }
+  ]
+}

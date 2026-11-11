@@ -1,0 +1,53 @@
+{
+  "version": "rendimiento-0.1",
+  "fecha": "2026-11-06T04:35:32.897Z",
+  "node": "v22.23.4",
+  "configuraciones": 2592,
+  "reglas": {
+    "n": 2592,
+    "media_ms": 0.03,
+    "p50_ms": 0.016,
+    "p95_ms": 0.047,
+    "max_ms": 3.69,
+    "sin_rutina": 0
+  },
+  "ia_simulada": {
+    "preparar_solicitud": {
+      "n": 2592,
+      "media_ms": 0.044,
+      "p50_ms": 0.028,
+      "p95_ms": 0.072,
+      "max_ms": 4.215
+    },
+    "servidor_validar_y_responder": {
+      "n": 2592,
+      "media_ms": 0.106,
+      "p50_ms": 0.062,
+      "p95_ms": 0.182,
+      "max_ms": 22.902
+    },
+    "validar_y_montar": {
+      "n": 2592,
+      "media_ms": 0.052,
+      "p50_ms": 0.034,
+      "p95_ms": 0.084,
+      "max_ms": 4.512
+    },
+    "montadas": 2592,
+    "no_generables": 0,
+    "tamano_solicitud_bytes": {
+      "promedio": 2053,
+      "max": 3744
+    },
+    "tamano_respuesta_bytes": {
+      "promedio": 817,
+      "max": 1297
+    }
+  },
+  "animaciones": {
+    "archivos": 36,
+    "total_mb": 11.7,
+    "gif_promedio_kb": 621,
+    "gif_mayor_kb": 837
+  }
+}

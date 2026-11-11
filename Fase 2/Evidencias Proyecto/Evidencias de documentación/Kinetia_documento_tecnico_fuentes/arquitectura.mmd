@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph DISP["Dispositivo de la persona (teléfono o navegador)"]
+    direction LR
+    BD[("Base local SQLite<br/>perfil, cuestionario<br/>y sesion")]
+    UI["Interfaz Kinetia<br/>React Native +<br/>Expo Router"]
+    MOTOR["Motor de reglas<br/>filtra, fija topes<br/>y valida"]
+    CLIENTE["Cliente de IA<br/>espera máx. 45 s"]
+    BD <--> UI
+    UI --> MOTOR
+    MOTOR <--> CLIENTE
+  end
+  IA["Servidor de IA<br/>kinetia-ia.mjs<br/>Cloudflare Pages o PC"]
+  CLAUDE["API de Claude · Anthropic"]
+  DISP <-->|"POST /api/rutina"| IA
+  IA <-->|"Messages API"| CLAUDE
+  classDef caja fill:#FFFFFF,stroke:#6545D8,stroke-width:1.5px,color:#231B33;
+  classDef datos fill:#ECE7FB,stroke:#6545D8,color:#231B33;
+  classDef externo fill:#2B1A47,stroke:#2B1A47,color:#FFFFFF;
+  class UI,MOTOR,CLIENTE,IA caja;
+  class BD datos;
+  class CLAUDE externo;

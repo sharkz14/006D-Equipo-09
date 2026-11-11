@@ -1,0 +1,1472 @@
+{
+  "version": "casos-tiempos-ia-0.1",
+  "generado": "2026-11-06T04:43:32.174Z",
+  "nota": "Solicitudes armadas con el código de la app (prepararSolicitudIA), igual que en producción. Sin nombre.",
+  "casos": [
+    {
+      "id": "P20_PC",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 24,
+          "peso_kg": 58,
+          "estatura_cm": 162,
+          "nivel_perfil": "P"
+        },
+        "sesion": {
+          "nivel": "P",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "P20"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "no",
+            "core_en_suelo": "a veces"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P30_M1",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 31,
+          "peso_kg": 70,
+          "estatura_cm": 175,
+          "nivel_perfil": "P"
+        },
+        "sesion": {
+          "nivel": "P",
+          "duracion_min": 30,
+          "equipo": "M1",
+          "plantilla": "P30"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "no",
+            "core_en_suelo": "a veces"
+          },
+          "baile": {
+            "estilos": "Girly, K-pop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K02",
+                "nombre": "Sentadilla goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K10",
+                "nombre": "Talones bilaterales goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K07",
+                "nombre": "Puente bilateral, mancuerna en pelvis",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P40_PC_imc32",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 28,
+          "peso_kg": 87,
+          "estatura_cm": 165,
+          "nivel_perfil": "P"
+        },
+        "sesion": {
+          "nivel": "P",
+          "duracion_min": 40,
+          "equipo": "PC",
+          "plantilla": "P40"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "no",
+            "core_en_suelo": "no"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          }
+        },
+        "ajustes_perfil": [
+          "Según tu peso y estatura: menos repeticiones en los ejercicios que cargan el cuerpo sobre una pierna o la punta de los pies."
+        ],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 3,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 3,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "reducida",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "reducida",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 3,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 3,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 3,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 3,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "plancha_lateral",
+            "candidatos": [
+              {
+                "id": "K14",
+                "nombre": "Plancha lateral con rodillas apoyadas",
+                "nivel_minimo": "P",
+                "lateralidad": "sosten_por_lado",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "segundos",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P30_PC_edad55",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 55,
+          "peso_kg": 64,
+          "estatura_cm": 160,
+          "nivel_perfil": "P"
+        },
+        "sesion": {
+          "nivel": "P",
+          "duracion_min": 30,
+          "equipo": "PC",
+          "plantilla": "P30"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "no",
+            "core_en_suelo": "a veces"
+          },
+          "baile": {
+            "estilos": "otro"
+          }
+        },
+        "ajustes_perfil": [
+          "Desde los 50 años, si estás empezando: más descanso entre series."
+        ],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I20_PC",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 22,
+          "peso_kg": 60,
+          "estatura_cm": 168,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "PC",
+          "plantilla": "I20_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "sí, seguido",
+            "puente_una_pierna_K08": "lo hago y me sale bien",
+            "dead_bug_extension_K12": "nunca lo he hecho"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I30_M1",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 27,
+          "peso_kg": 72,
+          "estatura_cm": 178,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 30,
+          "equipo": "M1",
+          "plantilla": "I30_M1"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "lo hago, pero me cuesta",
+            "dead_bug_extension_K12": "no estoy seguro/a"
+          },
+          "baile": {
+            "estilos": "Hip hop, Vogue"
+          },
+          "ultima_sesion": {
+            "cuando": "hace 2 días",
+            "sesion": "intermedio, 20 min",
+            "resultado": "completa",
+            "le_resulto": "fácil",
+            "molestias": "no",
+            "ejercicios_hechos": "K01, K06"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K02",
+                "nombre": "Sentadilla goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K04",
+                "nombre": "Split squat goblet, una mancuerna",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "bisagra",
+            "candidatos": [
+              {
+                "id": "K05",
+                "nombre": "Rumano bilateral, una mancuerna con ambas manos",
+                "nivel_minimo": "I",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K10",
+                "nombre": "Talones bilaterales goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I40_PC",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 35,
+          "peso_kg": 66,
+          "estatura_cm": 170,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 40,
+          "equipo": "PC",
+          "plantilla": "I40_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "lo hice hace mucho",
+            "dead_bug_extension_K12": "lo hago y me sale bien"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "bird_dog",
+            "candidatos": [
+              {
+                "id": "K13",
+                "nombre": "Bird dog contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "plancha_lateral",
+            "candidatos": [
+              {
+                "id": "K14",
+                "nombre": "Plancha lateral con rodillas apoyadas",
+                "nivel_minimo": "P",
+                "lateralidad": "sosten_por_lado",
+                "series": 2,
+                "cantidad": 15,
+                "unidad": "segundos",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I30_PC_sin_suelo",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 26,
+          "peso_kg": 55,
+          "estatura_cm": 158,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 30,
+          "equipo": "PC",
+          "plantilla": "I30_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "nunca lo he hecho",
+            "dead_bug_extension_K12": "nunca lo he hecho"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I20_M1_edad66",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 66,
+          "peso_kg": 68,
+          "estatura_cm": 166,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 20,
+          "equipo": "M1",
+          "plantilla": "I20_M1"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "lo hago y me sale bien",
+            "dead_bug_extension_K12": "lo hago, pero me cuesta"
+          },
+          "baile": {
+            "estilos": "Hip hop"
+          },
+          "ultima_sesion": {
+            "cuando": "hace 2 días",
+            "sesion": "intermedio, 20 min",
+            "resultado": "incompleta (0 de 1 ejercicios)",
+            "le_resulto": "difícil",
+            "molestias": "no",
+            "ejercicios_hechos": "K01"
+          }
+        },
+        "ajustes_perfil": [
+          "Desde los 65 años: más descanso entre series y hasta 2 series por ejercicio."
+        ],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K02",
+                "nombre": "Sentadilla goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              },
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "bisagra",
+            "candidatos": [
+              {
+                "id": "K05",
+                "nombre": "Rumano bilateral, una mancuerna con ambas manos",
+                "nivel_minimo": "I",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "ampliado"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "I40_M1_sin_una_pierna",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 30,
+          "peso_kg": 75,
+          "estatura_cm": 172,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 40,
+          "equipo": "M1",
+          "plantilla": "I40_M1"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "no estoy seguro/a",
+            "dead_bug_extension_K12": "lo hago y me sale bien"
+          },
+          "baile": {
+            "estilos": "Hip hop, Girly, K-pop, Vogue, otro"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K02",
+                "nombre": "Sentadilla goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K04",
+                "nombre": "Split squat goblet, una mancuerna",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "bisagra",
+            "candidatos": [
+              {
+                "id": "K05",
+                "nombre": "Rumano bilateral, una mancuerna con ambas manos",
+                "nivel_minimo": "I",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K10",
+                "nombre": "Talones bilaterales goblet, una mancuerna",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "bird_dog",
+            "candidatos": [
+              {
+                "id": "K13",
+                "nombre": "Bird dog contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "plancha_lateral",
+            "candidatos": [
+              {
+                "id": "K14",
+                "nombre": "Plancha lateral con rodillas apoyadas",
+                "nivel_minimo": "P",
+                "lateralidad": "sosten_por_lado",
+                "series": 2,
+                "cantidad": 15,
+                "unidad": "segundos",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

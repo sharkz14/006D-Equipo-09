@@ -1,0 +1,184 @@
+{
+  "version": "tiempos-ia-0.1",
+  "fecha": "2026-11-06T04:50:16.495Z",
+  "simulado": false,
+  "modelo": "claude-haiku-5-5",
+  "contrato": "kinetia-rutina-ia-0.2",
+  "servidor_sha256": "6e99562426cd7bde7c33f621528e5e096dc340f91464e779fd2bb683a5bf7629",
+  "node": "v24.21.0",
+  "repeticiones": 2,
+  "limite_app_ms": 45000,
+  "resumen": {
+    "respuestas": 20,
+    "correctas": 20,
+    "errores": 0,
+    "promedio_ms": 9667,
+    "mediana_ms": 9356,
+    "p90_ms": 13753,
+    "minimo_ms": 3967,
+    "maximo_ms": 15096,
+    "sobre_45_s": 0
+  },
+  "resultados": [
+    {
+      "id": "P20_PC",
+      "rep": 1,
+      "ok": true,
+      "ms": 3967,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K06 2s completa · K11 2s reducida"
+    },
+    {
+      "id": "P20_PC",
+      "rep": 2,
+      "ok": true,
+      "ms": 7065,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K06 2s completa · K11 2s reducida"
+    },
+    {
+      "id": "P30_M1",
+      "rep": 1,
+      "ok": true,
+      "ms": 9131,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s reducida · K09 2s completa · K06 2s completa · K11 2s completa"
+    },
+    {
+      "id": "P30_M1",
+      "rep": 2,
+      "ok": true,
+      "ms": 10621,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s reducida · K09 2s completa · K06 2s completa · K11 2s reducida"
+    },
+    {
+      "id": "P40_PC_imc32",
+      "rep": 1,
+      "ok": true,
+      "ms": 10430,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s reducida · K03 2s reducida · K09 2s reducida · K06 2s reducida · K11 2s reducida · K14 2s reducida"
+    },
+    {
+      "id": "P40_PC_imc32",
+      "rep": 2,
+      "ok": true,
+      "ms": 9863,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s reducida · K03 2s reducida · K09 2s reducida · K06 2s reducida · K11 2s reducida · K14 2s reducida"
+    },
+    {
+      "id": "P30_PC_edad55",
+      "rep": 1,
+      "ok": true,
+      "ms": 8542,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s reducida · K03 2s reducida · K09 2s completa · K06 2s reducida · K11 2s reducida"
+    },
+    {
+      "id": "P30_PC_edad55",
+      "rep": 2,
+      "ok": true,
+      "ms": 7774,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s reducida · K03 1s reducida · K09 2s completa · K06 2s completa · K11 2s reducida"
+    },
+    {
+      "id": "I20_PC",
+      "rep": 1,
+      "ok": true,
+      "ms": 8548,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K08 2s completa · K12 2s reducida"
+    },
+    {
+      "id": "I20_PC",
+      "rep": 2,
+      "ok": true,
+      "ms": 9356,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K08 2s completa · K12 2s reducida"
+    },
+    {
+      "id": "I30_M1",
+      "rep": 1,
+      "ok": true,
+      "ms": 15072,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K02 2s completa · K04 2s reducida · K05 2s completa · K10 2s completa · K11 2s completa"
+    },
+    {
+      "id": "I30_M1",
+      "rep": 2,
+      "ok": true,
+      "ms": 13100,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K02 2s completa · K04 2s reducida · K05 2s completa · K10 2s completa · K11 2s completa"
+    },
+    {
+      "id": "I40_PC",
+      "rep": 1,
+      "ok": true,
+      "ms": 13753,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s completa · K09 2s completa · K06 2s completa · K12 2s completa · K13 2s completa · K14 2s completa"
+    },
+    {
+      "id": "I40_PC",
+      "rep": 2,
+      "ok": true,
+      "ms": 8768,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s completa · K09 2s completa · K06 2s completa · K12 2s completa · K13 2s completa · K14 2s completa"
+    },
+    {
+      "id": "I30_PC_sin_suelo",
+      "rep": 1,
+      "ok": true,
+      "ms": 5656,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s completa · K09 2s completa"
+    },
+    {
+      "id": "I30_PC_sin_suelo",
+      "rep": 2,
+      "ok": true,
+      "ms": 6400,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s completa · K03 2s completa · K09 2s completa"
+    },
+    {
+      "id": "I20_M1_edad66",
+      "rep": 1,
+      "ok": true,
+      "ms": 10498,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 1s minima · K05 2s reducida · K11 2s minima"
+    },
+    {
+      "id": "I20_M1_edad66",
+      "rep": 2,
+      "ok": true,
+      "ms": 9685,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K01 2s minima · K05 2s reducida · K11 2s reducida"
+    },
+    {
+      "id": "I40_M1_sin_una_pierna",
+      "rep": 1,
+      "ok": true,
+      "ms": 15096,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K02 2s completa · K03 2s completa · K05 2s completa · K10 2s completa · K12 2s completa · K13 2s completa · K14 2s completa"
+    },
+    {
+      "id": "I40_M1_sin_una_pierna",
+      "rep": 2,
+      "ok": true,
+      "ms": 10019,
+      "modelo": "claude-haiku-5-5",
+      "ejercicios": "K02 2s completa · K04 2s completa · K05 2s completa · K10 2s completa · K12 2s completa · K13 2s completa · K14 2s completa"
+    }
+  ]
+}

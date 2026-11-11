@@ -1,0 +1,99 @@
+@startuml
+!include estilo.iuml
+skinparam defaultFontSize 14
+skinparam classAttributeFontSize 13
+hide methods
+hide empty members
+skinparam nodesep 40
+skinparam ranksep 50
+
+interface Perfil {
+  id: 1
+  nombre: string
+  edad: number
+  pesoKg: number
+  estaturaCm: number
+  nivel: P | I
+}
+interface RespuestasCuestionario {
+  estilos: Estilo[]
+  fuerza: Fuerza
+  mancuerna: boolean
+  duracion: 20 | 30 | 40
+  coreSuelo: CoreSuelo
+  evitar: Evitar[]
+}
+interface GeneratorInput {
+  nivel: P | I
+  equipo: PC | M1
+  duracion: number
+  filtroSuperado: boolean
+  excluir: Exclusions
+  perfilCarga: PerfilCarga
+}
+interface SolicitudRutinaIA {
+  version
+  perfil: sin nombre
+  sesion
+  antecedentes
+  cupos[]
+}
+interface RespuestaRutinaIA {
+  modelo: string
+  resumen: string
+  cupos[]: ejercicio, series,
+  intensidad, descanso, motivo
+}
+interface RoutineResult {
+  plantilla: string
+  estado: RoutineState
+  principal: PrincipalExercise[]
+  secuencia: SequenceBlock[]
+  mensajes: string[]
+}
+interface PrincipalExercise {
+  id: string
+  nombre: string
+  familia: string
+  dosis: Dose
+  seleccion: DecisionMetadata
+  ajustePerfil?: AjustePerfil
+}
+interface Dose {
+  series: number
+  cantidad: number
+  unidad: repeticiones | segundos
+  descansoEntreSeries: number
+}
+interface DecisionMetadata {
+  origen: ia | regla | modelo | ...
+  motivo: string
+  ajusteDosis?: AjusteDosis
+}
+interface RegistroSesion {
+  fecha: string
+  plantilla: string
+  origen: ia | reglas
+  ejercicios: EjercicioRegistrado[]
+  completada: boolean
+  esfuerzo: facil | adecuada | dificil
+  dolor: boolean
+}
+interface EjercicioRegistrado {
+  id: string
+  series: number
+  hechas: number
+}
+
+Perfil ..> GeneratorInput : edad, peso\ny estatura
+RespuestasCuestionario ..> GeneratorInput : duración, equipo\ny exclusiones
+GeneratorInput .right.> SolicitudRutinaIA : se traduce a
+SolicitudRutinaIA .down.> RespuestaRutinaIA : la IA\nresponde
+RespuestaRutinaIA .left.> RoutineResult : se valida\ny monta
+RoutineResult -up-> GeneratorInput : entrada
+RoutineResult *-- "*" PrincipalExercise
+PrincipalExercise *-- Dose
+PrincipalExercise *-- DecisionMetadata
+RegistroSesion .up.> RoutineResult : registra
+RegistroSesion *-- "1..8" EjercicioRegistrado
+@enduml

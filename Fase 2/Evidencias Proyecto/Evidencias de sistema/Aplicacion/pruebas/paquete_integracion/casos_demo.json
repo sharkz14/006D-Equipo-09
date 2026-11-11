@@ -1,0 +1,277 @@
+[
+  {
+    "casoId": "DB03",
+    "grupoId": "G03",
+    "origen": "hipotetico_de_desarrollo",
+    "entradas": {
+      "experiencia_k12": "nunca",
+      "control_k12": "no_aplica",
+      "historia_core": "sin_practica_habitual",
+      "antiguedad_k12": "no_aplica"
+    },
+    "contexto": {
+      "familia": "dead_bug",
+      "cupo": "control_anterior",
+      "nivel": "I",
+      "equipo": "PC",
+      "duracion_referencial_min": 20,
+      "filtro_superado": true,
+      "exclusiones": [],
+      "candidatos_compatibles": [
+        "K11",
+        "K12"
+      ],
+      "fichas_version": "0.1",
+      "modo": "experimento_borrador",
+      "dosis": {
+        "K11": {
+          "series": 2,
+          "repeticiones_por_lado": 6,
+          "descanso_series_s": 60
+        },
+        "K12": {
+          "series": 2,
+          "repeticiones_por_lado": 5,
+          "descanso_series_s": 60
+        }
+      }
+    },
+    "esperadoPython": {
+      "seleccion": "K11",
+      "hoja": 5,
+      "profundidad": 4,
+      "ruta": [
+        {
+          "nodo": 0,
+          "variable": "control_k12_dificultad_control",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        },
+        {
+          "nodo": 1,
+          "variable": "historia_core_interrumpida_mas_de_12_meses",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        },
+        {
+          "nodo": 2,
+          "variable": "experiencia_k12_nunca",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        },
+        {
+          "nodo": 4,
+          "variable": "historia_core_habitual_actual",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        }
+      ]
+    },
+    "preferenciaRevisada": "K11"
+  },
+  {
+    "casoId": "DB05",
+    "grupoId": "G03",
+    "origen": "hipotetico_de_desarrollo",
+    "entradas": {
+      "experiencia_k12": "practico",
+      "control_k12": "controlado",
+      "historia_core": "desconocida",
+      "antiguedad_k12": "un_mes"
+    },
+    "contexto": {
+      "familia": "dead_bug",
+      "cupo": "control_anterior",
+      "nivel": "I",
+      "equipo": "PC",
+      "duracion_referencial_min": 20,
+      "filtro_superado": true,
+      "exclusiones": [],
+      "candidatos_compatibles": [
+        "K11",
+        "K12"
+      ],
+      "fichas_version": "0.1",
+      "modo": "experimento_borrador",
+      "dosis": {
+        "K11": {
+          "series": 2,
+          "repeticiones_por_lado": 6,
+          "descanso_series_s": 60
+        },
+        "K12": {
+          "series": 2,
+          "repeticiones_por_lado": 5,
+          "descanso_series_s": 60
+        }
+      }
+    },
+    "esperadoPython": {
+      "seleccion": "K12",
+      "hoja": 3,
+      "profundidad": 3,
+      "ruta": [
+        {
+          "nodo": 0,
+          "variable": "control_k12_dificultad_control",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        },
+        {
+          "nodo": 1,
+          "variable": "historia_core_interrumpida_mas_de_12_meses",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        },
+        {
+          "nodo": 2,
+          "variable": "experiencia_k12_nunca",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        }
+      ]
+    },
+    "preferenciaRevisada": "K12"
+  },
+  {
+    "casoId": "RDB01",
+    "grupoId": "RDB_G01",
+    "origen": "hipotetico_de_desarrollo",
+    "entradas": {
+      "experiencia_k12": "practico",
+      "control_k12": "dificultad_control",
+      "historia_core": "habitual_actual",
+      "antiguedad_k12": "mas_de_12_meses"
+    },
+    "contexto": {
+      "familia": "dead_bug",
+      "cupo": "control_anterior",
+      "nivel": "I",
+      "equipo": "PC",
+      "duracion_referencial_min": 20,
+      "filtro_superado": true,
+      "exclusiones": [],
+      "candidatos_compatibles": [
+        "K11",
+        "K12"
+      ],
+      "fichas_version": "0.1",
+      "modo": "experimento_borrador",
+      "dosis": {
+        "K11": {
+          "series": 2,
+          "repeticiones_por_lado": 6,
+          "descanso_series_s": 60
+        },
+        "K12": {
+          "series": 2,
+          "repeticiones_por_lado": 5,
+          "descanso_series_s": 60
+        }
+      }
+    },
+    "esperadoPython": {
+      "seleccion": "K12",
+      "hoja": 12,
+      "profundidad": 3,
+      "ruta": [
+        {
+          "nodo": 0,
+          "variable": "control_k12_dificultad_control",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        },
+        {
+          "nodo": 8,
+          "variable": "historia_core_habitual_actual",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        },
+        {
+          "nodo": 10,
+          "variable": "antiguedad_k12_mas_de_12_meses",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        }
+      ]
+    },
+    "preferenciaRevisada": "K12"
+  },
+  {
+    "casoId": "RDB01_A",
+    "grupoId": "RDB_G01",
+    "origen": "hipotetico_de_desarrollo",
+    "entradas": {
+      "experiencia_k12": "practico",
+      "control_k12": "dificultad_control",
+      "historia_core": "habitual_actual",
+      "antiguedad_k12": "un_mes"
+    },
+    "contexto": {
+      "familia": "dead_bug",
+      "cupo": "control_anterior",
+      "nivel": "I",
+      "equipo": "PC",
+      "duracion_referencial_min": 20,
+      "filtro_superado": true,
+      "exclusiones": [],
+      "candidatos_compatibles": [
+        "K11",
+        "K12"
+      ],
+      "fichas_version": "0.1",
+      "modo": "experimento_borrador",
+      "dosis": {
+        "K11": {
+          "series": 2,
+          "repeticiones_por_lado": 6,
+          "descanso_series_s": 60
+        },
+        "K12": {
+          "series": 2,
+          "repeticiones_por_lado": 5,
+          "descanso_series_s": 60
+        }
+      }
+    },
+    "esperadoPython": {
+      "seleccion": "K11",
+      "hoja": 11,
+      "profundidad": 3,
+      "ruta": [
+        {
+          "nodo": 0,
+          "variable": "control_k12_dificultad_control",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        },
+        {
+          "nodo": 8,
+          "variable": "historia_core_habitual_actual",
+          "valor": 1.0,
+          "umbral": 0.5,
+          "rama": "derecha"
+        },
+        {
+          "nodo": 10,
+          "variable": "antiguedad_k12_mas_de_12_meses",
+          "valor": 0.0,
+          "umbral": 0.5,
+          "rama": "izquierda"
+        }
+      ]
+    },
+    "preferenciaRevisada": "K11"
+  }
+]

@@ -1,0 +1,38 @@
+erDiagram
+  PERFIL ||--|| CUESTIONARIO : "responde"
+  PERFIL ||--o{ SESION : "registra"
+  PERFIL {
+    INTEGER id PK
+    TEXT nombre
+    INTEGER edad
+    REAL peso_kg
+    REAL estatura_cm
+    TEXT nivel
+    TEXT creado_en
+    TEXT actualizado_en
+  }
+  CUESTIONARIO {
+    INTEGER id PK,FK
+    TEXT estilos
+    TEXT fuerza
+    INTEGER mancuerna
+    INTEGER duracion
+    TEXT puente_una_pierna
+    TEXT dead_bug_extension
+    TEXT core_suelo
+    TEXT evitar
+    TEXT actualizado_en
+  }
+  SESION {
+    INTEGER id PK
+    TEXT fecha
+    TEXT plantilla
+    TEXT nivel
+    INTEGER duracion
+    TEXT origen
+    TEXT ejercicios
+    INTEGER completada
+    INTEGER detenida_por_dolor
+    TEXT esfuerzo
+    INTEGER dolor
+  }

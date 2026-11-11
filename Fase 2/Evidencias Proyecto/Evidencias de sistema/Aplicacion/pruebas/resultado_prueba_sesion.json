@@ -1,0 +1,53 @@
+{
+  "fecha": "2026-11-06T05:10:10.674Z",
+  "pruebas": 10,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "Toda variante del catálogo tiene instrucciones de su ficha (K05 desde el 05-11)",
+      "ok": true,
+      "detalle": "16 fichas con pasos, 2 puntos técnicos y 2 errores frecuentes"
+    },
+    {
+      "nombre": "Animaciones: todo paso que puede aparecer en una sesión tiene la suya, salvo C02, y sus archivos existen (05-11)",
+      "ok": true,
+      "detalle": "18 animaciones; sin animación: C02"
+    },
+    {
+      "nombre": "Nombres amigables: todo paso posible tiene nombre, y los ejercicios principales su indicación clave (05-11)",
+      "ok": true,
+      "detalle": "19 pasos con nombre; 14 indicaciones"
+    },
+    {
+      "nombre": "Ejercicios hechos alguna vez: cuenta solo los que tienen al menos una serie e ignora filas dañadas (05-11)",
+      "ok": true
+    },
+    {
+      "nombre": "Pasos de la sesión: cada ejercicio una vez, series y descansos iguales a la rutina (todas las plantillas, con y sin exclusiones y límites)",
+      "ok": true,
+      "detalle": "72 rutinas · 1184 tramos de ejercicios principales"
+    },
+    {
+      "nombre": "Indicaciones de posición y tramos por lado",
+      "ok": true,
+      "detalle": "Calentamiento: Marcha → Prueba suave: Sentadilla corporal → Ejercicio 1 de 7: Sentadilla corporal → Ejercicio 2 de 7: Split squat corporal → Ejercicio 3 de 7: Talones bilaterales, suelo plano, sin apoyo externo → Ejercicio 4 de 7: Puente unilateral, pierna contraria sujeta detrás del muslo → Ejercicio 5 de 7: Dead bug con extensión contralateral → Ejercicio 6 de 7: Bird dog contralateral → Ejercicio 7 de 7: Plancha lateral con rodillas apoyadas → Cierre: Caminata suave → Cierre: Estiramiento de glúteo → Cierre: Estiramiento de cuádriceps"
+    },
+    {
+      "nombre": "Registro: completa, incompleta y detenida por dolor",
+      "ok": true
+    },
+    {
+      "nombre": "Resumen para la IA: breve, válido para el servidor y con la fecha relativa",
+      "ok": true,
+      "detalle": "{\"cuando\":\"hace 2 días\",\"sesion\":\"intermedio, 40 min\",\"resultado\":\"incompleta (1 de 7 ejercicios)\",\"le_resulto\":\"difícil\",\"molestias\":\"sí, la detuvo por dolor\",\"ejercicios_hechos\":\"K01\"}"
+    },
+    {
+      "nombre": "De punta a punta: la última sesión llega al mensaje de Claude y el prompt sabe usarla",
+      "ok": true
+    },
+    {
+      "nombre": "SQLite: migración 2 → 3 conserva perfil y respuestas; 0 → 3 y 1 → 3 también funcionan",
+      "ok": true
+    }
+  ]
+}

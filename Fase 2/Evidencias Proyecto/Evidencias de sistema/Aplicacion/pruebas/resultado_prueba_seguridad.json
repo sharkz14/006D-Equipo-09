@@ -1,0 +1,49 @@
+{
+  "version": "seguridad-0.1",
+  "fecha": "2026-11-06T05:10:11.730Z",
+  "resultados": [
+    {
+      "nombre": "Web: solo la propia página puede pedir rutinas (otro origen o sin origen → 403)",
+      "ok": true,
+      "detalle": "otro origen 403 · sin origen 403 · propio 200"
+    },
+    {
+      "nombre": "Web: /api/estado informa el modo sin mostrar la clave",
+      "ok": true,
+      "detalle": "{\"servicio\":\"kinetia-ia\",\"contrato\":\"kinetia-rutina-ia-0.2\",\"modo\":\"claude\",\"modelo\":\"claude-haiku-5-5\"}"
+    },
+    {
+      "nombre": "Web: las páginas llevan las cabeceras de aislamiento y las rutas /api desconocidas dan 404",
+      "ok": true
+    },
+    {
+      "nombre": "Servicio: solo acepta POST; con token configurado, sin token o con uno distinto → 401",
+      "ok": true
+    },
+    {
+      "nombre": "Servicio: rechaza con 400 todo lo que no está en el contrato",
+      "ok": true,
+      "detalle": "10 variantes rechazadas con 400"
+    },
+    {
+      "nombre": "Defensa en capas: aunque un texto corto intente dar órdenes, la IA solo puede elegir de la lista",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: La IA eligió K99, que no es compatible con el cupo sentadilla. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Privacidad: el nombre nunca viaja a la IA, aunque venga en el perfil",
+      "ok": true,
+      "detalle": "perfil enviado: {\"edad\":30,\"peso_kg\":65,\"estatura_cm\":170,\"nivel_perfil\":\"I\"}"
+    },
+    {
+      "nombre": "Los errores de la API no exponen la clave",
+      "ok": true,
+      "detalle": "{\"error\":\"La API de Claude respondió 401: invalid x-api-key\"}"
+    },
+    {
+      "nombre": "El paquete web publicado no contiene claves ni apunta al emulador",
+      "ok": true,
+      "detalle": "8 archivos revisados"
+    }
+  ]
+}

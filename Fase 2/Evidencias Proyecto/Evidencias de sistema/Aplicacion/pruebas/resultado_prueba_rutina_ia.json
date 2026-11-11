@@ -1,0 +1,80 @@
+{
+  "fecha": "2026-11-06T05:10:10.976Z",
+  "pruebas": 14,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "La solicitud no incluye el nombre y solo trae variantes compatibles",
+      "ok": true,
+      "detalle": "Con la exclusión «piernas sin apoyo», K12 no se ofrece a la IA."
+    },
+    {
+      "nombre": "El esquema usa solo funciones admitidas y cierra las opciones por cupo",
+      "ok": true
+    },
+    {
+      "nombre": "Servidor simulado → rutina generada por IA (origen «ia»)",
+      "ok": true,
+      "detalle": "sentadilla: K01 2×10 · puente: K08 2×6 · dead_bug: K12 2×5"
+    },
+    {
+      "nombre": "Respuesta con la forma de Claude: elige, ajusta la dosis a la baja y la app la monta",
+      "ok": true,
+      "detalle": "K06 2×9 (75 % de 12) con 120 s de descanso; K11 1×3 (50 % de 6)."
+    },
+    {
+      "nombre": "Rechazo: Ejercicio fuera de la lista (K99) → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: La IA eligió K99, que no es compatible con el cupo puente. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Rechazo: Variante de intermedio para principiante → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: La IA eligió K08, que no es compatible con el cupo puente. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Rechazo: Más series que la ficha → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: Ajuste de dosis no válido para K01. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Rechazo: Intensidad inventada → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: Un cupo de la respuesta de la IA no tiene el formato esperado. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Rechazo: Falta un cupo → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: La IA no entregó exactamente un ejercicio por cupo. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Rechazo: Motivo vacío → rutina por reglas con aviso",
+      "ok": true,
+      "detalle": "La propuesta de la IA no pasó la validación: Falta el motivo de la IA para K12. Se usó la rutina habitual."
+    },
+    {
+      "nombre": "Sin configurar, servidor caído, error HTTP o demora → rutina por reglas",
+      "ok": true,
+      "detalle": [
+        "sin URL: La generación con IA no está configurada en esta versión.",
+        "sin conexión: No se pudo conectar con el servicio de IA. Se usó la rutina habitual.",
+        "HTTP 502: El servicio de IA respondió con un error (502).",
+        "JSON roto: El servicio de IA devolvió una respuesta ilegible. Se usó la rutina habitual.",
+        "demora: La IA tardó demasiado en responder. Se usó la rutina habitual."
+      ]
+    },
+    {
+      "nombre": "Servidor: token, solicitud fuera de contrato, rechazo y respuesta incompleta de Claude",
+      "ok": true
+    },
+    {
+      "nombre": "Sustituir a mano un ejercicio conserva los ajustes de la IA en los demás cupos",
+      "ok": true
+    },
+    {
+      "nombre": "Servidor local (HTTP real en modo simulado)",
+      "ok": true,
+      "detalle": "simulado: Rutina simulada para pruebas, sin llamar a la IA."
+    }
+  ]
+}

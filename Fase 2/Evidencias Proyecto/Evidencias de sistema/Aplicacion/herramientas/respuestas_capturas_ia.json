@@ -1,0 +1,108 @@
+{
+  "version": "respuestas-capturas-0.1",
+  "fecha": "2026-11-06T05:20:27.957Z",
+  "modelo": "claude-haiku-5-5",
+  "contrato": "kinetia-rutina-ia-0.2",
+  "respuestas": [
+    {
+      "id": "manual_I30_PC",
+      "intento": 1,
+      "respuesta": {
+        "modelo": "claude-haiku-5-5",
+        "resumen": "Rutina intermedia de unos 30 minutos con peso corporal, pensada para el hip hop y el K-pop: control al bajar y subir, estabilidad de cadera y core. Como practicas core en el suelo solo a veces y el puente a una pierna te cuesta, elegimos variantes básicas con la dosis completa.",
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "ejercicio": "K01",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "En hip hop muchos movimientos empiezan con una bajada controlada, y esta sentadilla entrena justamente eso. La dosis completa te sirve para trabajar el control sin complicar la técnica."
+          },
+          {
+            "familia": "split_squat",
+            "ejercicio": "K03",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "Los cambios de peso y las posiciones bajas del hip hop piden estabilidad en cada pierna por separado. Con la dosis completa trabajas ese control en ambos lados."
+          },
+          {
+            "familia": "pantorrilla",
+            "ejercicio": "K09",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "Las coreografías largas de K-pop exigen mantenerte sobre las puntas durante muchos compases. Esta variante trabaja esa resistencia con la dosis completa."
+          },
+          {
+            "familia": "puente",
+            "ejercicio": "K06",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "Como el puente a una pierna te cuesta controlarlo, hoy trabajas el puente con las dos piernas, que da una base sólida de cadera. Haz la dosis completa y mantén la postura en cada repetición."
+          },
+          {
+            "familia": "dead_bug",
+            "ejercicio": "K11",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "Como el core en el suelo no es parte habitual de tu práctica, empezar con el dead bug inicial desde apoyos te permite trabajar el control del tronco con la dosis completa. Así prepararás el terreno para variantes más exigentes."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manual_I30_PC",
+      "intento": 2,
+      "respuesta": {
+        "modelo": "claude-haiku-5-5",
+        "resumen": "Una rutina de fuerza y control con peso corporal, pensada para tu nivel intermedio y tus estilos, hip hop y K-pop, que piden bajar y subir con control y aguantar coreografías largas. Mantenemos el puente bilateral y el dead bug inicial porque aún practicas el core en el suelo solo a veces.",
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "ejercicio": "K01",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "La sentadilla corporal trabaja el control al bajar y subir, que el hip hop exige en cada cambio de nivel. Haz la dosis completa, con 10 repeticiones y 90 s de descanso entre series."
+          },
+          {
+            "familia": "split_squat",
+            "ejercicio": "K03",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "El split squat te ayuda a sostener el peso en una pierna y a mantener el equilibrio mientras cambias de posición, algo útil en coreografías largas de K-pop. Hazlo con la dosis completa: 8 repeticiones por lado."
+          },
+          {
+            "familia": "pantorrilla",
+            "ejercicio": "K09",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "Los talones en suelo plano dan trabajo de tobillo y pantorrilla para sostener los apoyos y saltos del baile urbano. Haz la dosis completa, con 12 repeticiones."
+          },
+          {
+            "familia": "puente",
+            "ejercicio": "K06",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "El puente bilateral trabaja la cadera y la musculatura posterior con las dos piernas, una base sólida para la estabilidad de cadera en movimientos de girly o vogue. Lo elegimos en lugar del puente a una pierna porque ese te está costando controlarlo. Haz 12 repeticiones con 90 s de descanso."
+          },
+          {
+            "familia": "dead_bug",
+            "ejercicio": "K11",
+            "series": 2,
+            "intensidad": "completa",
+            "descanso": "estandar",
+            "motivo": "El dead bug inicial desde apoyos enseña a mantener el tronco quieto mientras se mueven brazos y piernas, lo que ayuda a conservar el control en coreografías largas. Como aún no has hecho el dead bug con extensión, empezamos por esta versión, con la dosis completa: 6 repeticiones por lado y 60 s de descanso entre series."
+          }
+        ]
+      }
+    }
+  ]
+}

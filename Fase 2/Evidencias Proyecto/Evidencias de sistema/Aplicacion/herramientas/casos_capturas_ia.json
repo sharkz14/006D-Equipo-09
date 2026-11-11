@@ -1,0 +1,182 @@
+{
+  "version": "casos-capturas-0.1",
+  "nota": "Persona ficticia de las capturas del manual de usuario. Sin nombre.",
+  "persona": {
+    "perfil": {
+      "edad": 24,
+      "pesoKg": 60,
+      "estaturaCm": 165,
+      "nivel": "I"
+    },
+    "respuestas": {
+      "estilos": [
+        "hip_hop",
+        "kpop"
+      ],
+      "fuerza": "6_meses_o_mas",
+      "mancuerna": false,
+      "duracion": 30,
+      "puenteUnaPierna": "me_cuesta",
+      "deadBugExtension": "nunca",
+      "coreSuelo": "a_veces",
+      "evitar": []
+    }
+  },
+  "casos": [
+    {
+      "id": "manual_I30_PC",
+      "solicitud": {
+        "version": "kinetia-rutina-ia-0.2",
+        "perfil": {
+          "edad": 24,
+          "peso_kg": 60,
+          "estatura_cm": 165,
+          "nivel_perfil": "I"
+        },
+        "sesion": {
+          "nivel": "I",
+          "duracion_min": 30,
+          "equipo": "PC",
+          "plantilla": "I30_PC"
+        },
+        "antecedentes": {
+          "experiencia": {
+            "entrena_fuerza": "sí, hace 6 meses o más",
+            "core_en_suelo": "a veces",
+            "puente_una_pierna_K08": "lo hago, pero me cuesta",
+            "dead_bug_extension_K12": "nunca lo he hecho"
+          },
+          "baile": {
+            "estilos": "Hip hop, K-pop"
+          }
+        },
+        "ajustes_perfil": [],
+        "cupos": [
+          {
+            "familia": "sentadilla",
+            "candidatos": [
+              {
+                "id": "K01",
+                "nombre": "Sentadilla corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 10,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "split_squat",
+            "candidatos": [
+              {
+                "id": "K03",
+                "nombre": "Split squat corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 8,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "pantorrilla",
+            "candidatos": [
+              {
+                "id": "K09",
+                "nombre": "Talones bilaterales, suelo plano, sin apoyo externo",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "puente",
+            "candidatos": [
+              {
+                "id": "K08",
+                "nombre": "Puente unilateral, pierna contraria sujeta detrás del muslo",
+                "nivel_minimo": "I",
+                "lateralidad": "por_lado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 30,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K06",
+                "nombre": "Puente bilateral corporal",
+                "nivel_minimo": "P",
+                "lateralidad": "bilateral",
+                "series": 2,
+                "cantidad": 12,
+                "unidad": "repeticiones",
+                "descanso_series_s": 90,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          },
+          {
+            "familia": "dead_bug",
+            "candidatos": [
+              {
+                "id": "K12",
+                "nombre": "Dead bug con extensión contralateral",
+                "nivel_minimo": "I",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 5,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              },
+              {
+                "id": "K11",
+                "nombre": "Dead bug inicial desde apoyos",
+                "nivel_minimo": "P",
+                "lateralidad": "alternado",
+                "series": 2,
+                "cantidad": 6,
+                "unidad": "repeticiones",
+                "descanso_series_s": 60,
+                "descanso_lados_s": 0,
+                "tope_series": 2,
+                "tope_intensidad": "completa",
+                "tope_descanso": "estandar"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

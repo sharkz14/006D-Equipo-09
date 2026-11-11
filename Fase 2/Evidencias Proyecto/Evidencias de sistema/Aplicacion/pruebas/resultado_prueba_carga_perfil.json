@@ -1,0 +1,71 @@
+{
+  "fecha": "2026-11-06T05:10:10.567Z",
+  "pruebas": 14,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "Reglas por edad, nivel e IMC, con los límites exactos",
+      "ok": true,
+      "detalle": "IMC bajo: sin regla · ejercicios con carga concentrada: K03, K04, K08, K09, K10"
+    },
+    {
+      "nombre": "Un perfil sin reglas no cambia ninguna rutina",
+      "ok": true,
+      "detalle": "72 configuraciones idénticas"
+    },
+    {
+      "nombre": "Los topes nunca suben la dosis: ficha ≥ sin perfil ≥ con perfil (36 perfiles × 72 configuraciones)",
+      "ok": true,
+      "detalle": "10944 ejercicios revisados; 6672 con dosis bajada por perfil."
+    },
+    {
+      "nombre": "IMC 31 y 36: baja split squat y talones; la sentadilla y el puente bilateral no cambian",
+      "ok": true,
+      "detalle": "IMC 31 → split squat 2×6, talones 2×9 · IMC 36 → además +30 s de descanso (30 → 32 min)"
+    },
+    {
+      "nombre": "70 años, principiante, 40 min: 2 series, menos repeticiones y más descanso en todo",
+      "ok": true,
+      "detalle": "Sentadilla P40: 3×8 · 90 s → 2×6 · 120 s; con experiencia (intermedio): 2×10 · 120 s"
+    },
+    {
+      "nombre": "55 años: solo cambia si está empezando",
+      "ok": true
+    },
+    {
+      "nombre": "Perfil inválido → entrada inválida (no se ignora)",
+      "ok": true
+    },
+    {
+      "nombre": "Solicitud a la IA: topes por variante, reglas en texto y esquema acotado",
+      "ok": true,
+      "detalle": "IMC 31: split squat solo admite «reducida» o «mínima» · 70 años: 1–2 series y descanso ampliado"
+    },
+    {
+      "nombre": "Las cifras que recibe la IA son las que la app muestra (todas las plantillas e intensidades)",
+      "ok": true,
+      "detalle": "174 comprobaciones · K11 intermedio: 6 / 5 / 3 por lado (antes la IA escribió «unas 4»)"
+    },
+    {
+      "nombre": "Si la IA pide más que el tope, la app lo baja; si pide menos, se respeta",
+      "ok": true,
+      "detalle": "K08 pedido «completa» → montado reducido (5 por lado) · talones «mínima» → 6, sin tope adicional"
+    },
+    {
+      "nombre": "Sin IA (servidor caído) la rutina habitual también respeta los topes",
+      "ok": true
+    },
+    {
+      "nombre": "Servidor: rechaza topes incoherentes; el modo simulado se queda en el tope",
+      "ok": true
+    },
+    {
+      "nombre": "Sustituir un ejercicio conserva los topes; cambiar el perfil invalida la rutina",
+      "ok": true
+    },
+    {
+      "nombre": "Textos de las reglas: breves y sin cifras del cuerpo de la persona",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "fecha": "2026-11-06T05:10:10.358Z",
+  "pruebas": 9,
+  "fallos": 0,
+  "resultados": [
+    {
+      "nombre": "Nivel sugerido y preguntas adaptativas",
+      "ok": true,
+      "detalle": "Principiantes responden 2 preguntas menos (K08 y K12 no aplican a su nivel)."
+    },
+    {
+      "nombre": "Cada opción de «evitar» es una característica que el motor conoce",
+      "ok": true
+    },
+    {
+      "nombre": "«Evitar» quita exactamente lo que dice",
+      "ok": true,
+      "detalle": "Suelo → solo K01 · una pierna → K06 en vez de K08 · rodillas (40 min) → sin K13 ni K14"
+    },
+    {
+      "nombre": "Sesión inicial desde las respuestas",
+      "ok": true
+    },
+    {
+      "nombre": "Lo enviado a la IA pasa la validación del servidor en el peor caso",
+      "ok": true,
+      "detalle": "{\"experiencia\":{\"entrena_fuerza\":\"sí, hace 6 meses o más\",\"core_en_suelo\":\"lo hacía, pero lo dejé\",\"puente_una_pierna_K08\":\"lo hice hace mucho\",\"dead_bug_extension_K12\":\"lo hago, pero me cuesta\"},\"baile\":{\"estilos\":\"Hip hop, Girly, K-pop, Vogue, otro\"}}"
+    },
+    {
+      "nombre": "Los estilos se envían en el orden de la lista, no en el orden en que se tocaron",
+      "ok": true
+    },
+    {
+      "nombre": "Sin preguntas de K08/K12 (principiante) no se envían como desconocidas inventadas",
+      "ok": true
+    },
+    {
+      "nombre": "validarRespuestas rechaza datos incompletos o inventados",
+      "ok": true
+    },
+    {
+      "nombre": "De punta a punta: las respuestas y el estilo llegan al mensaje de Claude",
+      "ok": true,
+      "detalle": "Rutina IA: K01, K06, K12"
+    }
+  ]
+}

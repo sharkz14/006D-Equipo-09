@@ -1,0 +1,42 @@
+@startuml
+!include estilo.iuml
+skinparam defaultFontSize 14
+skinparam componentStyle uml2
+skinparam nodesep 30
+skinparam ranksep 45
+
+package "Aplicación Kinetia (Expo / React Native)" {
+  component "Pantallas\n(src/app)" as PANT
+  component "Estado del perfil\n(perfil-provider)" as EST
+  component "Componentes de interfaz\n(sesión guiada, rutina,\ncuestionario, animaciones)" as COMP
+  component "Cliente de IA\n(ia/rutina-ia.ts)" as CLI
+  component "Motor de reglas\n(generador.ts,\ncarga-perfil.ts)" as MOT
+  component "Sesión y progresión\n(sesion.ts)" as SES
+  component "Catálogo y fichas\n(fichas.ts, nombres.ts)" as CAT
+  component "Perfil y persistencia\n(perfil.ts, esquema.ts,\ncuestionario.ts)" as PER
+  database "SQLite\nkinetia.db" as DB
+}
+node "Servidor de IA (Cloudflare Pages o PC)" {
+  component "sitio-web.mjs\n(control de origen)" as SW
+  component "kinetia-ia.mjs\n(esquema y validación)" as KIA
+}
+cloud "Anthropic" {
+  component "API de Claude" as API
+}
+
+PANT --> EST
+PANT --> COMP
+PANT --> CLI
+EST --> PER
+COMP --> SES
+COMP --> CAT
+CLI --> MOT
+CLI --> SES
+SES --> MOT
+SES --> CAT
+PER --> SES
+PER --> DB
+CLI ..> SW : POST /api/rutina\n(HTTPS + JSON)
+SW --> KIA
+KIA ..> API : Messages API\n(HTTPS + JSON)
+@enduml

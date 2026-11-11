@@ -68,17 +68,20 @@ La clave de la API vive solo en el servidor; la app nunca la conoce. El nombre d
 |---|---|
 | [`Fase 1/`](Fase%201/) | Definición del proyecto, presentación, autoevaluación y diario de reflexión. |
 | [`Fase 2/Evidencias Grupales/`](Fase%202/Evidencias%20Grupales/) | Guías de desarrollo e informe final de la Fase 2, y planillas de evaluación. |
-| [`Fase 2/Evidencias Proyecto/Evidencias de documentación/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/) | Catálogo de ejercicios, fichas simples, reglas de generación y revisiones. |
-| [`Fase 2/Evidencias Proyecto/Evidencias de sistema/Aplicacion/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/) | **Código actual de la app y del servidor de IA** (actualizado en noviembre de 2026). Su README explica cómo abrirla. |
+| [`Fase 2/Evidencias Proyecto/Evidencias de documentación/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/) | **Documento técnico y manual de usuario** (Word y PDF, con sus fuentes), catálogo de ejercicios, fichas simples, reglas de generación y revisiones. |
+| [`Fase 2/Evidencias Proyecto/Evidencias de sistema/Aplicacion/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/) | **Código actual de la app y del servidor de IA** (actualizado en noviembre de 2026) y sus pruebas automáticas. Su README explica cómo abrirla. |
 | [`Fase 2/Evidencias Proyecto/Evidencias de sistema/Base_de_datos/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Base_de_datos/) | Esquema SQLite entregado en la Fase 2 (versión 1). La versión 3 está en el código y en el documento técnico. |
 | [`Fase 2/Evidencias Proyecto/Evidencias de sistema/Kinetia_arbol_k11_k12_v0_3/`](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Kinetia_arbol_k11_k12_v0_3/) | Entrenamiento del árbol de decisión K11/K12 (Fase 2). |
-| [`Fase 3/`](Fase%203/) | Entrega final: documento técnico, manual de usuario y pruebas automáticas. |
+| [`Fase 3/`](Fase%203/) | Diario de reflexión, planilla de evaluación y presentación final (en preparación). |
 
 ## Documentación
 
-- **Documento técnico** (Fase 3): arquitectura, modelo de datos, diagramas UML, requisitos no funcionales, despliegue,
-  pruebas, innovación, y límites y trabajo futuro.
-- **Manual de usuario** (Fase 3): cada pantalla explicada con capturas.
+- **Documento técnico:** arquitectura, modelo de datos, diagramas UML, requisitos no funcionales, despliegue, pruebas,
+  innovación, y límites y trabajo futuro. [PDF](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/Kinetia_documento_tecnico_v1.0.pdf) ·
+  [Word](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/Kinetia_documento_tecnico_v1.0.docx)
+- **Manual de usuario:** cada pantalla explicada con capturas. [PDF](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/Kinetia_manual_usuario_v1.0.pdf) ·
+  [Word](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20documentaci%C3%B3n/Kinetia_manual_usuario_v1.0.docx)
+- [Pruebas automáticas: qué revisan y cómo correrlas](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/pruebas/LEEME.md)
 - [Evaluación de la IA con el preparador físico](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/evidencias/Evaluacion_IA_preparador.md)
 - [Servidor de IA: cómo usarlo](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/servidor/LEEME.md)
 - [Cómo publicar la versión web](Fase%202/Evidencias%20Proyecto/Evidencias%20de%20sistema/Aplicacion/herramientas/PUBLICAR_WEB.md)
