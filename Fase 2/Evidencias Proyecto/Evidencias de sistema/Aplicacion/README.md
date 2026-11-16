@@ -112,7 +112,7 @@ La clave se guarda una sola vez como secreto `ANTHROPIC_API_KEY` en el panel de 
 | `src/lib/fichas.ts`, `nombres.ts` | Fichas técnicas y nombres amigables de los ejercicios. |
 | `servidor/` | Servicio de IA (`kinetia-ia.mjs`), servidor local, sitio web de Cloudflare y prueba de la clave. |
 | `herramientas/` | Preparar la web, optimizar animaciones, evaluar la IA, medir sus tiempos y guardar las respuestas usadas en las capturas del manual. |
-| `evidencias/` | Animaciones originales, ficha K05 y la evaluación de la IA con el preparador físico. |
+| `evidencias/` | Animaciones originales y la evaluación de la IA con el preparador físico. |
 | `pruebas/` | Pruebas automáticas, sus resultados y cómo correrlas. |
 | `assets/images/ejercicios/` | Animaciones optimizadas que usa la app. |
 

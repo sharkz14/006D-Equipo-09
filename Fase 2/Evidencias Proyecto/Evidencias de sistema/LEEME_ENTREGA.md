@@ -1,32 +1,21 @@
-# Kinetia — Evidencias de sistema, Fase 2
+# Kinetia · Evidencias de sistema
 
-Karla Acuña Bravo · 13 de octubre de 2026
+Karla Acuña Bravo · actualizado el 16 de noviembre de 2026
 
-Esta entrega reúne el código de la app y la estructura de su base de datos local.
-Corresponde a un avance para revisar con el profesor.
+Esta carpeta reúne el código de Kinetia y las evidencias técnicas que lo acompañan.
 
 | Carpeta | Contenido |
 |---|---|
-| `Aplicacion` | Proyecto Expo, pantallas, CRUD del perfil, generador y piloto K06/K08. Su README explica cómo abrirlo. |
-| `Base_de_datos` | Esquema SQL, base SQLite vacía y explicación de los campos. |
+| [`Aplicacion`](Aplicacion/) | Código actual de la app y del servidor de IA, con sus pruebas automáticas (`pruebas/`) y herramientas (`herramientas/`). Su README explica cómo abrirla. |
+| [`Base_de_datos`](Base_de_datos/) | Esquema SQLite entregado en el avance de la Fase 2 (versión 1). La versión 3 está en el código y en el documento técnico. |
+| [`Kinetia_arbol_k11_k12_v0_3`](Kinetia_arbol_k11_k12_v0_3/) | Entrenamiento del árbol de decisión K11/K12 de la Fase 2. Sirvió de comparación para evaluar la IA; el flujo actual no lo usa. |
 
-## Dónde subirlo
+El documento técnico y el manual de usuario están en la carpeta
+[`Evidencias de documentación`](../Evidencias%20de%20documentaci%C3%B3n/).
 
-Extraer el ZIP y subir ambas carpetas, junto con este archivo, dentro de
-`Fase 2/Evidencias Proyecto/Evidencias de sistema`.
-Así el código queda visible en GitHub y se conserva la relación entre las carpetas.
+## Historia de esta carpeta
 
-## Qué se preparó
-
-Se reemplazó el README de ejemplo por instrucciones en español y se agregó la evidencia
-de SQLite. Se retiraron de esta copia los restos de Angular/Ionic sin referencias desde
-la app actual: `src/assets`, `src/environments`, `src/theme`, `src/global.scss`,
-`src/index.html`, `src/main.ts`, `src/polyfills.ts`, `src/test.ts` y `src/zone-flags.ts`.
-`src/test.ts` era la configuración de pruebas de Angular, sin sus dependencias ni casos.
-
-El código vigente, las pantallas, el modelo K06/K08, las versiones de dependencias y
-`package-lock.json` se conservaron. La plantilla de Expo que aún utiliza la app también
-se conservó. La copia original recibida en `Kinetia_revision.zip` no fue modificada.
-
-La base incluida se generó vacía desde el esquema del código; no es una exportación del
-emulador. Este paquete contiene código fuente y evidencia de datos, sin APK.
+- **13 de octubre de 2026 (avance de la Fase 2):** primera entrega del código y de la base de datos. Se retiraron los
+  restos de Angular/Ionic que la app no usaba y se reemplazó el README de ejemplo por instrucciones en español.
+- **Noviembre de 2026:** la app se actualizó con la IA generativa, la sesión guiada, las animaciones y el rediseño, y se
+  agregaron las pruebas automáticas.
